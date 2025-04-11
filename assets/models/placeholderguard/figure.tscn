@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnj8dlx4y3qhe"]
+
+[ext_resource type="PackedScene" uid="uid://byvr7r7h07d4v" path="res://assets/models/placeholderguard/figur.gltf" id="1_aeb7c"]
+
+[node name="figur" instance=ExtResource("1_aeb7c")]
+
+[node name="Empty" parent="Empty_003" index="0"]
+transform = Transform3D(1.73069, 0, 0, 0, -0.938839, 1.45391, 0, -1.45391, -0.938839, 1.41715, 0, 6.76258)
+
+[node name="Empty_001" parent="Empty_003" index="1"]
+transform = Transform3D(1.73069, 0, 0, 0, 0.718393, 1.57454, 0, -1.57454, 0.718393, -1.55697, 0, 6.76258)
+
+[node name="Empty_002" parent="Empty_003" index="2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 6.41053)
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "EmptyAction"

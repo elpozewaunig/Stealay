@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwk7inn2xomsv"]
+
+[ext_resource type="PackedScene" uid="uid://byvr7r7h07d4v" path="res://assets/models/placeholderguard/figur.gltf" id="1_w70sh"]
+[ext_resource type="Texture2D" uid="uid://dxmhvfj33g0v7" path="res://assets/models/placeholderplayer/playertext.png" id="2_uetpx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14xty"]
+albedo_texture = ExtResource("2_uetpx")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b2xsg"]
+albedo_texture = ExtResource("2_uetpx")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5auhq"]
+albedo_texture = ExtResource("2_uetpx")
+
+[node name="figur" instance=ExtResource("1_w70sh")]
+
+[node name="Empty" parent="Empty_003" index="0"]
+transform = Transform3D(1.73069, 0, 0, 0, -0.938839, 1.45391, 0, -1.45391, -0.938839, 1.41715, 0, 6.76258)
+
+[node name="Cube_006" parent="Empty_003/Empty" index="0"]
+material_override = SubResource("StandardMaterial3D_14xty")
+
+[node name="Empty_001" parent="Empty_003" index="1"]
+transform = Transform3D(1.73069, 0, 0, 0, 0.718393, 1.57454, 0, -1.57454, 0.718393, -1.55697, 0, 6.76258)
+
+[node name="Empty_002" parent="Empty_003" index="2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 6.41053)
+
+[node name="Cube_008" parent="Empty_003/Empty_002" index="0"]
+material_override = SubResource("StandardMaterial3D_b2xsg")
+
+[node name="Cube_004" parent="Empty_003/Empty_004" index="0"]
+material_override = SubResource("StandardMaterial3D_5auhq")
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "EmptyAction"
