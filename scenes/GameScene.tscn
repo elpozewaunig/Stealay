@@ -2,48 +2,9 @@
 
 [ext_resource type="Theme" uid="uid://cb6idjbop8kw2" path="res://assets/sprites/CheckButtonBetter/BetterButton.tres" id="1_vh257"]
 [ext_resource type="Script" uid="uid://d0klmhrydubhb" path="res://scripts/game_manager.gd" id="1_xy3my"]
-[ext_resource type="PackedScene" uid="uid://caljcteyi14oj" path="res://assets/models/seal.tscn" id="2_cxv17"]
-[ext_resource type="AudioStream" uid="uid://dubl7608be7qp" path="res://assets/sounds/ultra low quality funky town.mp3" id="3_18ig4"]
-
-[sub_resource type="Shader" id="Shader_ve7bo"]
-code = "shader_type spatial;
-
-void vertex() {
-	VERTEX.y += cos(VERTEX.z*TIME*25.0)*0.1;
-}
-
-void fragment() {
-  METALLIC = 0.0;
-  ROUGHNESS = 0.01;
-  ALBEDO = vec3(0.0, 0.0, 0.5);
-}
-
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ibkli"]
-render_priority = 0
-shader = SubResource("Shader_ve7bo")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_qbsmt"]
-material = SubResource("ShaderMaterial_ibkli")
-subdivide_width = 150
-subdivide_depth = 150
-
-[sub_resource type="Environment" id="Environment_18ig4"]
-background_energy_multiplier = 0.0
-ambient_light_source = 2
-ambient_light_energy = 0.0
-
-[sub_resource type="GDScript" id="GDScript_vijgj"]
-resource_name = "spin"
-script/source = "extends Node3D
-
-func _ready():
-	process_mode = Node.PROCESS_MODE_PAUSABLE
-	
-func _process(delta: float) -> void:
-	rotation.y += 0.5*delta
-"
+[ext_resource type="PackedScene" uid="uid://blbae5xp247m5" path="res://assets/models/map/Map.tscn" id="3_cxv17"]
+[ext_resource type="PackedScene" uid="uid://cb36gbar6tdv" path="res://assets/guard.tscn" id="4_18ig4"]
+[ext_resource type="PackedScene" uid="uid://b44tvfhd3lcf1" path="res://assets/player.tscn" id="5_7s5hy"]
 
 [sub_resource type="GDScript" id="GDScript_pynjx"]
 resource_name = "pausetry"
@@ -118,32 +79,71 @@ func _on_pressed() -> void:
 	OS.shell_open(\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\")
 "
 
+[sub_resource type="Environment" id="Environment_18ig4"]
+background_mode = 1
+background_energy_multiplier = 0.0
+ambient_light_source = 1
+reflected_light_source = 1
+
+[sub_resource type="GDScript" id="GDScript_vijgj"]
+resource_name = "placeholdermover"
+script/source = "extends Node
+func _ready():
+	process_mode = Node.PROCESS_MODE_PAUSABLE
+		
+func _process(_delta):
+	pass
+"
+
+[sub_resource type="Animation" id="Animation_18ig4"]
+resource_name = "moveguard"
+length = 15.0
+loop_mode = 1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Guard")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.5, 3.06667, 4.53333, 6.2, 7.93333, 9.46667, 10.81, 12.4333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"moveLeft"
+}, {
+"args": [],
+"method": &"moveUp"
+}, {
+"args": [],
+"method": &"moveRight"
+}, {
+"args": [],
+"method": &"moveDown"
+}, {
+"args": [],
+"method": &"moveRight"
+}, {
+"args": [],
+"method": &"moveLeft"
+}, {
+"args": [],
+"method": &"moveLeft"
+}, {
+"args": [],
+"method": &"moveDown"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7s5hy"]
+_data = {
+&"moveguard": SubResource("Animation_18ig4")
+}
+
 [node name="Game" type="Node3D"]
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("1_xy3my")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_qbsmt")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.00400682, 0.0799714, -0.996789, 0.00906753, 0.996753, 0.080005, 0.999951, -0.00935898, 0.00326867, -1.52924, 0.0782146, 0)
-environment = SubResource("Environment_18ig4")
-fov = 50.0
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.816057, -0.111381, -0.567138, 0.577972, 0.157263, 0.800761, 0, -0.981256, 0.19271, 0, 0, 0)
-
-[node name="seal" parent="." instance=ExtResource("2_cxv17")]
-transform = Transform3D(-0.004, 0, 3.49691e-10, 0, 0.004, 0, -3.49691e-10, 0, -0.004, -1.1485, 0, 0)
-script = SubResource("GDScript_vijgj")
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("3_18ig4")
-volume_db = -10.0
-autoplay = true
-bus = &"Music"
-parameters/looping = true
 
 [node name="PauseMenu" type="Control" parent="."]
 visible = false
@@ -296,6 +296,29 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 70
 text = "Settings"
 horizontal_alignment = 1
+
+[node name="Map" parent="." instance=ExtResource("3_cxv17")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -16.5, 1.5, -19.5)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.408607, 0.577097, 0, 0.816138, 0.577857, -0.707107, -0.408607, 0.577097, 4, 5, 3)
+environment = SubResource("Environment_18ig4")
+projection = 1
+size = 2.85
+
+[node name="Guard" parent="." instance=ExtResource("4_18ig4")]
+
+[node name="placeholderfiguremover" type="Node" parent="."]
+script = SubResource("GDScript_vijgj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="placeholderfiguremover"]
+libraries = {
+&"": SubResource("AnimationLibrary_7s5hy")
+}
+autoplay = "moveguard"
+
+[node name="Guard2" parent="." instance=ExtResource("5_7s5hy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 
 [connection signal="pressed" from="PauseMenu/UI/DefaultView/VBoxContainer/OptionsButton" to="PauseMenu/UI/DefaultView" method="HideMe"]
 [connection signal="pressed" from="PauseMenu/UI/DefaultView/VBoxContainer/OptionsButton" to="PauseMenu/UI/OptionsView" method="showMe"]
