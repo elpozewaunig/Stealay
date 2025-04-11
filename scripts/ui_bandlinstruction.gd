@@ -8,9 +8,6 @@ extends Control
 @export var EmptyArrowSymbol: Control
 @export var SelectionRibbon: Control
 
-
-@export var above: Control
-@export var below: Control
 var movementPos = movement.NONE
 
 

@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://blbae5xp247m5" path="res://assets/models/map/Map.tscn" id="3_cxv17"]
 [ext_resource type="Script" uid="uid://dbq3ndy5purel" path="res://scenes/TestingSkript.gd" id="3_vijgj"]
 [ext_resource type="PackedScene" uid="uid://cxy4hikcjoxb7" path="res://assets/ui/turing_bandl_instruction_element_ui_scene.tscn" id="3_xs4ih"]
-[ext_resource type="PackedScene" uid="uid://cb36gbar6tdv" path="res://assets/guard.tscn" id="4_18ig4"]
+[ext_resource type="PackedScene" path="res://assets/guard.tscn" id="4_18ig4"]
 [ext_resource type="PackedScene" uid="uid://b44tvfhd3lcf1" path="res://assets/player.tscn" id="5_7s5hy"]
 
 [sub_resource type="GDScript" id="GDScript_pynjx"]
@@ -336,23 +336,17 @@ bandl2 = NodePath("TuringBandlInstruction2")
 bandl3 = NodePath("TuringBandlInstruction3")
 bandl4 = NodePath("TuringBandlInstruction4")
 
-[node name="TuringBandlInstruction" parent="TuringBandlUI/Panel/VBoxContainer" node_paths=PackedStringArray("below") instance=ExtResource("3_xs4ih")]
+[node name="TuringBandlInstruction" parent="TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("3_xs4ih")]
 layout_mode = 2
-below = NodePath("../TuringBandlInstruction2")
 
-[node name="TuringBandlInstruction2" parent="TuringBandlUI/Panel/VBoxContainer" node_paths=PackedStringArray("above", "below") instance=ExtResource("3_xs4ih")]
+[node name="TuringBandlInstruction2" parent="TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("3_xs4ih")]
 layout_mode = 2
-above = NodePath("../TuringBandlInstruction")
-below = NodePath("../TuringBandlInstruction3")
 
-[node name="TuringBandlInstruction3" parent="TuringBandlUI/Panel/VBoxContainer" node_paths=PackedStringArray("above", "below") instance=ExtResource("3_xs4ih")]
+[node name="TuringBandlInstruction3" parent="TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("3_xs4ih")]
 layout_mode = 2
-above = NodePath("../TuringBandlInstruction2")
-below = NodePath("../TuringBandlInstruction4")
 
-[node name="TuringBandlInstruction4" parent="TuringBandlUI/Panel/VBoxContainer" node_paths=PackedStringArray("above") instance=ExtResource("3_xs4ih")]
+[node name="TuringBandlInstruction4" parent="TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("3_xs4ih")]
 layout_mode = 2
-above = NodePath("../TuringBandlInstruction3")
 
 [node name="Map" parent="." instance=ExtResource("3_cxv17")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -16.5, 1.5, -19.5)

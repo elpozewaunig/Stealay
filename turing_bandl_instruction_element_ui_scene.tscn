@@ -1,0 +1,156 @@
+[gd_scene load_steps=20 format=3 uid="uid://2rjnelavqf7l"]
+
+[ext_resource type="Script" uid="uid://oi8rybdakg5l" path="res://scripts/ui_bandlinstruction.gd" id="1_f21df"]
+[ext_resource type="Texture2D" uid="uid://bl7oxsweocw2o" path="res://assets/ui/turingbandlarrowicons/up.png" id="2_kcpd6"]
+[ext_resource type="Texture2D" uid="uid://45bo3oxe8h6v" path="res://assets/ui/turingbandlarrowicons/down.png" id="3_jdyhi"]
+[ext_resource type="Texture2D" uid="uid://dpe143xfk4gv0" path="res://assets/ui/turingbandlarrowicons/left.png" id="4_cjqqi"]
+[ext_resource type="Texture2D" uid="uid://brssr5d7i7si6" path="res://assets/ui/turingbandlarrowicons/right.png" id="5_8osrm"]
+[ext_resource type="Texture2D" uid="uid://c8umfhef54iul" path="res://assets/ui/turingbandlarrowicons/hide.png" id="6_wiwbq"]
+[ext_resource type="Texture2D" uid="uid://2nu052otf56u" path="res://assets/ui/turingbandlarrowicons/empty.png" id="7_toq7o"]
+[ext_resource type="Texture2D" uid="uid://7qxcvhr2tmlp" path="res://assets/ui/turingbandlarrowicons/selectionsymbol.png" id="8_305r6"]
+[ext_resource type="Texture2D" uid="uid://byu231mdxjm12" path="res://assets/ui/turingbandlarrowicons/notselectionsymbol.png" id="9_ed1om"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojfeb"]
+bg_color = Color(0.447059, 0.72549, 0.647059, 0.709804)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pcu6u"]
+texture = ExtResource("2_kcpd6")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_48324"]
+texture = ExtResource("3_jdyhi")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s88lv"]
+texture = ExtResource("4_cjqqi")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0de6y"]
+texture = ExtResource("5_8osrm")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_60um3"]
+texture = ExtResource("6_wiwbq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0xnjm"]
+texture = ExtResource("7_toq7o")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8itmi"]
+bg_color = Color(0.490717, 0.63602, 0.604071, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_urn0h"]
+texture = ExtResource("8_305r6")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mhnxi"]
+texture = ExtResource("9_ed1om")
+
+[node name="TuringBandlInstruction" type="Control" node_paths=PackedStringArray("UpArrowSymbol", "DownArrowSymbol", "LeftArrowSymbol", "RightArrowSymbol", "HideArrowSymbol", "EmptyArrowSymbol", "SelectionRibbon")]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_f21df")
+UpArrowSymbol = NodePath("HBoxContainer/BandlSymbol/UpArrow")
+DownArrowSymbol = NodePath("HBoxContainer/BandlSymbol/DownArrow")
+LeftArrowSymbol = NodePath("HBoxContainer/BandlSymbol/LeftArrow")
+RightArrowSymbol = NodePath("HBoxContainer/BandlSymbol/RightArrow")
+HideArrowSymbol = NodePath("HBoxContainer/BandlSymbol/HideArrow")
+EmptyArrowSymbol = NodePath("HBoxContainer/BandlSymbol/EmptyArrow")
+SelectionRibbon = NodePath("HBoxContainer/SelectionRibbon")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BandlSymbol" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ojfeb")
+
+[node name="UpArrow" type="Panel" parent="HBoxContainer/BandlSymbol"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_pcu6u")
+
+[node name="DownArrow" type="Panel" parent="HBoxContainer/BandlSymbol"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_48324")
+
+[node name="LeftArrow" type="Panel" parent="HBoxContainer/BandlSymbol"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_s88lv")
+
+[node name="RightArrow" type="Panel" parent="HBoxContainer/BandlSymbol"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_0de6y")
+
+[node name="HideArrow" type="Panel" parent="HBoxContainer/BandlSymbol"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_60um3")
+
+[node name="EmptyArrow" type="Panel" parent="HBoxContainer/BandlSymbol"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_0xnjm")
+
+[node name="SelectionRibbon" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.33
+theme_override_styles/panel = SubResource("StyleBoxFlat_8itmi")
+
+[node name="SelectionIcon" type="Panel" parent="HBoxContainer/SelectionRibbon"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_right = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_urn0h")
+
+[node name="NotSelectIcon" type="Panel" parent="HBoxContainer/SelectionRibbon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_right = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mhnxi")
