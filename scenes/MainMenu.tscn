@@ -1,11 +1,286 @@
-[gd_scene load_steps=3 format=3 uid="uid://bg4w7m5cvf82n"]
+[gd_scene load_steps=11 format=3 uid="uid://bg4w7m5cvf82n"]
 
 [ext_resource type="Texture2D" uid="uid://bkc0f8pxf48qy" path="res://assets/sprites/icon.svg" id="1_yqorp"]
 [ext_resource type="Script" uid="uid://ctbg2yqhvown5" path="res://scripts/script.gd" id="2_0ykhv"]
+[ext_resource type="Theme" uid="uid://cb6idjbop8kw2" path="res://assets/sprites/CheckButtonBetter/BetterButton.tres" id="3_2wh52"]
+
+[sub_resource type="GDScript" id="GDScript_ow34m"]
+resource_name = "buttonlogic"
+script/source = "extends Control
+
+
+func showMe() -> void:
+	show()
+
+
+func HideMe() -> void:
+	hide()
+"
+
+[sub_resource type="GDScript" id="GDScript_826wr"]
+resource_name = "StartGame"
+script/source = "extends Button
+
+
+func startGame() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/GameScene.tscn\")
+"
+
+[sub_resource type="GDScript" id="GDScript_2wh52"]
+resource_name = "quitButton"
+script/source = "extends Button
+
+func forcequit():
+	get_tree().quit()
+"
+
+[sub_resource type="GDScript" id="GDScript_l72w3"]
+resource_name = "buttonlogic2"
+script/source = "extends Control
+
+
+func showMe() -> void:
+	show()
+
+
+func HideMe() -> void:
+	hide()
+"
+
+[sub_resource type="GDScript" id="GDScript_mipys"]
+resource_name = "sfxSetting"
+script/source = "extends CheckButton
+
+var soundBus = AudioServer.get_bus_index(\"SFX\")
+func _on_pressed() -> void:
+	AudioServer.set_bus_mute(soundBus, not AudioServer.is_bus_mute(soundBus))
+"
+
+[sub_resource type="GDScript" id="GDScript_8a8k8"]
+resource_name = "musicsetting"
+script/source = "extends CheckButton
+
+var musicBus = AudioServer.get_bus_index(\"Music\")
+func _on_pressed() -> void:
+	AudioServer.set_bus_mute(musicBus, not AudioServer.is_bus_mute(musicBus))
+"
+
+[sub_resource type="GDScript" id="GDScript_ucygd"]
+resource_name = "michisecret"
+script/source = "extends CheckButton
+
+
+func _on_pressed() -> void:
+	OS.shell_open(\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\")
+"
 
 [node name="Node2D" type="Node2D"]
 
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="DefaultView" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_ow34m")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/DefaultView"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.5
+offset_top = -177.0
+offset_right = 118.5
+offset_bottom = 177.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="PlayButton" type="Button" parent="UI/DefaultView/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Play"
+script = SubResource("GDScript_826wr")
+
+[node name="OptionsButton" type="Button" parent="UI/DefaultView/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Options"
+
+[node name="CreditsButton" type="Button" parent="UI/DefaultView/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Credits"
+
+[node name="QuitButton" type="Button" parent="UI/DefaultView/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Quit"
+script = SubResource("GDScript_2wh52")
+
+[node name="Label" type="Label" parent="UI/DefaultView"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.062
+anchor_right = 1.0
+anchor_bottom = 0.138
+offset_bottom = 157.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 115
+text = "#Q1 Game"
+horizontal_alignment = 1
+
+[node name="OptionsView" type="Control" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_l72w3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/OptionsView"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.5
+offset_top = -177.0
+offset_right = 118.5
+offset_bottom = 177.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="MuteSoundCheckButton" type="CheckButton" parent="UI/OptionsView/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_2wh52")
+theme_override_constants/icon_max_width = 60
+theme_override_font_sizes/font_size = 27
+text = "Mute Sound"
+vertical_icon_alignment = 0
+expand_icon = true
+script = SubResource("GDScript_mipys")
+
+[node name="MuteMusicAudioCheckButton" type="CheckButton" parent="UI/OptionsView/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_2wh52")
+theme_override_constants/icon_max_width = 60
+theme_override_font_sizes/font_size = 27
+text = "Mute Music"
+vertical_icon_alignment = 0
+expand_icon = true
+script = SubResource("GDScript_8a8k8")
+
+[node name="???" type="CheckButton" parent="UI/OptionsView/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_2wh52")
+theme_override_constants/icon_max_width = 60
+theme_override_font_sizes/font_size = 27
+text = "Michi"
+vertical_icon_alignment = 0
+expand_icon = true
+script = SubResource("GDScript_ucygd")
+
+[node name="BackButton" type="Button" parent="UI/OptionsView/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Back"
+
+[node name="Label" type="Label" parent="UI/OptionsView"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.062
+anchor_right = 1.0
+anchor_bottom = 0.138
+offset_bottom = 157.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 115
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="CreditsView" type="Control" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_l72w3")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI/CreditsView"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.5
+offset_top = -177.0
+offset_right = 118.5
+offset_bottom = 177.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="UI/CreditsView/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "~Q1 Studios~
+
+David Schwaiger
+Elias Pozewaunig
+Laurenz Platzer
+Markus Müllauer
+Tobias Wurzer"
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="UI/CreditsView/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Back"
+
+[node name="Label" type="Label" parent="UI/CreditsView"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.062
+anchor_right = 1.0
+anchor_bottom = 0.138
+offset_bottom = 157.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 115
+text = "Settings"
+horizontal_alignment = 1
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(960, 540)
+position = Vector2(244.68, 845.665)
+scale = Vector2(2.2, 2.2)
 texture = ExtResource("1_yqorp")
 script = ExtResource("2_0ykhv")
+
+[connection signal="pressed" from="UI/DefaultView/VBoxContainer/PlayButton" to="UI/DefaultView/VBoxContainer/PlayButton" method="startGame"]
+[connection signal="pressed" from="UI/DefaultView/VBoxContainer/OptionsButton" to="UI/DefaultView" method="HideMe"]
+[connection signal="pressed" from="UI/DefaultView/VBoxContainer/OptionsButton" to="UI/OptionsView" method="showMe"]
+[connection signal="pressed" from="UI/DefaultView/VBoxContainer/CreditsButton" to="UI/DefaultView" method="HideMe"]
+[connection signal="pressed" from="UI/DefaultView/VBoxContainer/CreditsButton" to="UI/CreditsView" method="showMe"]
+[connection signal="pressed" from="UI/DefaultView/VBoxContainer/QuitButton" to="UI/DefaultView/VBoxContainer/QuitButton" method="forcequit"]
+[connection signal="pressed" from="UI/OptionsView/VBoxContainer/MuteSoundCheckButton" to="UI/OptionsView/VBoxContainer/MuteSoundCheckButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/OptionsView/VBoxContainer/???" to="UI/OptionsView/VBoxContainer/???" method="_on_pressed"]
+[connection signal="pressed" from="UI/OptionsView/VBoxContainer/BackButton" to="UI/DefaultView" method="showMe"]
+[connection signal="pressed" from="UI/OptionsView/VBoxContainer/BackButton" to="UI/OptionsView" method="HideMe"]
+[connection signal="pressed" from="UI/CreditsView/VBoxContainer2/BackButton" to="UI/DefaultView" method="showMe"]
+[connection signal="pressed" from="UI/CreditsView/VBoxContainer2/BackButton" to="UI/CreditsView" method="HideMe"]

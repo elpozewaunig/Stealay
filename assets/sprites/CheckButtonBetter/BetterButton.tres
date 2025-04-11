@@ -1,0 +1,21 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://cb6idjbop8kw2"]
+
+[ext_resource type="Texture2D" uid="uid://c8egtnhl6hc42" path="res://assets/sprites/CheckButtonBetter/on.png" id="1_aw4gn"]
+[ext_resource type="Texture2D" uid="uid://ckam05kvcq41m" path="res://assets/sprites/CheckButtonBetter/disabledOn.png" id="2_73k4k"]
+[ext_resource type="Texture2D" uid="uid://8sd7yn50034w" path="res://assets/sprites/CheckButtonBetter/disabledOnMirrored.png" id="3_4dbyq"]
+[ext_resource type="Texture2D" uid="uid://brhsjp8i3inv1" path="res://assets/sprites/CheckButtonBetter/onMirrored.png" id="4_kwem4"]
+[ext_resource type="Texture2D" uid="uid://d1hbghkjpl107" path="res://assets/sprites/CheckButtonBetter/off.png" id="5_gkqbj"]
+[ext_resource type="Texture2D" uid="uid://li143d1h0fac" path="res://assets/sprites/CheckButtonBetter/disabledOff.png" id="6_8na2h"]
+[ext_resource type="Texture2D" uid="uid://bqtx2uvqh771j" path="res://assets/sprites/CheckButtonBetter/disabledOffMirrored.png" id="7_5ltem"]
+[ext_resource type="Texture2D" uid="uid://dubx6uv58qv2u" path="res://assets/sprites/CheckButtonBetter/offMirrored.png" id="8_wr734"]
+
+[resource]
+CheckButton/constants/icon_max_width = 50
+CheckButton/icons/checked = ExtResource("1_aw4gn")
+CheckButton/icons/checked_disabled = ExtResource("2_73k4k")
+CheckButton/icons/checked_disabled_mirrored = ExtResource("3_4dbyq")
+CheckButton/icons/checked_mirrored = ExtResource("4_kwem4")
+CheckButton/icons/unchecked = ExtResource("5_gkqbj")
+CheckButton/icons/unchecked_disabled = ExtResource("6_8na2h")
+CheckButton/icons/unchecked_disabled_mirrored = ExtResource("7_5ltem")
+CheckButton/icons/unchecked_mirrored = ExtResource("8_wr734")

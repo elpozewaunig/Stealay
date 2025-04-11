@@ -1,0 +1,307 @@
+[gd_scene load_steps=17 format=3 uid="uid://bk3bgljl4ox8h"]
+
+[ext_resource type="Theme" uid="uid://cb6idjbop8kw2" path="res://assets/sprites/CheckButtonBetter/BetterButton.tres" id="1_vh257"]
+[ext_resource type="Script" uid="uid://d0klmhrydubhb" path="res://scripts/game_manager.gd" id="1_xy3my"]
+[ext_resource type="PackedScene" uid="uid://caljcteyi14oj" path="res://assets/models/seal.tscn" id="2_cxv17"]
+[ext_resource type="AudioStream" uid="uid://dubl7608be7qp" path="res://assets/sounds/ultra low quality funky town.mp3" id="3_18ig4"]
+
+[sub_resource type="Shader" id="Shader_ve7bo"]
+code = "shader_type spatial;
+
+void vertex() {
+	VERTEX.y += cos(VERTEX.z*TIME*25.0)*0.1;
+}
+
+void fragment() {
+  METALLIC = 0.0;
+  ROUGHNESS = 0.01;
+  ALBEDO = vec3(0.0, 0.0, 0.5);
+}
+
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ibkli"]
+render_priority = 0
+shader = SubResource("Shader_ve7bo")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qbsmt"]
+material = SubResource("ShaderMaterial_ibkli")
+subdivide_width = 150
+subdivide_depth = 150
+
+[sub_resource type="Environment" id="Environment_18ig4"]
+background_energy_multiplier = 0.0
+ambient_light_source = 2
+ambient_light_energy = 0.0
+
+[sub_resource type="GDScript" id="GDScript_vijgj"]
+resource_name = "spin"
+script/source = "extends Node3D
+
+func _ready():
+	process_mode = Node.PROCESS_MODE_PAUSABLE
+	
+func _process(delta: float) -> void:
+	rotation.y += 0.5*delta
+"
+
+[sub_resource type="GDScript" id="GDScript_pynjx"]
+resource_name = "pausetry"
+script/source = "extends Control
+func _ready():
+	set_process(true)
+	process_mode = Node.PROCESS_MODE_ALWAYS
+func resetUI():
+	$UI/DefaultView.visible = true
+	$UI/OptionsView.visible = false
+"
+
+[sub_resource type="GDScript" id="GDScript_xy3my"]
+resource_name = "buttonlogic"
+script/source = "extends Control
+
+
+func showMe() -> void:
+	show()
+
+
+func HideMe() -> void:
+	hide()
+"
+
+[sub_resource type="GDScript" id="GDScript_cxv17"]
+resource_name = "quitButton"
+script/source = "extends Button
+
+func backMainMenu() -> void:
+	get_tree().paused = false;
+	get_tree().change_scene_to_file(\"res://scenes/MainMenu.tscn\")
+"
+
+[sub_resource type="GDScript" id="GDScript_18ig4"]
+resource_name = "buttonlogic2"
+script/source = "extends Control
+
+
+func showMe() -> void:
+	show()
+
+
+func HideMe() -> void:
+	hide()
+"
+
+[sub_resource type="GDScript" id="GDScript_7s5hy"]
+resource_name = "sfxSetting"
+script/source = "extends CheckButton
+
+var soundBus = AudioServer.get_bus_index(\"SFX\")
+func _on_pressed() -> void:
+	AudioServer.set_bus_mute(soundBus, not AudioServer.is_bus_mute(soundBus))
+"
+
+[sub_resource type="GDScript" id="GDScript_xs4ih"]
+resource_name = "musicsetting"
+script/source = "extends CheckButton
+
+var musicBus = AudioServer.get_bus_index(\"Music\")
+func _on_pressed() -> void:
+	AudioServer.set_bus_mute(musicBus, not AudioServer.is_bus_mute(musicBus))
+"
+
+[sub_resource type="GDScript" id="GDScript_6ytau"]
+resource_name = "michisecret"
+script/source = "extends CheckButton
+
+
+func _on_pressed() -> void:
+	OS.shell_open(\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\")
+"
+
+[node name="Game" type="Node3D"]
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("1_xy3my")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_qbsmt")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.00400682, 0.0799714, -0.996789, 0.00906753, 0.996753, 0.080005, 0.999951, -0.00935898, 0.00326867, -1.52924, 0.0782146, 0)
+environment = SubResource("Environment_18ig4")
+fov = 50.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.816057, -0.111381, -0.567138, 0.577972, 0.157263, 0.800761, 0, -0.981256, 0.19271, 0, 0, 0)
+
+[node name="seal" parent="." instance=ExtResource("2_cxv17")]
+transform = Transform3D(-0.004, 0, 3.49691e-10, 0, 0.004, 0, -3.49691e-10, 0, -0.004, -1.1485, 0, 0)
+script = SubResource("GDScript_vijgj")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_18ig4")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
+parameters/looping = true
+
+[node name="PauseMenu" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = SubResource("GDScript_pynjx")
+
+[node name="Panel" type="Panel" parent="PauseMenu"]
+modulate = Color(1, 1, 1, 0.384314)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -582.0
+offset_top = -494.0
+offset_right = 583.0
+offset_bottom = 357.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UI" type="Control" parent="PauseMenu"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Label" type="Label" parent="PauseMenu/UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.062
+anchor_right = 1.0
+anchor_bottom = 0.138
+offset_bottom = 157.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 115
+text = "Game paused"
+horizontal_alignment = 1
+
+[node name="DefaultView" type="Control" parent="PauseMenu/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_xy3my")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/UI/DefaultView"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.5
+offset_top = -177.0
+offset_right = 118.5
+offset_bottom = 177.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="OptionsButton" type="Button" parent="PauseMenu/UI/DefaultView/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Options"
+
+[node name="MainMenu" type="Button" parent="PauseMenu/UI/DefaultView/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Main Menu"
+script = SubResource("GDScript_cxv17")
+
+[node name="OptionsView" type="Control" parent="PauseMenu/UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_18ig4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/UI/OptionsView"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.5
+offset_top = -177.0
+offset_right = 118.5
+offset_bottom = 177.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="MuteSoundCheckButton" type="CheckButton" parent="PauseMenu/UI/OptionsView/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_vh257")
+theme_override_constants/icon_max_width = 60
+theme_override_font_sizes/font_size = 27
+text = "Mute Sound"
+vertical_icon_alignment = 0
+expand_icon = true
+script = SubResource("GDScript_7s5hy")
+
+[node name="MuteMusicAudioCheckButton" type="CheckButton" parent="PauseMenu/UI/OptionsView/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_vh257")
+theme_override_constants/icon_max_width = 60
+theme_override_font_sizes/font_size = 27
+text = "Mute Music"
+vertical_icon_alignment = 0
+expand_icon = true
+script = SubResource("GDScript_xs4ih")
+
+[node name="???" type="CheckButton" parent="PauseMenu/UI/OptionsView/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_vh257")
+theme_override_constants/icon_max_width = 60
+theme_override_font_sizes/font_size = 27
+text = "Michi"
+vertical_icon_alignment = 0
+expand_icon = true
+script = SubResource("GDScript_6ytau")
+
+[node name="BackButton" type="Button" parent="PauseMenu/UI/OptionsView/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Back"
+
+[node name="Label" type="Label" parent="PauseMenu/UI/OptionsView"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.21
+anchor_right = 1.0
+anchor_bottom = 0.232
+offset_bottom = 157.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 70
+text = "Settings"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="PauseMenu/UI/DefaultView/VBoxContainer/OptionsButton" to="PauseMenu/UI/DefaultView" method="HideMe"]
+[connection signal="pressed" from="PauseMenu/UI/DefaultView/VBoxContainer/OptionsButton" to="PauseMenu/UI/OptionsView" method="showMe"]
+[connection signal="pressed" from="PauseMenu/UI/DefaultView/VBoxContainer/MainMenu" to="PauseMenu/UI/DefaultView/VBoxContainer/MainMenu" method="backMainMenu"]
+[connection signal="pressed" from="PauseMenu/UI/OptionsView/VBoxContainer/MuteSoundCheckButton" to="PauseMenu/UI/OptionsView/VBoxContainer/MuteSoundCheckButton" method="_on_pressed"]
+[connection signal="pressed" from="PauseMenu/UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" to="PauseMenu/UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" method="_on_pressed"]
+[connection signal="pressed" from="PauseMenu/UI/OptionsView/VBoxContainer/???" to="PauseMenu/UI/OptionsView/VBoxContainer/???" method="_on_pressed"]
+[connection signal="pressed" from="PauseMenu/UI/OptionsView/VBoxContainer/BackButton" to="PauseMenu/UI/DefaultView" method="showMe"]
+[connection signal="pressed" from="PauseMenu/UI/OptionsView/VBoxContainer/BackButton" to="PauseMenu/UI/OptionsView" method="HideMe"]
