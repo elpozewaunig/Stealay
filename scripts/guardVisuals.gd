@@ -1,5 +1,6 @@
 extends Node3D
 
+@export var input_sequence: Array[Globals.movement] = []
 @export var AnimPlayer: AnimationPlayer
 @export var HopAnimator: Node3D
 @export var RotationAnimator: Node3D

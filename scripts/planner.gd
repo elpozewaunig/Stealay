@@ -3,6 +3,7 @@ extends Control
 signal heist_planned(sequence) # signal when done
 
 var input_sequence: Array[Globals.movement] = []
+
 var valid_pos: Array[Vector2i] = Globals.valid_pos.duplicate(true)
 var starting_pos: Vector2i = Globals.starting_pos
 var current_pos: Vector2i = starting_pos
