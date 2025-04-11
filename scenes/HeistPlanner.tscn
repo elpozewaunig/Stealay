@@ -23,3 +23,7 @@ text = "Please enter sequence"
 [node name="Sequence" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "MICHI!!!!!!!!!!!!!!!!!!!!!!!!!!"
+
+[node name="NEIN" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Bist du dumm?"

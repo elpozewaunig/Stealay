@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://tfksyvs2qbdu"]
+[gd_scene load_steps=19 format=3 uid="uid://tfksyvs2qbdu"]
 
 [ext_resource type="Script" uid="uid://lntsseib6ktx" path="res://scripts/planning_scene.gd" id="1_i05ib"]
 [ext_resource type="PackedScene" uid="uid://csr8qdvijf7o8" path="res://scenes/HeistPlanner.tscn" id="2_sfq2c"]
 [ext_resource type="Script" uid="uid://d0klmhrydubhb" path="res://scripts/game_manager.gd" id="3_pbho8"]
 [ext_resource type="AudioStream" uid="uid://dubl7608be7qp" path="res://assets/sounds/ultra low quality funky town.mp3" id="4_hke3g"]
 [ext_resource type="Theme" uid="uid://cb6idjbop8kw2" path="res://assets/sprites/CheckButtonBetter/BetterButton.tres" id="5_rly6o"]
+[ext_resource type="PackedScene" uid="uid://caljcteyi14oj" path="res://assets/models/seal.tscn" id="6_pbho8"]
 
 [sub_resource type="Environment" id="Environment_1rttj"]
 background_energy_multiplier = 0.0
@@ -82,6 +83,41 @@ script/source = "extends CheckButton
 
 func _on_pressed() -> void:
 	OS.shell_open(\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\")
+"
+
+[sub_resource type="Shader" id="Shader_hke3g"]
+code = "shader_type spatial;
+
+void vertex() {
+	VERTEX.y += cos(VERTEX.z*TIME*25.0)*0.1;
+}
+
+void fragment() {
+  METALLIC = 0.0;
+  ROUGHNESS = 0.01;
+  ALBEDO = vec3(0.0, 0.0, 0.5);
+}
+
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_18ig4"]
+render_priority = 0
+shader = SubResource("Shader_hke3g")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rly6o"]
+material = SubResource("ShaderMaterial_18ig4")
+subdivide_width = 150
+subdivide_depth = 150
+
+[sub_resource type="GDScript" id="GDScript_1rttj"]
+resource_name = "spin"
+script/source = "extends Node3D
+
+func _ready():
+	process_mode = Node.PROCESS_MODE_PAUSABLE
+	
+func _process(delta: float) -> void:
+	rotation.y += 0.5*delta
 "
 
 [node name="PlanningScene" type="Node3D"]
@@ -258,6 +294,13 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 70
 text = "Settings"
 horizontal_alignment = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_rly6o")
+
+[node name="seal" parent="." instance=ExtResource("6_pbho8")]
+transform = Transform3D(-0.004, 0, 3.49691e-10, 0, 0.004, 0, -3.49691e-10, 0, -0.004, -1.1485, 0, 0)
+script = SubResource("GDScript_1rttj")
 
 [connection signal="heist_planned" from="HeistPlanner" to="." method="_on_heist_planner_heist_planned"]
 [connection signal="pressed" from="PauseMenu/UI/DefaultView/VBoxContainer/OptionsButton" to="PauseMenu/UI/DefaultView" method="HideMe"]
