@@ -1,8 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://bk3bgljl4ox8h"]
+[gd_scene load_steps=20 format=3 uid="uid://bk3bgljl4ox8h"]
 
 [ext_resource type="Theme" uid="uid://cb6idjbop8kw2" path="res://assets/sprites/CheckButtonBetter/BetterButton.tres" id="1_vh257"]
 [ext_resource type="Script" uid="uid://d0klmhrydubhb" path="res://scripts/game_manager.gd" id="1_xy3my"]
+[ext_resource type="Script" uid="uid://bxcsx3v1tofol" path="res://scenes/bandlController.gd" id="3_6ytau"]
 [ext_resource type="PackedScene" uid="uid://blbae5xp247m5" path="res://assets/models/map/Map.tscn" id="3_cxv17"]
+[ext_resource type="Script" uid="uid://dbq3ndy5purel" path="res://scenes/TestingSkript.gd" id="3_vijgj"]
 [ext_resource type="PackedScene" uid="uid://cxy4hikcjoxb7" path="res://assets/ui/turing_bandl_instruction_element_ui_scene.tscn" id="3_xs4ih"]
 [ext_resource type="PackedScene" uid="uid://cb36gbar6tdv" path="res://assets/guard.tscn" id="4_18ig4"]
 [ext_resource type="PackedScene" uid="uid://b44tvfhd3lcf1" path="res://assets/player.tscn" id="5_7s5hy"]
@@ -307,6 +309,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("3_vijgj")
 
 [node name="Panel" type="Panel" parent="TuringBandlUI"]
 modulate = Color(1, 1, 1, 0.384314)
@@ -319,7 +322,7 @@ offset_left = -372.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TuringBandlUI/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TuringBandlUI/Panel" node_paths=PackedStringArray("bandl1", "bandl2", "bandl3", "bandl4")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -327,18 +330,29 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
+script = ExtResource("3_6ytau")
+bandl1 = NodePath("TuringBandlInstruction")
+bandl2 = NodePath("TuringBandlInstruction2")
+bandl3 = NodePath("TuringBandlInstruction3")
+bandl4 = NodePath("TuringBandlInstruction4")
 
-[node name="TuringBandlInstruction" parent="TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("3_xs4ih")]
+[node name="TuringBandlInstruction" parent="TuringBandlUI/Panel/VBoxContainer" node_paths=PackedStringArray("below") instance=ExtResource("3_xs4ih")]
 layout_mode = 2
+below = NodePath("../TuringBandlInstruction2")
 
-[node name="TuringBandlInstruction2" parent="TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("3_xs4ih")]
+[node name="TuringBandlInstruction2" parent="TuringBandlUI/Panel/VBoxContainer" node_paths=PackedStringArray("above", "below") instance=ExtResource("3_xs4ih")]
 layout_mode = 2
+above = NodePath("../TuringBandlInstruction")
+below = NodePath("../TuringBandlInstruction3")
 
-[node name="TuringBandlInstruction3" parent="TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("3_xs4ih")]
+[node name="TuringBandlInstruction3" parent="TuringBandlUI/Panel/VBoxContainer" node_paths=PackedStringArray("above", "below") instance=ExtResource("3_xs4ih")]
 layout_mode = 2
+above = NodePath("../TuringBandlInstruction2")
+below = NodePath("../TuringBandlInstruction4")
 
-[node name="TuringBandlInstruction4" parent="TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("3_xs4ih")]
+[node name="TuringBandlInstruction4" parent="TuringBandlUI/Panel/VBoxContainer" node_paths=PackedStringArray("above") instance=ExtResource("3_xs4ih")]
 layout_mode = 2
+above = NodePath("../TuringBandlInstruction3")
 
 [node name="Map" parent="." instance=ExtResource("3_cxv17")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -16.5, 1.5, -19.5)

@@ -8,64 +8,45 @@ extends Control
 @export var EmptyArrowSymbol: Control
 @export var SelectionRibbon: Control
 
+
+@export var above: Control
+@export var below: Control
+var movementPos = movement.NONE
+
+
 enum movement { 
 	UP,
 	DOWN,
 	RIGHT, 
 	LEFT, 
-	HIDE 
+	HIDE,
+	NONE
 	}
-	
+
 func _ready() -> void:
+	hide_all()
+
+func hide_all(): 
 	UpArrowSymbol.hide()
 	DownArrowSymbol.hide()
 	LeftArrowSymbol.hide()
 	RightArrowSymbol.hide()
 	HideArrowSymbol.hide()
 	EmptyArrowSymbol.hide()
-
 func change_visibility(sel: movement, empty) -> void:
+	hide_all()
+	movementPos = sel
 	if (sel == movement.UP):
 		UpArrowSymbol.show()
-		DownArrowSymbol.hide()
-		LeftArrowSymbol.hide()
-		RightArrowSymbol.hide()
-		HideArrowSymbol.hide()
-		EmptyArrowSymbol.hide()
 	elif (sel == movement.DOWN):
-		UpArrowSymbol.hide()
 		DownArrowSymbol.show()
-		LeftArrowSymbol.hide()
-		RightArrowSymbol.hide()
-		HideArrowSymbol.hide()
-		EmptyArrowSymbol.hide()
 	elif (sel == movement.LEFT):
-		UpArrowSymbol.hide()
-		DownArrowSymbol.hide()
 		LeftArrowSymbol.show()
-		RightArrowSymbol.hide()
-		HideArrowSymbol.hide()
-		EmptyArrowSymbol.hide()
 	elif (sel == movement.RIGHT):
-		UpArrowSymbol.hide()
-		DownArrowSymbol.hide()
-		LeftArrowSymbol.hide()
 		RightArrowSymbol.show()
-		HideArrowSymbol.hide()
-		EmptyArrowSymbol.hide()
 	elif (sel == movement.HIDE):
-		UpArrowSymbol.hide()
-		DownArrowSymbol.hide()
-		LeftArrowSymbol.hide()
-		RightArrowSymbol.hide()
 		HideArrowSymbol.show()
-		EmptyArrowSymbol.hide()
 	elif (empty):
-		UpArrowSymbol.hide()
-		DownArrowSymbol.hide()
-		LeftArrowSymbol.hide()
-		RightArrowSymbol.hide()
-		HideArrowSymbol.hide()
 		EmptyArrowSymbol.show()
 	else:
 		push_error("Falash!!!")
