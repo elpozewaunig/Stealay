@@ -1,11 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://bk3bgljl4ox8h"]
+[gd_scene load_steps=18 format=3 uid="uid://bk3bgljl4ox8h"]
 
 [ext_resource type="Theme" uid="uid://cb6idjbop8kw2" path="res://assets/sprites/CheckButtonBetter/BetterButton.tres" id="1_vh257"]
 [ext_resource type="Script" uid="uid://d0klmhrydubhb" path="res://scripts/game_manager.gd" id="1_xy3my"]
 [ext_resource type="PackedScene" uid="uid://blbae5xp247m5" path="res://assets/models/map/Map.tscn" id="3_cxv17"]
+[ext_resource type="PackedScene" uid="uid://cxy4hikcjoxb7" path="res://assets/ui/turing_bandl_instruction_element_ui_scene.tscn" id="3_xs4ih"]
 [ext_resource type="PackedScene" uid="uid://cb36gbar6tdv" path="res://assets/guard.tscn" id="4_18ig4"]
 [ext_resource type="PackedScene" uid="uid://b44tvfhd3lcf1" path="res://assets/player.tscn" id="5_7s5hy"]
-[ext_resource type="Script" uid="uid://emtjvummxi6o" path="res://assets/character_mover.gd" id="6_xs4ih"]
 
 [sub_resource type="GDScript" id="GDScript_pynjx"]
 resource_name = "pausetry"
@@ -85,6 +85,61 @@ background_mode = 1
 background_energy_multiplier = 0.0
 ambient_light_source = 1
 reflected_light_source = 1
+
+[sub_resource type="GDScript" id="GDScript_vijgj"]
+resource_name = "placeholdermover"
+script/source = "extends Node
+func _ready():
+	process_mode = Node.PROCESS_MODE_PAUSABLE
+		
+func _process(_delta):
+	pass
+"
+
+[sub_resource type="Animation" id="Animation_18ig4"]
+resource_name = "moveguard"
+length = 15.0
+loop_mode = 1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Guard")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.5, 3.06667, 4.53333, 6.2, 7.93333, 9.46667, 10.81, 12.4333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"moveLeft"
+}, {
+"args": [],
+"method": &"moveUp"
+}, {
+"args": [],
+"method": &"moveRight"
+}, {
+"args": [],
+"method": &"moveDown"
+}, {
+"args": [],
+"method": &"moveRight"
+}, {
+"args": [],
+"method": &"moveLeft"
+}, {
+"args": [],
+"method": &"moveLeft"
+}, {
+"args": [],
+"method": &"moveDown"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7s5hy"]
+_data = {
+&"moveguard": SubResource("Animation_18ig4")
+}
 
 [node name="Game" type="Node3D"]
 
@@ -243,6 +298,48 @@ theme_override_font_sizes/font_size = 70
 text = "Settings"
 horizontal_alignment = 1
 
+[node name="TuringBandlUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="TuringBandlUI"]
+modulate = Color(1, 1, 1, 0.384314)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -372.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TuringBandlUI/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="TuringBandlInstruction" parent="TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("3_xs4ih")]
+layout_mode = 2
+
+[node name="TuringBandlInstruction2" parent="TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("3_xs4ih")]
+layout_mode = 2
+
+[node name="TuringBandlInstruction3" parent="TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("3_xs4ih")]
+layout_mode = 2
+
+[node name="TuringBandlInstruction4" parent="TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("3_xs4ih")]
+layout_mode = 2
+
 [node name="Map" parent="." instance=ExtResource("3_cxv17")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -16.5, 1.5, -19.5)
 
@@ -253,17 +350,18 @@ projection = 1
 size = 2.85
 
 [node name="Guard" parent="." instance=ExtResource("4_18ig4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 1, -7)
-input_sequence = Array[int]([0, 0, 0, 0, 0, 2, 2, 1, 1, 1, 1, 1, 3, 3])
+
+[node name="placeholderfiguremover" type="Node" parent="."]
+script = SubResource("GDScript_vijgj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="placeholderfiguremover"]
+libraries = {
+&"": SubResource("AnimationLibrary_7s5hy")
+}
+autoplay = "moveguard"
 
 [node name="Guard2" parent="." instance=ExtResource("5_7s5hy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
-
-[node name="MovementManager" type="Node" parent="."]
-
-[node name="CharacterMover" type="Node" parent="MovementManager" node_paths=PackedStringArray("guard_list")]
-script = ExtResource("6_xs4ih")
-guard_list = [NodePath("../../Guard")]
 
 [connection signal="pressed" from="PauseMenu/UI/DefaultView/VBoxContainer/OptionsButton" to="PauseMenu/UI/DefaultView" method="HideMe"]
 [connection signal="pressed" from="PauseMenu/UI/DefaultView/VBoxContainer/OptionsButton" to="PauseMenu/UI/OptionsView" method="showMe"]
