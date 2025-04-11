@@ -1,51 +1,17 @@
-[gd_scene load_steps=17 format=3 uid="uid://bk3bgljl4ox8h"]
+[gd_scene load_steps=14 format=3 uid="uid://tfksyvs2qbdu"]
 
-[ext_resource type="Theme" uid="uid://cb6idjbop8kw2" path="res://assets/sprites/CheckButtonBetter/BetterButton.tres" id="1_vh257"]
-[ext_resource type="Script" uid="uid://d0klmhrydubhb" path="res://scripts/game_manager.gd" id="1_xy3my"]
-[ext_resource type="PackedScene" uid="uid://caljcteyi14oj" path="res://assets/models/seal.tscn" id="2_cxv17"]
-[ext_resource type="AudioStream" uid="uid://dubl7608be7qp" path="res://assets/sounds/ultra low quality funky town.mp3" id="3_18ig4"]
+[ext_resource type="Script" uid="uid://lntsseib6ktx" path="res://scripts/planning_scene.gd" id="1_i05ib"]
+[ext_resource type="PackedScene" uid="uid://csr8qdvijf7o8" path="res://scenes/HeistPlanner.tscn" id="2_sfq2c"]
+[ext_resource type="Script" uid="uid://d0klmhrydubhb" path="res://scripts/game_manager.gd" id="3_pbho8"]
+[ext_resource type="AudioStream" uid="uid://dubl7608be7qp" path="res://assets/sounds/ultra low quality funky town.mp3" id="4_hke3g"]
+[ext_resource type="Theme" uid="uid://cb6idjbop8kw2" path="res://assets/sprites/CheckButtonBetter/BetterButton.tres" id="5_rly6o"]
 
-[sub_resource type="Shader" id="Shader_ve7bo"]
-code = "shader_type spatial;
-
-void vertex() {
-	VERTEX.y += cos(VERTEX.z*TIME*25.0)*0.1;
-}
-
-void fragment() {
-  METALLIC = 0.0;
-  ROUGHNESS = 0.01;
-  ALBEDO = vec3(0.0, 0.0, 0.5);
-}
-
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_18ig4"]
-render_priority = 0
-shader = SubResource("Shader_ve7bo")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_qbsmt"]
-material = SubResource("ShaderMaterial_18ig4")
-subdivide_width = 150
-subdivide_depth = 150
-
-[sub_resource type="Environment" id="Environment_18ig4"]
+[sub_resource type="Environment" id="Environment_1rttj"]
 background_energy_multiplier = 0.0
 ambient_light_source = 2
 ambient_light_energy = 0.0
 
-[sub_resource type="GDScript" id="GDScript_vijgj"]
-resource_name = "spin"
-script/source = "extends Node3D
-
-func _ready():
-	process_mode = Node.PROCESS_MODE_PAUSABLE
-	
-func _process(delta: float) -> void:
-	rotation.y += 0.5*delta
-"
-
-[sub_resource type="GDScript" id="GDScript_pynjx"]
+[sub_resource type="GDScript" id="GDScript_0acuf"]
 resource_name = "pausetry"
 script/source = "extends Control
 func _ready():
@@ -56,7 +22,7 @@ func resetUI():
 	$UI/OptionsView.visible = false
 "
 
-[sub_resource type="GDScript" id="GDScript_xy3my"]
+[sub_resource type="GDScript" id="GDScript_ec7cf"]
 resource_name = "buttonlogic"
 script/source = "extends Control
 
@@ -69,7 +35,7 @@ func HideMe() -> void:
 	hide()
 "
 
-[sub_resource type="GDScript" id="GDScript_cxv17"]
+[sub_resource type="GDScript" id="GDScript_y7sd5"]
 resource_name = "quitButton"
 script/source = "extends Button
 
@@ -78,7 +44,7 @@ func backMainMenu() -> void:
 	get_tree().change_scene_to_file(\"res://scenes/MainMenu.tscn\")
 "
 
-[sub_resource type="GDScript" id="GDScript_18ig4"]
+[sub_resource type="GDScript" id="GDScript_tpsa2"]
 resource_name = "buttonlogic2"
 script/source = "extends Control
 
@@ -91,7 +57,7 @@ func HideMe() -> void:
 	hide()
 "
 
-[sub_resource type="GDScript" id="GDScript_7s5hy"]
+[sub_resource type="GDScript" id="GDScript_un3xe"]
 resource_name = "sfxSetting"
 script/source = "extends CheckButton
 
@@ -100,7 +66,7 @@ func _on_pressed() -> void:
 	AudioServer.set_bus_mute(soundBus, not AudioServer.is_bus_mute(soundBus))
 "
 
-[sub_resource type="GDScript" id="GDScript_xs4ih"]
+[sub_resource type="GDScript" id="GDScript_a8q4l"]
 resource_name = "musicsetting"
 script/source = "extends CheckButton
 
@@ -109,7 +75,7 @@ func _on_pressed() -> void:
 	AudioServer.set_bus_mute(musicBus, not AudioServer.is_bus_mute(musicBus))
 "
 
-[sub_resource type="GDScript" id="GDScript_6ytau"]
+[sub_resource type="GDScript" id="GDScript_ibx1f"]
 resource_name = "michisecret"
 script/source = "extends CheckButton
 
@@ -118,28 +84,24 @@ func _on_pressed() -> void:
 	OS.shell_open(\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\")
 "
 
-[node name="Game" type="Node3D"]
+[node name="PlanningScene" type="Node3D"]
+script = ExtResource("1_i05ib")
+
+[node name="HeistPlanner" parent="." instance=ExtResource("2_sfq2c")]
 
 [node name="GameManager" type="Node" parent="."]
-script = ExtResource("1_xy3my")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_qbsmt")
+script = ExtResource("3_pbho8")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.00400682, 0.0799714, -0.996789, 0.00906753, 0.996753, 0.080005, 0.999951, -0.00935898, 0.00326867, -1.52924, 0.0782146, 0)
-environment = SubResource("Environment_18ig4")
+environment = SubResource("Environment_1rttj")
 fov = 50.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.816057, -0.111381, -0.567138, 0.577972, 0.157263, 0.800761, 0, -0.981256, 0.19271, 0, 0, 0)
 
-[node name="seal" parent="." instance=ExtResource("2_cxv17")]
-transform = Transform3D(-0.004, 0, 3.49691e-10, 0, 0.004, 0, -3.49691e-10, 0, -0.004, -1.1485, 0, 0)
-script = SubResource("GDScript_vijgj")
-
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("3_18ig4")
+stream = ExtResource("4_hke3g")
 volume_db = -10.0
 autoplay = true
 bus = &"Music"
@@ -155,7 +117,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = SubResource("GDScript_pynjx")
+script = SubResource("GDScript_0acuf")
 
 [node name="Panel" type="Panel" parent="PauseMenu"]
 modulate = Color(1, 1, 1, 0.384314)
@@ -197,7 +159,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = SubResource("GDScript_xy3my")
+script = SubResource("GDScript_ec7cf")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/UI/DefaultView"]
 layout_mode = 1
@@ -223,7 +185,7 @@ text = "Options"
 layout_mode = 2
 theme_override_font_sizes/font_size = 42
 text = "Main Menu"
-script = SubResource("GDScript_cxv17")
+script = SubResource("GDScript_y7sd5")
 
 [node name="OptionsView" type="Control" parent="PauseMenu/UI"]
 visible = false
@@ -233,7 +195,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = SubResource("GDScript_18ig4")
+script = SubResource("GDScript_tpsa2")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/UI/OptionsView"]
 layout_mode = 1
@@ -252,33 +214,33 @@ theme_override_constants/separation = 30
 
 [node name="MuteSoundCheckButton" type="CheckButton" parent="PauseMenu/UI/OptionsView/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("1_vh257")
+theme = ExtResource("5_rly6o")
 theme_override_constants/icon_max_width = 60
 theme_override_font_sizes/font_size = 27
 text = "Mute Sound"
 vertical_icon_alignment = 0
 expand_icon = true
-script = SubResource("GDScript_7s5hy")
+script = SubResource("GDScript_un3xe")
 
 [node name="MuteMusicAudioCheckButton" type="CheckButton" parent="PauseMenu/UI/OptionsView/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("1_vh257")
+theme = ExtResource("5_rly6o")
 theme_override_constants/icon_max_width = 60
 theme_override_font_sizes/font_size = 27
 text = "Mute Music"
 vertical_icon_alignment = 0
 expand_icon = true
-script = SubResource("GDScript_xs4ih")
+script = SubResource("GDScript_a8q4l")
 
 [node name="???" type="CheckButton" parent="PauseMenu/UI/OptionsView/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("1_vh257")
+theme = ExtResource("5_rly6o")
 theme_override_constants/icon_max_width = 60
 theme_override_font_sizes/font_size = 27
 text = "Michi"
 vertical_icon_alignment = 0
 expand_icon = true
-script = SubResource("GDScript_6ytau")
+script = SubResource("GDScript_ibx1f")
 
 [node name="BackButton" type="Button" parent="PauseMenu/UI/OptionsView/VBoxContainer"]
 layout_mode = 2
@@ -297,6 +259,7 @@ theme_override_font_sizes/font_size = 70
 text = "Settings"
 horizontal_alignment = 1
 
+[connection signal="heist_planned" from="HeistPlanner" to="." method="_on_heist_planner_heist_planned"]
 [connection signal="pressed" from="PauseMenu/UI/DefaultView/VBoxContainer/OptionsButton" to="PauseMenu/UI/DefaultView" method="HideMe"]
 [connection signal="pressed" from="PauseMenu/UI/DefaultView/VBoxContainer/OptionsButton" to="PauseMenu/UI/OptionsView" method="showMe"]
 [connection signal="pressed" from="PauseMenu/UI/DefaultView/VBoxContainer/MainMenu" to="PauseMenu/UI/DefaultView/VBoxContainer/MainMenu" method="backMainMenu"]

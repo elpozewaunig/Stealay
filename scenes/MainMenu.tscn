@@ -23,7 +23,8 @@ script/source = "extends Button
 
 
 func startGame() -> void:
-	get_tree().change_scene_to_file(\"res://scenes/GameScene.tscn\")
+	#get_tree().change_scene_to_file(\"res://scenes/GameScene.tscn\")
+	get_tree().change_scene_to_file(\"res://scenes/PlanningScene.tscn\")
 "
 
 [sub_resource type="GDScript" id="GDScript_2wh52"]
