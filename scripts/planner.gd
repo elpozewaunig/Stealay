@@ -114,7 +114,7 @@ func check_move(move: Globals.movement) -> bool:
 		push_error("MICHI is fett am cheaten")
 		
 	# TODO remove or true
-	if new_position in valid_pos or true:
+	if new_position in valid_pos:
 		current_pos = new_position
 		move_history.append(new_position)
 		return true

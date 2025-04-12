@@ -8,17 +8,44 @@ var PathElementScene: PackedScene = preload("res://assets/PathElement.tscn")
 var current_position: Vector2i = Vector2i(0, 0)
 var child_list: Array[Node3D] = []
 
+var dev_mode: bool = true
+var pos_list: Array[Vector2i] = [current_position]
+
 func _on_heist_planner_add_movement(action: Globals.movement, pos: Vector2i) -> void:
 	move(action)
+	#print(pos)
 	current_position = pos
 	if action != Globals.movement.HIDE and action != Globals.movement.NULL:
-		spawnTrace(player.transform.origin)
+		var glob_pos: Vector3 = player.transform.origin
+		#glob_pos =  calculate_global_position_from_pos(pos)
+		spawnTrace(glob_pos)
+	
+	if dev_mode:
+		pos_list.append(pos)
 	
 
 
 func _on_heist_planner_remove_last_movement(pos: Vector2i) -> void:
 	revert_move(pos)
 	current_position = pos
+	if dev_mode:
+		if pos_list.size() > 1:
+			pos_list.pop_back()
+
+
+func _on_heist_planner_heist_planned(sequence: Variant) -> void:
+	if dev_mode:
+		print("Sequence of Path: ")
+		print(sequence)
+		
+		print("Visited positions: ")
+		var pos_set: Array[Vector2i] = []
+		for pos in pos_list:
+			if pos not in pos_set:
+				pos_set.append(pos)
+		
+		#pos_set.sort()
+		print(pos_set)
 
 
 func move(current_move: Globals.movement):
@@ -72,3 +99,11 @@ func removeTrace():
 			child.queue_free()
 	else: 
 		push_error("Cry")
+		
+
+func calculate_global_position_from_pos(pos: Vector2i) -> Vector3:
+	var myPosition: Vector3 = Vector3(0, 0, 0)
+	myPosition.x = pos.y
+	myPosition.z = -pos.x
+	
+	return myPosition

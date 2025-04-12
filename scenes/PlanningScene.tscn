@@ -316,7 +316,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 1, -7)
 input_sequence = Array[int]([0, 0, 0, 0, 0, 2, 2, 1, 1, 1, 1, 1, 3, 3, 1, 3, 1, 1, 2, 2, 0, 0, 0, 3])
 
 [node name="Player" parent="." instance=ExtResource("10_ec7cf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 1, -15)
 
 [node name="MovementManager" type="Node" parent="."]
 
@@ -335,6 +334,7 @@ texture = ExtResource("13_tpsa2")
 [connection signal="add_movement" from="HeistPlanner" to="TuringBandlUI" method="_on_heist_planner_add_movement"]
 [connection signal="add_movement" from="HeistPlanner" to="MovementManager/PlanningScenePlayerController" method="_on_heist_planner_add_movement"]
 [connection signal="heist_planned" from="HeistPlanner" to="." method="_on_heist_planner_heist_planned"]
+[connection signal="heist_planned" from="HeistPlanner" to="MovementManager/PlanningScenePlayerController" method="_on_heist_planner_heist_planned"]
 [connection signal="remove_last_movement" from="HeistPlanner" to="TuringBandlUI" method="_on_heist_planner_remove_last_movement"]
 [connection signal="remove_last_movement" from="HeistPlanner" to="MovementManager/PlanningScenePlayerController" method="_on_heist_planner_remove_last_movement"]
 [connection signal="pressed" from="PauseMenu/UI/DefaultView/VBoxContainer/OptionsButton" to="PauseMenu/UI/DefaultView" method="HideMe"]
