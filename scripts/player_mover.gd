@@ -1,5 +1,8 @@
 extends Node
 
+signal out_of_moves()
+signal send_data(movecount: int, input_sequence: Array[Globals.movement])
+
 @export var player: Node3D
 var input_sequence: Array[Globals.movement]
 
@@ -18,20 +21,17 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if time_passed >= delay:
 		time_passed = 0.0
-		move()
+		change_position()
 	
 	time_passed += delta
-
-
-func move() -> void: 
-	change_position()
-	check_if_won()
+	
 
 
 func change_position() -> void:
 	var sequence: Array[Globals.movement] = input_sequence
 	if (movecount >= sequence.size()):
-		return # TODO: Failed
+		emit_signal("out_of_moves")
+		return
 	
 	var current_move: Globals.movement = sequence[movecount]
 		
@@ -49,6 +49,5 @@ func change_position() -> void:
 	
 
 
-	
-func check_if_won() -> void:
-	pass
+func _on_game_manager_request_data() -> void:
+	emit_signal("send_data", movecount, input_sequence)

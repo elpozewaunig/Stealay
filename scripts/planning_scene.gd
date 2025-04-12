@@ -1,5 +1,7 @@
 extends Node3D
 
+signal load_game_board(location)
+
 func _ready() -> void:
 	start_planning_phase()
 
@@ -22,5 +24,6 @@ func start_game():
 
 	print("Start game: ", Globals.player_sequence)
 	Globals.player_spotted = false
-	get_tree().change_scene_to_file("res://scenes/GameScene.tscn")
+	emit_signal("load_game_board", "res://scenes/GameScene.tscn")
+	
 	

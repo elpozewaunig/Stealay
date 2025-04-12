@@ -21,7 +21,7 @@ enum movement {
 	}
 
 func _ready() -> void:
-	hide_all()
+	change_visibility(movement.NONE, self)
 
 func hide_all(): 
 	UpArrowSymbol.hide()
@@ -29,7 +29,7 @@ func hide_all():
 	LeftArrowSymbol.hide()
 	RightArrowSymbol.hide()
 	HideArrowSymbol.hide()
-	EmptyArrowSymbol.show()
+	EmptyArrowSymbol.hide()
 func change_visibility(sel: movement, empty) -> void:
 	hide_all()
 	movementPos = sel

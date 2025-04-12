@@ -4,8 +4,7 @@ signal heist_planned(sequence) # signal when done
 signal add_movement(move: Globals.movement, pos: Vector2i)
 signal remove_last_movement(pos: Vector2i)
 
-@export
-var player: Node3D
+@export var player: Node3D
 
 var input_sequence: Array[Globals.movement] = []
 
@@ -13,15 +12,35 @@ var valid_pos: Array[Vector2i] = Globals.valid_pos.duplicate(true)
 var current_pos: Vector2i #= starting_pos
 var move_history: Array[Vector2i]# = [starting_pos]
 
-@onready
-var starting_pos: Vector2i# = calculate_pos_vector_from_global_pos()
 
+var starting_pos: Vector2i # = calculate_pos_vector_from_global_pos()
+
+var init_done: bool = false
 #-----------------------------------------------------------------------
 
+func _on_player_ready() -> void:
+	pass
+
 func _ready() -> void:
+	if not player:
+		push_error("Player node missing even after defer!")
+		return
+		
 	starting_pos = calculate_pos_vector_from_global_pos()
 	current_pos = starting_pos
 	move_history = [starting_pos]
+	
+
+
+
+func _process(delta: float) -> void:
+	if not init_done and Globals.previous_sequence != [] and Globals.previous_move_count != 0:
+		load_sequence()
+		init_done = true
+	elif not init_done:
+		init_done = true
+
+
 
 func _input(event: InputEvent) -> void:
 	if not event.is_pressed():
@@ -63,6 +82,7 @@ func remove_last_action() -> void:
 		current_pos = move_history.get(len(move_history)-1)
 		emit_signal("remove_last_movement", current_pos)
 		input_sequence.pop_back() 
+		print(input_sequence)
 
 func finalize_sequence() -> void:
 	if input_sequence.is_empty():
@@ -74,10 +94,6 @@ func finalize_sequence() -> void:
 
 func clear_sequence() -> void:
 	input_sequence.clear()
-	
-
-func load_sequence(sequence: Array) -> void:
-	input_sequence = sequence.duplicate() 
 	
 
 func check_move(move: Globals.movement) -> bool:
@@ -112,3 +128,16 @@ func calculate_pos_vector_from_global_pos() -> Vector2i:
 	#print(player.transform.origin)
 	#print(position)
 	return position
+
+
+func load_sequence() -> void:
+	var old_input_sequence = Globals.previous_sequence.duplicate(true)
+	print(old_input_sequence)
+	print(Globals.previous_move_count)
+	
+	for i in range(Globals.previous_move_count):
+		if (check_move(old_input_sequence[i])):
+			add_action(old_input_sequence[i])
+	
+	
+	print("hmm")

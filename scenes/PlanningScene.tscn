@@ -96,6 +96,8 @@ func _on_pressed() -> void:
 [node name="PlanningScene" type="Node3D"]
 script = ExtResource("1_i05ib")
 
+[node name="Player" parent="." instance=ExtResource("10_ec7cf")]
+
 [node name="HeistPlanner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_sfq2c")]
 player = NodePath("../Player")
 
@@ -346,6 +348,8 @@ texture = ExtResource("13_tpsa2")
 [node name="GoalObject" parent="." instance=ExtResource("14_un3xe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -22)
 
+[connection signal="load_game_board" from="." to="GameManager" method="_on_planning_scene_load_game_board"]
+[connection signal="ready" from="Player" to="HeistPlanner" method="_on_player_ready"]
 [connection signal="add_movement" from="HeistPlanner" to="TuringBandlUI" method="_on_heist_planner_add_movement"]
 [connection signal="add_movement" from="HeistPlanner" to="MovementManager/PlanningScenePlayerController" method="_on_heist_planner_add_movement"]
 [connection signal="heist_planned" from="HeistPlanner" to="." method="_on_heist_planner_heist_planned"]

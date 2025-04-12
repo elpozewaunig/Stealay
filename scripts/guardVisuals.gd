@@ -26,6 +26,10 @@ var speed: int = 1
 @onready var prev := "up"
 
 func _ready() -> void:
+	next_position = global_position
+	prev_position = global_position
+	#print("Instanciating guard somewhere ")
+	
 	if get_tree().current_scene.name != Globals.game_scene_name:
 		speed = 10
 

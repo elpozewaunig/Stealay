@@ -25,6 +25,9 @@ var game_scene_name: String = "Game"
 
 var max_sight:int = 4
 
+var previous_sequence: Array[movement] = []
+var previous_move_count:int = 0
+
 func _init() -> void:
 	for y in range(0, 25):
 		for x in range(-27, 4):
@@ -38,3 +41,4 @@ func calculate_global_position_from_pos(pos: Vector2i) -> Vector3:
 	myPosition.z = -pos.x
 	
 	return myPosition
+	
