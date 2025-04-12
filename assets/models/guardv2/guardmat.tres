@@ -1,7 +1,7 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://kehluajayyfs"]
-
-[ext_resource type="Texture2D" uid="uid://b5qyqtkb4hyi1" path="res://assets/models/guardv2/guardtext.png" id="1_thmee"]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://kehluajayyfs"]
 
 [resource]
-shading_mode = 0
-albedo_texture = ExtResource("1_thmee")
+albedo_color = Color(0.220639, 0.6095, 0.800341, 1)
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.3

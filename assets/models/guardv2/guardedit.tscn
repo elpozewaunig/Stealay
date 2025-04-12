@@ -1,5 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://dx78adoqi1uv"]
+[gd_scene load_steps=3 format=3 uid="uid://dx78adoqi1uv"]
 
 [ext_resource type="PackedScene" uid="uid://nr2r0k5cvjob" path="res://assets/models/guardv2/guardedit.gltf" id="1_kdt2n"]
+[ext_resource type="Material" uid="uid://kehluajayyfs" path="res://assets/models/guardv2/guardmat.tres" id="2_8m06n"]
 
 [node name="guardedit" instance=ExtResource("1_kdt2n")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_8m06n")
+
+[node name="Cube_004" parent="Cube/Empty" index="0"]
+material_override = ExtResource("2_8m06n")
+
+[node name="Sphere" parent="Cube/Empty/Cube_004" index="0"]
+material_override = ExtResource("2_8m06n")
+
+[node name="Cube_003" parent="Cube/Empty_001" index="0"]
+material_override = ExtResource("2_8m06n")
+
+[node name="Sphere_001" parent="Cube/Empty_001/Cube_003" index="0"]
+material_override = ExtResource("2_8m06n")
+
+[node name="Cylinder_001" parent="Cube/Empty_001/Cube_003/Sphere_001" index="0"]
+material_override = ExtResource("2_8m06n")
+
+[node name="Cube_002" parent="Cube/Empty_002" index="0"]
+material_override = ExtResource("2_8m06n")
+
+[node name="Cube_001" parent="Cube/Empty_002/Cube_002" index="0"]
+material_override = ExtResource("2_8m06n")
+
+[node name="Cylinder" parent="Cube/Empty_002/Cube_002" index="1"]
+material_override = ExtResource("2_8m06n")
