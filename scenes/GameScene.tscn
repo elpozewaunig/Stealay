@@ -259,6 +259,9 @@ environment = SubResource("Environment_18ig4")
 projection = 1
 size = 5.987
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Player/Camera3D"]
+transform = Transform3D(0.67718, -0.391692, -0.6229, 0.670888, -0.0190249, 0.741314, -0.302217, -0.9199, 0.249898, 0, 0, 0)
+
 [node name="MovementManager" type="Node" parent="."]
 
 [node name="GuardMovementController" type="Node" parent="MovementManager" node_paths=PackedStringArray("guard_list")]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=33 format=4 uid="uid://cb36gbar6tdv"]
+[gd_scene load_steps=34 format=4 uid="uid://cb36gbar6tdv"]
 
 [ext_resource type="PackedScene" uid="uid://dnj8dlx4y3qhe" path="res://assets/models/placeholderguard/figure.tscn" id="1_a4vwu"]
 [ext_resource type="Script" uid="uid://c16qi3cfubcaj" path="res://scripts/guardVisuals.gd" id="1_m4837"]
 [ext_resource type="Script" uid="uid://do6j7x0mu2ywy" path="res://scripts/gurad_search_player.gd" id="3_k7l5m"]
 [ext_resource type="PackedScene" uid="uid://nr2r0k5cvjob" path="res://assets/models/guardv2/guardedit.gltf" id="3_lngpj"]
 [ext_resource type="Texture2D" uid="uid://b5qyqtkb4hyi1" path="res://assets/models/guardv2/guardtext.png" id="4_kssj1"]
+[ext_resource type="Material" uid="uid://kehluajayyfs" path="res://assets/models/guardv2/guardmat.tres" id="4_lngpj"]
 
 [sub_resource type="Animation" id="Animation_k7l5m"]
 length = 0.001
@@ -579,6 +580,7 @@ transform = Transform3D(-3.93403e-08, 0, 0.9, 0, 0.9, 0, -0.9, 0, -3.93403e-08, 
 
 [node name="Cube" type="MeshInstance3D" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.946674, 0)
+material_override = ExtResource("4_lngpj")
 mesh = SubResource("ArrayMesh_iox0f")
 skeleton = NodePath("")
 
@@ -587,11 +589,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.31261, -1.03086)
 
 [node name="Cube_004" type="MeshInstance3D" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit/Cube/Empty"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.933894, 0, -0.911678, 1.03086)
+material_override = ExtResource("4_lngpj")
 mesh = SubResource("ArrayMesh_qg4u6")
 skeleton = NodePath("")
 
 [node name="Sphere" type="MeshInstance3D" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit/Cube/Empty/Cube_004"]
 transform = Transform3D(0.337178, 0, 0, 0, 0.337178, 0, 0, 0, 0.361045, 0, -1.20393, -1.37247)
+material_override = ExtResource("4_lngpj")
 mesh = SubResource("ArrayMesh_jwcvc")
 skeleton = NodePath("")
 
@@ -600,16 +604,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.31261, 1.03086)
 
 [node name="Cube_003" type="MeshInstance3D" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit/Cube/Empty_001"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.933894, 0, -0.911678, -1.03086)
+material_override = ExtResource("4_lngpj")
 mesh = SubResource("ArrayMesh_hl058")
 skeleton = NodePath("")
 
 [node name="Sphere_001" type="MeshInstance3D" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit/Cube/Empty_001/Cube_003"]
 transform = Transform3D(-0.337178, 0, -1.17919e-07, 0, 0.337178, 0, 1.10124e-07, 0, -0.361045, 0, -1.20393, 1.3902)
+material_override = ExtResource("4_lngpj")
 mesh = SubResource("ArrayMesh_kfx6o")
 skeleton = NodePath("")
 
 [node name="Cylinder_001" type="MeshInstance3D" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit/Cube/Empty_001/Cube_003/Sphere_001"]
 transform = Transform3D(0, -1.84888, 9.60473e-08, -0.589534, 4.90751e-14, 9.60473e-08, -9.60473e-08, -3.01221e-07, -0.589534, -0.28382, -0.0507839, -0.00525198)
+material_override = ExtResource("4_lngpj")
 mesh = SubResource("ArrayMesh_i1f5c")
 skeleton = NodePath("")
 
@@ -618,16 +625,19 @@ transform = Transform3D(4.96023, 0, 0, 0, 4.96023, 0, 0, 0, 4.96023, 0.241021, 4
 
 [node name="Cube_002" type="MeshInstance3D" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit/Cube/Empty_002"]
 transform = Transform3D(0, 0, 0.137805, 0, 0.0396004, 0, -0.137805, 0, 0, -0.0431828, 0.323689, 0)
+material_override = ExtResource("4_lngpj")
 mesh = SubResource("ArrayMesh_hregb")
 skeleton = NodePath("")
 
 [node name="Cube_001" type="MeshInstance3D" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit/Cube/Empty_002/Cube_002"]
 transform = Transform3D(0.6262, 0, 0, 0, 0.504498, 0, 0, 0, 0.152123, 0, -3.35131, 1.32314)
+material_override = ExtResource("4_lngpj")
 mesh = SubResource("ArrayMesh_3ueym")
 skeleton = NodePath("")
 
 [node name="Cylinder" type="MeshInstance3D" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit/Cube/Empty_002/Cube_002"]
 transform = Transform3D(0, 0, -1.46296, 0, 5.09094, 0, 1.46296, 0, 0, -0.0129613, -25.7936, -0.0392424)
+material_override = ExtResource("4_lngpj")
 mesh = SubResource("ArrayMesh_x5x8n")
 skeleton = NodePath("")
 
