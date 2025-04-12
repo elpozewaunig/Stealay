@@ -2,6 +2,8 @@ extends Node
 
 @export var player: Node3D
 
+var PathElementScene: PackedScene = preload("res://assets/PathElement.tscn")
+
 
 var current_position: Vector2i = Vector2i(0, 0)
 
@@ -50,5 +52,8 @@ func revert_move(new_position: Vector2i):
 		push_error("HUH")
 	
 
-func spawnTrace(pos):
+func spawnTrace(pos: Vector3):
 	print(pos)
+	var new_path_element = PathElementScene.instantiate()
+	new_path_element.position = pos
+	add_child(new_path_element, false)

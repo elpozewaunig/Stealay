@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://tfksyvs2qbdu"]
+[gd_scene load_steps=21 format=3 uid="uid://tfksyvs2qbdu"]
 
 [ext_resource type="Script" uid="uid://lntsseib6ktx" path="res://scripts/planning_scene.gd" id="1_i05ib"]
 [ext_resource type="PackedScene" uid="uid://csr8qdvijf7o8" path="res://assets/HeistPlanner.tscn" id="2_sfq2c"]
@@ -11,8 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cxy4hikcjoxb7" path="res://assets/ui/turing_bandl_instruction_element_ui_scene.tscn" id="9_ec7cf"]
 [ext_resource type="PackedScene" uid="uid://b44tvfhd3lcf1" path="res://assets/player.tscn" id="10_ec7cf"]
 [ext_resource type="Script" uid="uid://emtjvummxi6o" path="res://scripts/guard_mover.gd" id="11_y7sd5"]
-[ext_resource type="Script" path="res://scripts/planning_scene_player_controller.gd" id="12_y7sd5"]
-[ext_resource type="Texture2D" uid="uid://bqdq7qusxlios" path="res://assets/ui/planningscreenmap/map_in_lineart_scaled.jpg" id="13_tpsa2"]
+[ext_resource type="Script" uid="uid://der2d8iibxg75" path="res://scripts/planning_scene_player_controller.gd" id="12_y7sd5"]
 
 [sub_resource type="Environment" id="Environment_1rttj"]
 background_energy_multiplier = 0.0
@@ -327,12 +326,6 @@ guard_list = [NodePath("../../Guard")]
 [node name="PlanningScenePlayerController" type="Node" parent="MovementManager" node_paths=PackedStringArray("player")]
 script = ExtResource("12_y7sd5")
 player = NodePath("../../Player")
-
-[node name="Node3D" type="Node3D" parent="."]
-
-[node name="Sprite3D" type="Sprite3D" parent="Node3D"]
-transform = Transform3D(2.325, 0, 0, 0, -1.01629e-07, 2.325, 0, -2.325, -1.01629e-07, -11.955, -1.443, -11.964)
-texture = ExtResource("13_tpsa2")
 
 [connection signal="add_movement" from="HeistPlanner" to="TuringBandlUI" method="_on_heist_planner_add_movement"]
 [connection signal="add_movement" from="HeistPlanner" to="MovementManager/PlanningScenePlayerController" method="_on_heist_planner_add_movement"]
