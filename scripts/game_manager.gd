@@ -23,5 +23,6 @@ func check_win():
 
 func check_lose():
 	if Globals.player_spotted :
-		print("Game over")
+		#print("Game over")
+		pass
 	

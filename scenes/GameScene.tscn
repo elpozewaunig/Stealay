@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bk3bgljl4ox8h"]
+[gd_scene load_steps=18 format=3 uid="uid://bk3bgljl4ox8h"]
 
 [ext_resource type="Theme" uid="uid://cb6idjbop8kw2" path="res://assets/sprites/CheckButtonBetter/BetterButton.tres" id="1_vh257"]
 [ext_resource type="Script" uid="uid://d0klmhrydubhb" path="res://scripts/game_manager.gd" id="1_xy3my"]
@@ -7,7 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://b44tvfhd3lcf1" path="res://assets/player.tscn" id="5_7s5hy"]
 [ext_resource type="Script" uid="uid://emtjvummxi6o" path="res://scripts/guard_mover.gd" id="6_xs4ih"]
 [ext_resource type="Script" uid="uid://fve4ylqy7j1n" path="res://scripts/player_mover.gd" id="7_6ytau"]
-[ext_resource type="PackedScene" path="res://assets/GoalObject.tscn" id="8_vijgj"]
+[ext_resource type="PackedScene" uid="uid://dsn1mnxuhm7jh" path="res://assets/GoalObject.tscn" id="8_vijgj"]
+[ext_resource type="Script" uid="uid://cjqf4q1mwbr5e" path="res://scripts/place_walls.gd" id="9_pynjx"]
 
 [sub_resource type="GDScript" id="GDScript_pynjx"]
 resource_name = "pausetry"
@@ -282,6 +283,9 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 10
 
 [node name="GoalObject" parent="." instance=ExtResource("8_vijgj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -22)
+
+[node name="Walls" type="Node3D" parent="."]
+script = ExtResource("9_pynjx")
 
 [connection signal="pressed" from="PauseMenu/UI/DefaultView/VBoxContainer/OptionsButton" to="PauseMenu/UI/DefaultView" method="HideMe"]
 [connection signal="pressed" from="PauseMenu/UI/DefaultView/VBoxContainer/OptionsButton" to="PauseMenu/UI/OptionsView" method="showMe"]

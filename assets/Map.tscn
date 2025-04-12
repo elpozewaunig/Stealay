@@ -1,6 +1,7 @@
-[gd_scene load_steps=167 format=4 uid="uid://blbae5xp247m5"]
+[gd_scene load_steps=168 format=4 uid="uid://blbae5xp247m5"]
 
 [ext_resource type="Material" uid="uid://di5fqpigg60ge" path="res://assets/models/mapv3/materials/topdeckel.tres" id="1_jbyk8"]
+[ext_resource type="Texture2D" uid="uid://4sprrbup6joh" path="res://assets/models/mapv2/michi3.png" id="2_34sf1"]
 [ext_resource type="Material" uid="uid://7825aw7ugtvc" path="res://assets/models/mapv3/materials/wall.tres" id="2_qxvh1"]
 [ext_resource type="Material" uid="uid://dmgued37oqehb" path="res://assets/models/mapv3/materials/rim.tres" id="3_ar1pb"]
 [ext_resource type="Material" uid="uid://b3v0ndrebcu4m" path="res://assets/models/mapv3/materials/floor.tres" id="4_k187t"]
@@ -14,7 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://w6dyq71mhjuj" path="res://assets/models/mapv3/materials/decorations/painting5.jpg" id="11_324kj"]
 [ext_resource type="Texture2D" uid="uid://b7uroju7btviw" path="res://assets/models/mapv3/materials/decorations/painting4.jpg" id="12_rp51q"]
 [ext_resource type="Texture2D" uid="uid://diq8e22a7jbqj" path="res://assets/models/mapv3/materials/decorations/painting3.jpg" id="13_eanrg"]
-[ext_resource type="Script" uid="uid://cjqf4q1mwbr5e" path="res://scripts/place_walls.gd" id="5_k187t"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_sehe4"]
 _surfaces = [{
@@ -2355,9 +2355,9 @@ shadow_mesh = SubResource("ArrayMesh_pot3s")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_elcyq"]
 transparency = 1
+shading_mode = 0
 albedo_color = Color(0.0156863, 0.698039, 0.803922, 0.466667)
-metallic = 1.0
-roughness = 0.0
+albedo_texture = ExtResource("2_34sf1")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_djnt2"]
 resource_name = "DIAEMISSION"
@@ -3093,6 +3093,3 @@ skeleton = NodePath("")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.810232, -0.539215, -0.229721, 0.529732, 0.50598, 0.680711, -0.250816, -0.673225, 0.695601, 0, 1.67337, 0)
-
-[node name="Walls" type="Node3D" parent="."]
-script = ExtResource("5_k187t")

@@ -9,7 +9,7 @@ var PathElementScene: PackedScene = preload("res://assets/PathElement.tscn")
 var current_position: Vector2i
 var child_list: Array[Node3D] = []
 
-var dev_mode: bool = true
+var dev_mode: bool = false
 var pos_list: Array[Vector2i] 
 
 func _ready() -> void:

@@ -22,7 +22,7 @@ var player_sequence: Array[movement] = []
 var player_spotted: bool = false
 var game_scene_name: String = "Game"
 
-var max_sight:int = 8
+var max_sight:int = 4
 
 func _init() -> void:
 	for y in range(0, 25):
