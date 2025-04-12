@@ -1,12 +1,11 @@
-[gd_scene load_steps=30 format=4 uid="uid://bg4w7m5cvf82n"]
+[gd_scene load_steps=32 format=4 uid="uid://bg4w7m5cvf82n"]
 
-[ext_resource type="PackedScene" uid="uid://dptpc6b54d3bn" path="res://assets/ui/button_audio_player.tscn" id="1_mipys"]
-[ext_resource type="Script" uid="uid://ctbg2yqhvown5" path="res://scripts/script.gd" id="2_0ykhv"]
-[ext_resource type="PackedScene" uid="uid://u155dxc1ieh" path="res://assets/ui/page_audio_player.tscn" id="2_8a8k8"]
-[ext_resource type="Script" uid="uid://dqkwefcstr5y7" path="res://scripts/fancy_button.gd" id="1_2nypq"]
+[ext_resource type="Script" path="res://scripts/fancy_button.gd" id="1_2nypq"]
 [ext_resource type="Texture2D" uid="uid://cduu48nagk7au" path="res://assets/newui/texticons_fillonly.png" id="1_7la6k"]
 [ext_resource type="Texture2D" uid="uid://caiv810gq1dvv" path="res://assets/newui/paper.jpg" id="1_bky6r"]
+[ext_resource type="PackedScene" uid="uid://dptpc6b54d3bn" path="res://assets/ui/button_audio_player.tscn" id="1_mipys"]
 [ext_resource type="Texture2D" uid="uid://dk6q5fclpp8db" path="res://assets/newui/texticons_borderonly.png" id="2_2nypq"]
+[ext_resource type="PackedScene" uid="uid://u155dxc1ieh" path="res://assets/ui/page_audio_player.tscn" id="2_8a8k8"]
 [ext_resource type="Theme" uid="uid://cb6idjbop8kw2" path="res://assets/sprites/CheckButtonBetter/BetterButton.tres" id="3_2wh52"]
 [ext_resource type="Script" uid="uid://dxfbi5lg82tc3" path="res://scripts/pageflip.gd" id="4_826wr"]
 [ext_resource type="Texture2D" uid="uid://cq3u3h02epvfg" path="res://assets/sprites/menu_placeholder.png" id="4_l72w3"]
@@ -329,6 +328,7 @@ script = SubResource("GDScript_ow34m")
 
 [node name="PlayButton" type="Button" parent="SubViewport/Node2D/UI/DefaultView"]
 self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 offset_left = 70.0
 offset_top = 540.0
 offset_right = 205.0
@@ -339,29 +339,6 @@ text = "
 "
 script = SubResource("GDScript_826wr")
 
-[node name="ButtonAudioPlayer" parent="SubViewport/Node2D/UI/DefaultView/VBoxContainer/PlayButton" instance=ExtResource("1_mipys")]
-position = Vector2(-841.5, -363)
-
-[node name="OptionsButton" type="Button" parent="SubViewport/Node2D/UI/DefaultView/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 42
-text = "Options"
-
-[node name="ButtonAudioPlayer" parent="SubViewport/Node2D/UI/DefaultView/VBoxContainer/OptionsButton" instance=ExtResource("1_mipys")]
-
-[node name="PageAudioPlayer" parent="SubViewport/Node2D/UI/DefaultView/VBoxContainer/OptionsButton" instance=ExtResource("2_8a8k8")]
-
-[node name="CreditsButton" type="Button" parent="SubViewport/Node2D/UI/DefaultView/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 42
-text = "Credits"
-
-[node name="ButtonAudioPlayer" parent="SubViewport/Node2D/UI/DefaultView/VBoxContainer/CreditsButton" instance=ExtResource("1_mipys")]
-
-[node name="PageAudioPlayer" parent="SubViewport/Node2D/UI/DefaultView/VBoxContainer/CreditsButton" instance=ExtResource("2_8a8k8")]
-
-[node name="QuitButton" type="Button" parent="SubViewport/Node2D/UI/DefaultView/VBoxContainer"]
-layout_mode = 2
 [node name="FancyButton" type="Node2D" parent="SubViewport/Node2D/UI/DefaultView/PlayButton"]
 position = Vector2(118.5, 32)
 scale = Vector2(0.249995, 0.249995)
@@ -379,8 +356,13 @@ texture = ExtResource("2_2nypq")
 region_enabled = true
 region_rect = Rect2(175.153, 118.287, 520.3, 274.267)
 
+[node name="ButtonAudioPlayer" parent="SubViewport/Node2D/UI/DefaultView/PlayButton" instance=ExtResource("1_mipys")]
+
+[node name="PageAudioPlayer" parent="SubViewport/Node2D/UI/DefaultView/PlayButton" instance=ExtResource("2_8a8k8")]
+
 [node name="OptionsButton" type="Button" parent="SubViewport/Node2D/UI/DefaultView"]
 self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 offset_left = 70.0
 offset_top = 709.0
 offset_right = 213.0
@@ -409,8 +391,13 @@ texture = ExtResource("2_2nypq")
 region_enabled = true
 region_rect = Rect2(922.928, 138.386, 1057.81, 270.378)
 
+[node name="ButtonAudioPlayer" parent="SubViewport/Node2D/UI/DefaultView/OptionsButton" instance=ExtResource("1_mipys")]
+
+[node name="PageAudioPlayer" parent="SubViewport/Node2D/UI/DefaultView/OptionsButton" instance=ExtResource("2_8a8k8")]
+
 [node name="CreditsButton" type="Button" parent="SubViewport/Node2D/UI/DefaultView"]
 self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 offset_left = 70.0
 offset_top = 813.0
 offset_right = 203.0
@@ -437,8 +424,13 @@ texture = ExtResource("2_2nypq")
 region_enabled = true
 region_rect = Rect2(922.928, 552.704, 913.611, 223.445)
 
+[node name="ButtonAudioPlayer" parent="SubViewport/Node2D/UI/DefaultView/CreditsButton" instance=ExtResource("1_mipys")]
+
+[node name="PageAudioPlayer" parent="SubViewport/Node2D/UI/DefaultView/CreditsButton" instance=ExtResource("2_8a8k8")]
+
 [node name="QuitButton" type="Button" parent="SubViewport/Node2D/UI/DefaultView"]
 self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 offset_left = 70.0
 offset_top = 917.0
 offset_right = 149.0
@@ -449,7 +441,6 @@ text = "
 "
 script = SubResource("GDScript_2wh52")
 
-[node name="ButtonAudioPlayer" parent="SubViewport/Node2D/UI/DefaultView/VBoxContainer/QuitButton" instance=ExtResource("1_mipys")]
 [node name="FancyButton" type="Node2D" parent="SubViewport/Node2D/UI/DefaultView/QuitButton"]
 position = Vector2(118.5, 32)
 scale = Vector2(0.249995, 0.249995)
@@ -468,6 +459,8 @@ scale = Vector2(0.568, 0.568)
 texture = ExtResource("2_2nypq")
 region_enabled = true
 region_rect = Rect2(174.548, 424.49, 523.465, 259.374)
+
+[node name="ButtonAudioPlayer" parent="SubViewport/Node2D/UI/DefaultView/QuitButton" instance=ExtResource("1_mipys")]
 
 [node name="StealayLogo" type="Sprite2D" parent="SubViewport/Node2D/UI/DefaultView"]
 position = Vector2(547.347, 210.375)
@@ -671,49 +664,39 @@ libraries = {
 &"": SubResource("AnimationLibrary_7qnyy")
 }
 
-[connection signal="mouse_entered" from="SubViewport/Node2D/UI/DefaultView/VBoxContainer/PlayButton" to="SubViewport/Node2D/UI/DefaultView/VBoxContainer/PlayButton/ButtonAudioPlayer" method="_on_hover"]
-[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/VBoxContainer/PlayButton" to="SubViewport/Node2D/UI/DefaultView" method="HideMe"]
-[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/VBoxContainer/PlayButton" to="SubViewport/Node2D/UI/DefaultView/VBoxContainer/PlayButton" method="startGame"]
-[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/VBoxContainer/PlayButton" to="SubViewport/Node2D/UI/DefaultView/VBoxContainer/PlayButton/ButtonAudioPlayer" method="_on_click"]
-[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/VBoxContainer/PlayButton" to="SubViewport/Node2D/PageFlip" method="_on_page_flip" binds= [3]]
-[connection signal="mouse_entered" from="SubViewport/Node2D/UI/DefaultView/VBoxContainer/OptionsButton" to="SubViewport/Node2D/UI/DefaultView/VBoxContainer/OptionsButton/ButtonAudioPlayer" method="_on_hover"]
-[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/VBoxContainer/OptionsButton" to="SubViewport/Node2D/UI/DefaultView" method="HideMe"]
-[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/VBoxContainer/OptionsButton" to="SubViewport/Node2D/UI/DefaultView/VBoxContainer/OptionsButton/ButtonAudioPlayer" method="_on_click"]
-[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/VBoxContainer/OptionsButton" to="SubViewport/Node2D/UI/DefaultView/VBoxContainer/OptionsButton/PageAudioPlayer" method="_on_page_turn"]
-[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/VBoxContainer/OptionsButton" to="SubViewport/Node2D/UI/OptionsView" method="showMe"]
-[connection signal="mouse_entered" from="SubViewport/Node2D/UI/DefaultView/VBoxContainer/CreditsButton" to="SubViewport/Node2D/UI/DefaultView/VBoxContainer/CreditsButton/ButtonAudioPlayer" method="_on_hover"]
-[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/VBoxContainer/CreditsButton" to="SubViewport/Node2D/UI/DefaultView" method="HideMe"]
-[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/VBoxContainer/CreditsButton" to="SubViewport/Node2D/UI/DefaultView/VBoxContainer/CreditsButton/ButtonAudioPlayer" method="_on_click"]
-[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/VBoxContainer/CreditsButton" to="SubViewport/Node2D/UI/DefaultView/VBoxContainer/CreditsButton/PageAudioPlayer" method="_on_page_turn"]
-[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/VBoxContainer/CreditsButton" to="SubViewport/Node2D/UI/CreditsView" method="showMe"]
-[connection signal="mouse_entered" from="SubViewport/Node2D/UI/DefaultView/VBoxContainer/QuitButton" to="SubViewport/Node2D/UI/DefaultView/VBoxContainer/QuitButton/ButtonAudioPlayer" method="_on_hover"]
-[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/VBoxContainer/QuitButton" to="SubViewport/Node2D/UI/DefaultView/VBoxContainer/QuitButton" method="forcequit"]
-[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/VBoxContainer/QuitButton" to="SubViewport/Node2D/UI/DefaultView/VBoxContainer/QuitButton/ButtonAudioPlayer" method="_on_click"]
 [connection signal="mouse_entered" from="SubViewport/Node2D/UI/DefaultView/PlayButton" to="SubViewport/Node2D/UI/DefaultView/PlayButton/FancyButton" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_entered" from="SubViewport/Node2D/UI/DefaultView/PlayButton" to="SubViewport/Node2D/UI/DefaultView/PlayButton/ButtonAudioPlayer" method="_on_hover"]
 [connection signal="mouse_exited" from="SubViewport/Node2D/UI/DefaultView/PlayButton" to="SubViewport/Node2D/UI/DefaultView/PlayButton/FancyButton" method="_on_area_2d_mouse_exited"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/PlayButton" to="SubViewport/Node2D/UI/DefaultView" method="HideMe"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/PlayButton" to="SubViewport/Node2D/UI/DefaultView/PlayButton" method="startGame"]
+[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/PlayButton" to="SubViewport/Node2D/UI/DefaultView/PlayButton/ButtonAudioPlayer" method="_on_click"]
+[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/PlayButton" to="SubViewport/Node2D/UI/DefaultView/PlayButton/PageAudioPlayer" method="_on_page_turn"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/PlayButton" to="SubViewport/Node2D/PageFlip" method="_on_page_flip" binds= [3]]
 [connection signal="mouse_entered" from="SubViewport/Node2D/UI/DefaultView/OptionsButton" to="SubViewport/Node2D/UI/DefaultView/OptionsButton/FancyButton" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_entered" from="SubViewport/Node2D/UI/DefaultView/OptionsButton" to="SubViewport/Node2D/UI/DefaultView/OptionsButton/ButtonAudioPlayer" method="_on_hover"]
 [connection signal="mouse_exited" from="SubViewport/Node2D/UI/DefaultView/OptionsButton" to="SubViewport/Node2D/UI/DefaultView/OptionsButton/FancyButton" method="_on_area_2d_mouse_exited"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/OptionsButton" to="SubViewport/Node2D/UI/DefaultView" method="HideMe"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/OptionsButton" to="SubViewport/Node2D/UI/OptionsView" method="showMe"]
+[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/OptionsButton" to="SubViewport/Node2D/UI/DefaultView/OptionsButton/ButtonAudioPlayer" method="_on_click"]
+[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/OptionsButton" to="SubViewport/Node2D/UI/DefaultView/OptionsButton/PageAudioPlayer" method="_on_page_turn"]
 [connection signal="mouse_entered" from="SubViewport/Node2D/UI/DefaultView/CreditsButton" to="SubViewport/Node2D/UI/DefaultView/CreditsButton/FancyButton" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_entered" from="SubViewport/Node2D/UI/DefaultView/CreditsButton" to="SubViewport/Node2D/UI/DefaultView/CreditsButton/ButtonAudioPlayer" method="_on_hover"]
 [connection signal="mouse_exited" from="SubViewport/Node2D/UI/DefaultView/CreditsButton" to="SubViewport/Node2D/UI/DefaultView/CreditsButton/FancyButton" method="_on_area_2d_mouse_exited"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/CreditsButton" to="SubViewport/Node2D/UI/DefaultView" method="HideMe"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/CreditsButton" to="SubViewport/Node2D/UI/CreditsView" method="showMe"]
+[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/CreditsButton" to="SubViewport/Node2D/UI/DefaultView/CreditsButton/ButtonAudioPlayer" method="_on_click"]
+[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/CreditsButton" to="SubViewport/Node2D/UI/DefaultView/CreditsButton/PageAudioPlayer" method="_on_page_turn"]
 [connection signal="mouse_entered" from="SubViewport/Node2D/UI/DefaultView/QuitButton" to="SubViewport/Node2D/UI/DefaultView/QuitButton/FancyButton" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_entered" from="SubViewport/Node2D/UI/DefaultView/QuitButton" to="SubViewport/Node2D/UI/DefaultView/QuitButton/ButtonAudioPlayer" method="_on_hover"]
 [connection signal="mouse_exited" from="SubViewport/Node2D/UI/DefaultView/QuitButton" to="SubViewport/Node2D/UI/DefaultView/QuitButton/FancyButton" method="_on_area_2d_mouse_exited"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/QuitButton" to="SubViewport/Node2D/UI/DefaultView/QuitButton" method="forcequit"]
+[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/QuitButton" to="SubViewport/Node2D/UI/DefaultView/QuitButton/ButtonAudioPlayer" method="_on_click"]
 [connection signal="page_flip" from="SubViewport/Node2D/UI/OptionsView" to="SubViewport/Node2D/PageFlip" method="_on_page_flip"]
 [connection signal="mouse_entered" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteSoundCheckButton" to="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteSoundCheckButton/ButtonAudioPlayer" method="_on_hover"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteSoundCheckButton" to="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteSoundCheckButton" method="_on_pressed"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteSoundCheckButton" to="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteSoundCheckButton/ButtonAudioPlayer" method="_on_click"]
 [connection signal="mouse_entered" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" to="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton/ButtonAudioPlayer" method="_on_hover"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" to="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton/ButtonAudioPlayer" method="_on_click"]
-[connection signal="mouse_entered" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/???" to="SubViewport/Node2D/UI/OptionsView/VBoxContainer/???/ButtonAudioPlayer" method="_on_hover"]
-[connection signal="pressed" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/???" to="SubViewport/Node2D/UI/OptionsView/VBoxContainer/???" method="_on_pressed"]
-[connection signal="pressed" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/???" to="SubViewport/Node2D/UI/OptionsView/VBoxContainer/???/ButtonAudioPlayer" method="_on_click"]
 [connection signal="mouse_entered" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/BackButton" to="SubViewport/Node2D/UI/OptionsView/VBoxContainer/BackButton/ButtonAudioPlayer" method="_on_hover"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/BackButton" to="SubViewport/Node2D/UI/DefaultView" method="showMe"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/BackButton" to="SubViewport/Node2D/UI/OptionsView" method="HideMe"]
