@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://emtjvummxi6o" path="res://scripts/guard_mover.gd" id="6_xs4ih"]
 [ext_resource type="Script" uid="uid://fve4ylqy7j1n" path="res://scripts/player_mover.gd" id="7_6ytau"]
 [ext_resource type="PackedScene" uid="uid://dsn1mnxuhm7jh" path="res://assets/GoalObject.tscn" id="8_vijgj"]
-[ext_resource type="Script" uid="uid://cjqf4q1mwbr5e" path="res://scripts/place_walls.gd" id="9_pynjx"]
+[ext_resource type="Script" path="res://scripts/place_walls.gd" id="9_pynjx"]
 
 [sub_resource type="GDScript" id="GDScript_pynjx"]
 resource_name = "pausetry"
@@ -252,6 +252,7 @@ horizontal_alignment = 1
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -16.5, 1.5, -19.5)
 
 [node name="Player" parent="." instance=ExtResource("5_7s5hy")]
+play_hop_sound = true
 
 [node name="Camera3D" type="Camera3D" parent="Player"]
 transform = Transform3D(0.707107, -0.612373, 0.353553, 0, 0.5, 0.866026, -0.707107, -0.612373, 0.353553, 2.915, 7.2, 3)

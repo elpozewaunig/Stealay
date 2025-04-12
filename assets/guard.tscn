@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://nr2r0k5cvjob" path="res://assets/models/guardv2/guardedit.gltf" id="3_lngpj"]
 [ext_resource type="Texture2D" uid="uid://b5qyqtkb4hyi1" path="res://assets/models/guardv2/guardtext.png" id="4_kssj1"]
 [ext_resource type="Material" uid="uid://kehluajayyfs" path="res://assets/models/guardv2/guardmat.tres" id="4_lngpj"]
+[ext_resource type="AudioStream" uid="uid://bvgu3cf5w35nn" path="res://assets/sounds/spotted/spotted.ogg" id="6_lngpj"]
 
 [sub_resource type="Animation" id="Animation_k7l5m"]
 length = 0.001
@@ -646,8 +647,9 @@ libraries = {
 &"": SubResource("AnimationLibrary_hiyts")
 }
 
-[node name="Node3D" type="Node3D" parent="RotationAnimator"]
+[node name="Node3D" type="Node3D" parent="RotationAnimator" node_paths=PackedStringArray("spotted_sound")]
 script = ExtResource("3_k7l5m")
+spotted_sound = NodePath("../../SpottedSound")
 
 [node name="RayCast3D" type="RayCast3D" parent="RotationAnimator/Node3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -911,3 +913,6 @@ debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 visible = false
 mesh = SubResource("BoxMesh_m4837")
+
+[node name="SpottedSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_lngpj")

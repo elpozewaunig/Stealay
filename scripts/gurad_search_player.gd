@@ -2,6 +2,8 @@ extends Node3D
 
 signal player_spotted()
 
+@export var spotted_sound: AudioStreamPlayer
+
 var was_colliding_last_frame = {}
 
 func _ready() -> void:
@@ -21,6 +23,8 @@ func _physics_process(_delta: float) -> void:
 			if object_hit and object_hit.collision_layer == 1:
 				print("RayCast detected hit: ", object_hit.name)
 				emit_signal("player_spotted")
+				if not Globals.player_spotted:
+					spotted_sound.play()
 				Globals.player_spotted = true
 		
 		was_colliding_last_frame[ray] = is_colliding_now

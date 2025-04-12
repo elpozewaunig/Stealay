@@ -10,7 +10,6 @@ func _ready() -> void:
 	show()
 
 func _on_page_flip(direction: int = 3) -> void:
-	show()
 	var current_image = current_view.get_texture().get_image()
 	#sprite_to_flip.texture = ImageTexture.create_from_image(current_image)
 	mesh_material_to_flip.albedo_texture = ImageTexture.create_from_image(current_image)
@@ -24,3 +23,4 @@ func _on_page_flip(direction: int = 3) -> void:
 		
 	elif direction == 3:
 		animation_player.play("deformflip")
+	show()

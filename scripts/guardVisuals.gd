@@ -2,6 +2,8 @@ extends Node3D
 
 @export var input_sequence: Array[Globals.movement] = []
 @export var on_patrol: bool = true
+@export var play_hop_sound: bool = false
+@export var hop_sound: AudioStreamPlayer
 @export var AnimPlayer: AnimationPlayer
 @export var HopAnimator: Node3D
 @export var RotationAnimator: Node3D
@@ -79,6 +81,8 @@ func _move(direction: Vector3) -> void:
 	prev_position = next_position
 	global_position = prev_position
 	next_position = global_position + direction
+	if play_hop_sound:
+		hop_sound.play()
 	
 func _rotateVisually(rot: Vector3) -> void:
 	rot_time = 0.0

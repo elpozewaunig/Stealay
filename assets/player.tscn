@@ -1,7 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://b44tvfhd3lcf1"]
+[gd_scene load_steps=21 format=3 uid="uid://b44tvfhd3lcf1"]
 
 [ext_resource type="Script" uid="uid://c16qi3cfubcaj" path="res://scripts/guardVisuals.gd" id="1_3mip4"]
 [ext_resource type="PackedScene" uid="uid://djrqqx1mo8ppp" path="res://assets/models/player2/PlayerGuy_Angemalen_Animation.gltf" id="2_3mip4"]
+[ext_resource type="AudioStream" uid="uid://8u4nkr7g6vvq" path="res://assets/sounds/step/step1.wav" id="3_23yx3"]
+[ext_resource type="AudioStream" uid="uid://dd7kg8w67j6fs" path="res://assets/sounds/step/step2.wav" id="4_lgdun"]
+[ext_resource type="AudioStream" uid="uid://cf03g2ucqissq" path="res://assets/sounds/step/step11.wav" id="5_dclhl"]
+[ext_resource type="AudioStream" uid="uid://d3v3v13obphys" path="res://assets/sounds/step/step12.wav" id="6_cbn5g"]
+[ext_resource type="AudioStream" uid="uid://cvwq7457rvpj1" path="res://assets/sounds/step/step3.wav" id="7_6kviw"]
+[ext_resource type="AudioStream" uid="uid://bhbixv3vhslun" path="res://assets/sounds/step/step4.wav" id="8_pt7v0"]
+[ext_resource type="AudioStream" uid="uid://cww1vawkwlb0j" path="res://assets/sounds/step/step5.wav" id="9_m1hsq"]
+[ext_resource type="AudioStream" uid="uid://cuekxmyvmbthr" path="res://assets/sounds/step/step6.wav" id="10_irwor"]
+[ext_resource type="AudioStream" uid="uid://b2l0fgj173jl5" path="res://assets/sounds/step/step7.wav" id="11_ib4e7"]
+[ext_resource type="AudioStream" uid="uid://dlii43y3pkuwm" path="res://assets/sounds/step/step8.wav" id="12_67mtf"]
+[ext_resource type="AudioStream" uid="uid://cd12uejv21sf6" path="res://assets/sounds/step/step9.wav" id="13_m0ick"]
+[ext_resource type="AudioStream" uid="uid://cda7r78rqof6g" path="res://assets/sounds/step/step10.wav" id="14_1npgd"]
 
 [sub_resource type="Animation" id="Animation_k7l5m"]
 length = 0.001
@@ -153,8 +165,24 @@ _data = {
 radius = 0.261866
 height = 0.877186
 
-[node name="Guard" type="Node3D" node_paths=PackedStringArray("AnimPlayer", "HopAnimator", "RotationAnimator")]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2asft"]
+streams_count = 12
+stream_0/stream = ExtResource("3_23yx3")
+stream_1/stream = ExtResource("4_lgdun")
+stream_2/stream = ExtResource("7_6kviw")
+stream_3/stream = ExtResource("8_pt7v0")
+stream_4/stream = ExtResource("9_m1hsq")
+stream_5/stream = ExtResource("10_irwor")
+stream_6/stream = ExtResource("11_ib4e7")
+stream_7/stream = ExtResource("12_67mtf")
+stream_8/stream = ExtResource("13_m0ick")
+stream_9/stream = ExtResource("14_1npgd")
+stream_10/stream = ExtResource("5_dclhl")
+stream_11/stream = ExtResource("6_cbn5g")
+
+[node name="Guard" type="Node3D" node_paths=PackedStringArray("hop_sound", "AnimPlayer", "HopAnimator", "RotationAnimator")]
 script = ExtResource("1_3mip4")
+hop_sound = NodePath("HopSound")
 AnimPlayer = NodePath("RotationAnimator/AnimationPlayer")
 HopAnimator = NodePath("RotationAnimator/HopAnimator")
 RotationAnimator = NodePath("RotationAnimator")
@@ -187,3 +215,6 @@ mesh = SubResource("BoxMesh_m4837")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15753, 0)
 shape = SubResource("CapsuleShape3D_insbl")
+
+[node name="HopSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_2asft")

@@ -327,6 +327,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -7)
 input_sequence = Array[int]([0, 0, 0, 0, 0, 2, 2, 1, 1, 1, 1, 1, 3, 3, 1, 3, 1, 1, 2, 2, 0, 0, 0, 3])
 
 [node name="Player" parent="." instance=ExtResource("10_ec7cf")]
+play_hop_sound = true
 
 [node name="MovementManager" type="Node" parent="."]
 

@@ -1,0 +1,44 @@
+[gd_scene load_steps=17 format=3 uid="uid://dptpc6b54d3bn"]
+
+[ext_resource type="Script" uid="uid://bvcbl54x7b7m5" path="res://scripts/button_audio_player.gd" id="1_1gmnu"]
+[ext_resource type="AudioStream" uid="uid://8xspqrbpbx2x" path="res://assets/sounds/click/click1.wav" id="2_qbguq"]
+[ext_resource type="AudioStream" uid="uid://q6lapieil3bu" path="res://assets/sounds/click/click2.wav" id="3_236sx"]
+[ext_resource type="AudioStream" uid="uid://bg5701w26slqg" path="res://assets/sounds/click/click3.wav" id="4_l4woc"]
+[ext_resource type="AudioStream" uid="uid://bktvcj1vg7kns" path="res://assets/sounds/click/click4.wav" id="5_s3e36"]
+[ext_resource type="AudioStream" uid="uid://dne0xra01m61a" path="res://assets/sounds/click/click5.wav" id="6_7opt8"]
+[ext_resource type="AudioStream" uid="uid://ptbcudnhiphy" path="res://assets/sounds/hover/hover1.wav" id="7_8m73b"]
+[ext_resource type="AudioStream" uid="uid://c6pr48ravxaha" path="res://assets/sounds/hover/hover2.wav" id="8_qbguq"]
+[ext_resource type="AudioStream" uid="uid://dyc18pikid1l0" path="res://assets/sounds/hover/hover3.wav" id="9_nktjy"]
+[ext_resource type="AudioStream" uid="uid://dwecnn1hv5sgh" path="res://assets/sounds/hover/hover4.wav" id="10_hsu8t"]
+[ext_resource type="AudioStream" uid="uid://cpq5cl1326xem" path="res://assets/sounds/hover/hover5.wav" id="11_uyugm"]
+[ext_resource type="AudioStream" uid="uid://btemod0ix7v7s" path="res://assets/sounds/hover/hover6.wav" id="12_tbijr"]
+[ext_resource type="AudioStream" uid="uid://c75ojd8gwdeof" path="res://assets/sounds/hover/hover7.wav" id="13_x35vd"]
+[ext_resource type="AudioStream" uid="uid://beiocq0ed3hr7" path="res://assets/sounds/hover/hover8.wav" id="14_b22gq"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8vx4p"]
+streams_count = 5
+stream_0/stream = ExtResource("2_qbguq")
+stream_1/stream = ExtResource("3_236sx")
+stream_2/stream = ExtResource("4_l4woc")
+stream_3/stream = ExtResource("5_s3e36")
+stream_4/stream = ExtResource("6_7opt8")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hubol"]
+streams_count = 8
+stream_0/stream = ExtResource("7_8m73b")
+stream_1/stream = ExtResource("8_qbguq")
+stream_2/stream = ExtResource("9_nktjy")
+stream_3/stream = ExtResource("10_hsu8t")
+stream_4/stream = ExtResource("11_uyugm")
+stream_5/stream = ExtResource("12_tbijr")
+stream_6/stream = ExtResource("13_x35vd")
+stream_7/stream = ExtResource("14_b22gq")
+
+[node name="ButtonAudioPlayer" type="Node2D"]
+script = ExtResource("1_1gmnu")
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_8vx4p")
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_hubol")
