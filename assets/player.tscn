@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://b44tvfhd3lcf1"]
+[gd_scene load_steps=8 format=3 uid="uid://b44tvfhd3lcf1"]
 
 [ext_resource type="Script" uid="uid://c16qi3cfubcaj" path="res://scripts/guardVisuals.gd" id="1_3mip4"]
-[ext_resource type="PackedScene" uid="uid://dnj8dlx4y3qhe" path="res://assets/models/placeholderguard/figure.tscn" id="2_insbl"]
-[ext_resource type="Texture2D" uid="uid://dxmhvfj33g0v7" path="res://assets/models/placeholderplayer/playertext.png" id="3_insbl"]
+[ext_resource type="PackedScene" uid="uid://djrqqx1mo8ppp" path="res://assets/models/player2/PlayerGuy_Angemalen_Animation.gltf" id="2_3mip4"]
 
 [sub_resource type="Animation" id="Animation_k7l5m"]
 length = 0.001
@@ -148,18 +147,6 @@ _data = {
 &"hop": SubResource("Animation_m4837")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rug40"]
-albedo_texture = ExtResource("3_insbl")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mxi64"]
-albedo_texture = ExtResource("3_insbl")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nsdob"]
-albedo_texture = ExtResource("3_insbl")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yceh7"]
-albedo_texture = ExtResource("3_insbl")
-
 [sub_resource type="BoxMesh" id="BoxMesh_m4837"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_insbl"]
@@ -185,19 +172,10 @@ libraries = {
 [node name="Visual" type="Node3D" parent="RotationAnimator/HopAnimator"]
 transform = Transform3D(0.14, 0, 0, 0, 0.14, 0, 0, 0, 0.14, 0, -0.362254, 0)
 
-[node name="figur2" parent="RotationAnimator/HopAnimator/Visual" instance=ExtResource("2_insbl")]
+[node name="Node3D" type="Node3D" parent="RotationAnimator/HopAnimator/Visual"]
 
-[node name="Cube_006" parent="RotationAnimator/HopAnimator/Visual/figur2/Empty_003/Empty" index="0"]
-material_override = SubResource("StandardMaterial3D_rug40")
-
-[node name="Cube_005" parent="RotationAnimator/HopAnimator/Visual/figur2/Empty_003/Empty_001" index="0"]
-material_override = SubResource("StandardMaterial3D_mxi64")
-
-[node name="Cube_008" parent="RotationAnimator/HopAnimator/Visual/figur2/Empty_003/Empty_002" index="0"]
-material_override = SubResource("StandardMaterial3D_nsdob")
-
-[node name="Cube_004" parent="RotationAnimator/HopAnimator/Visual/figur2/Empty_003/Empty_004" index="0"]
-material_override = SubResource("StandardMaterial3D_yceh7")
+[node name="PlayerGuy_Angemalen_Animation" parent="RotationAnimator/HopAnimator/Visual/Node3D" instance=ExtResource("2_3mip4")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.035, 0)
 
 [node name="SIZE REFERENCE FLOOR CUBE" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -209,5 +187,3 @@ mesh = SubResource("BoxMesh_m4837")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15753, 0)
 shape = SubResource("CapsuleShape3D_insbl")
-
-[editable path="RotationAnimator/HopAnimator/Visual/figur2"]
