@@ -1,4 +1,4 @@
-[gd_scene load_steps=168 format=4 uid="uid://blbae5xp247m5"]
+[gd_scene load_steps=169 format=4 uid="uid://blbae5xp247m5"]
 
 [ext_resource type="Material" uid="uid://di5fqpigg60ge" path="res://assets/models/mapv3/materials/topdeckel.tres" id="1_jbyk8"]
 [ext_resource type="Texture2D" uid="uid://4sprrbup6joh" path="res://assets/models/mapv2/michi3.png" id="2_34sf1"]

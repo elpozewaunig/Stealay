@@ -6,8 +6,13 @@ extends Node3D
 @export var HopAnimator: Node3D
 @export var RotationAnimator: Node3D
 
+
 func _onready():
 	AnimPlayer.play("RESET")
+		
+
+var speed: int = 1
+
 
 @onready var time = 0
 @onready var rot_time = 0
@@ -18,6 +23,9 @@ func _onready():
 
 @onready var prev := "up"
 
+func _ready() -> void:
+	if get_tree().current_scene.name != Globals.game_scene_name:
+		speed = 10
 
 func moveUp() -> void:
 	_move(Vector3(0,0,-1))
@@ -64,7 +72,9 @@ func moveRight() -> void:
 	prev = "right"
 	
 func _move(direction: Vector3) -> void:
-	AnimPlayer.play("hop")
+	if get_tree().current_scene.name == Globals.game_scene_name:
+		AnimPlayer.play("hop")
+		
 	time = 0.0
 	prev_position = next_position
 	global_position = prev_position
@@ -76,10 +86,10 @@ func _rotateVisually(rot: Vector3) -> void:
 	next_rotation += rot
 	
 func _process(delta):
-	time += delta * 1
+	time += delta * speed
 	time = clamp(time, 0.0, 1.0)
 	global_position = prev_position.lerp(next_position,time)
 	
-	rot_time += delta * 1
+	rot_time += delta * speed
 	rot_time = clamp(rot_time, 0.0, 1.0)
 	RotationAnimator.rotation = prev_rotation.lerp(next_rotation,rot_time)
