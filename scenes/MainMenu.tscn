@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bg4w7m5cvf82n"]
+[gd_scene load_steps=19 format=3 uid="uid://bg4w7m5cvf82n"]
 
 [ext_resource type="Texture2D" uid="uid://bkc0f8pxf48qy" path="res://assets/sprites/icon.svg" id="1_yqorp"]
 [ext_resource type="Script" uid="uid://ctbg2yqhvown5" path="res://scripts/script.gd" id="2_0ykhv"]
 [ext_resource type="Theme" uid="uid://cb6idjbop8kw2" path="res://assets/sprites/CheckButtonBetter/BetterButton.tres" id="3_2wh52"]
+[ext_resource type="Script" uid="uid://dxfbi5lg82tc3" path="res://scripts/pageflip.gd" id="4_826wr"]
+[ext_resource type="Texture2D" uid="uid://cq3u3h02epvfg" path="res://assets/sprites/menu_placeholder.png" id="4_l72w3"]
 
 [sub_resource type="GDScript" id="GDScript_ow34m"]
 resource_name = "buttonlogic"
@@ -39,12 +41,15 @@ func forcequit():
 resource_name = "buttonlogic2"
 script/source = "extends Control
 
+signal page_flip(direction: int)
 
 func showMe() -> void:
+	page_flip.emit(-1)
 	show()
 
 
 func HideMe() -> void:
+	page_flip.emit(1)
 	hide()
 "
 
@@ -75,15 +80,81 @@ func _on_pressed() -> void:
 	OS.shell_open(\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\")
 "
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ow34m"]
+viewport_path = NodePath("SubViewport/Node2D/PageFlip/SubViewport")
 
-[node name="UI" type="Control" parent="."]
+[sub_resource type="World3D" id="World3D_l72w3"]
+
+[sub_resource type="Animation" id="Animation_826wr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ucygd"]
+resource_name = "flip_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 20)]
+}
+
+[sub_resource type="Animation" id="Animation_l72w3"]
+resource_name = "flip_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -20)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mipys"]
+_data = {
+&"RESET": SubResource("Animation_826wr"),
+&"flip_down": SubResource("Animation_ucygd"),
+&"flip_up": SubResource("Animation_l72w3")
+}
+
+[node name="SubViewportContainer" type="SubViewportContainer"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="SubViewport" type="SubViewport" parent="."]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Node2D" type="Node2D" parent="SubViewport"]
+
+[node name="UI" type="Control" parent="SubViewport/Node2D"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="DefaultView" type="Control" parent="UI"]
+[node name="DefaultView" type="Control" parent="SubViewport/Node2D/UI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -92,7 +163,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_ow34m")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/DefaultView"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/Node2D/UI/DefaultView"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -107,41 +178,40 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 30
 
-[node name="PlayButton" type="Button" parent="UI/DefaultView/VBoxContainer"]
+[node name="PlayButton" type="Button" parent="SubViewport/Node2D/UI/DefaultView/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 42
 text = "Play"
 script = SubResource("GDScript_826wr")
 
-[node name="OptionsButton" type="Button" parent="UI/DefaultView/VBoxContainer"]
+[node name="OptionsButton" type="Button" parent="SubViewport/Node2D/UI/DefaultView/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 42
 text = "Options"
 
-[node name="CreditsButton" type="Button" parent="UI/DefaultView/VBoxContainer"]
+[node name="CreditsButton" type="Button" parent="SubViewport/Node2D/UI/DefaultView/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 42
 text = "Credits"
 
-[node name="QuitButton" type="Button" parent="UI/DefaultView/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="SubViewport/Node2D/UI/DefaultView/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 42
 text = "Quit"
 script = SubResource("GDScript_2wh52")
 
-[node name="Label" type="Label" parent="UI/DefaultView"]
+[node name="Label" type="Label" parent="SubViewport/Node2D/UI/DefaultView"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.062
-anchor_right = 1.0
-anchor_bottom = 0.138
-offset_bottom = 157.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 115
 text = "#Q1's Eigenplagiat"
 horizontal_alignment = 1
 
-[node name="OptionsView" type="Control" parent="UI"]
+[node name="OptionsView" type="Control" parent="SubViewport/Node2D/UI"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -151,7 +221,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_l72w3")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/OptionsView"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/Node2D/UI/OptionsView"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -166,7 +236,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 30
 
-[node name="MuteSoundCheckButton" type="CheckButton" parent="UI/OptionsView/VBoxContainer"]
+[node name="MuteSoundCheckButton" type="CheckButton" parent="SubViewport/Node2D/UI/OptionsView/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_2wh52")
 theme_override_constants/icon_max_width = 60
@@ -176,7 +246,7 @@ vertical_icon_alignment = 0
 expand_icon = true
 script = SubResource("GDScript_mipys")
 
-[node name="MuteMusicAudioCheckButton" type="CheckButton" parent="UI/OptionsView/VBoxContainer"]
+[node name="MuteMusicAudioCheckButton" type="CheckButton" parent="SubViewport/Node2D/UI/OptionsView/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_2wh52")
 theme_override_constants/icon_max_width = 60
@@ -186,7 +256,7 @@ vertical_icon_alignment = 0
 expand_icon = true
 script = SubResource("GDScript_8a8k8")
 
-[node name="???" type="CheckButton" parent="UI/OptionsView/VBoxContainer"]
+[node name="???" type="CheckButton" parent="SubViewport/Node2D/UI/OptionsView/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_2wh52")
 theme_override_constants/icon_max_width = 60
@@ -196,12 +266,12 @@ vertical_icon_alignment = 0
 expand_icon = true
 script = SubResource("GDScript_ucygd")
 
-[node name="BackButton" type="Button" parent="UI/OptionsView/VBoxContainer"]
+[node name="BackButton" type="Button" parent="SubViewport/Node2D/UI/OptionsView/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 42
 text = "Back"
 
-[node name="Label" type="Label" parent="UI/OptionsView"]
+[node name="Label" type="Label" parent="SubViewport/Node2D/UI/OptionsView"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.062
@@ -213,7 +283,7 @@ theme_override_font_sizes/font_size = 115
 text = "Settings"
 horizontal_alignment = 1
 
-[node name="CreditsView" type="Control" parent="UI"]
+[node name="CreditsView" type="Control" parent="SubViewport/Node2D/UI"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -223,7 +293,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_l72w3")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="UI/CreditsView"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="SubViewport/Node2D/UI/CreditsView"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -238,7 +308,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 30
 
-[node name="Label" type="Label" parent="UI/CreditsView/VBoxContainer2"]
+[node name="Label" type="Label" parent="SubViewport/Node2D/UI/CreditsView/VBoxContainer2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 31
 text = "~Q1 Studios~
@@ -250,12 +320,12 @@ Markus Müllauer
 Tobias Wurzer"
 horizontal_alignment = 1
 
-[node name="BackButton" type="Button" parent="UI/CreditsView/VBoxContainer2"]
+[node name="BackButton" type="Button" parent="SubViewport/Node2D/UI/CreditsView/VBoxContainer2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 42
 text = "Back"
 
-[node name="Label" type="Label" parent="UI/CreditsView"]
+[node name="Label" type="Label" parent="SubViewport/Node2D/UI/CreditsView"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.062
@@ -267,21 +337,55 @@ theme_override_font_sizes/font_size = 115
 text = "Settings"
 horizontal_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport/Node2D"]
 position = Vector2(244.68, 845.665)
 scale = Vector2(2.2, 2.2)
 texture = ExtResource("1_yqorp")
 script = ExtResource("2_0ykhv")
 
-[connection signal="pressed" from="UI/DefaultView/VBoxContainer/PlayButton" to="UI/DefaultView/VBoxContainer/PlayButton" method="startGame"]
-[connection signal="pressed" from="UI/DefaultView/VBoxContainer/OptionsButton" to="UI/DefaultView" method="HideMe"]
-[connection signal="pressed" from="UI/DefaultView/VBoxContainer/OptionsButton" to="UI/OptionsView" method="showMe"]
-[connection signal="pressed" from="UI/DefaultView/VBoxContainer/CreditsButton" to="UI/DefaultView" method="HideMe"]
-[connection signal="pressed" from="UI/DefaultView/VBoxContainer/CreditsButton" to="UI/CreditsView" method="showMe"]
-[connection signal="pressed" from="UI/DefaultView/VBoxContainer/QuitButton" to="UI/DefaultView/VBoxContainer/QuitButton" method="forcequit"]
-[connection signal="pressed" from="UI/OptionsView/VBoxContainer/MuteSoundCheckButton" to="UI/OptionsView/VBoxContainer/MuteSoundCheckButton" method="_on_pressed"]
-[connection signal="pressed" from="UI/OptionsView/VBoxContainer/???" to="UI/OptionsView/VBoxContainer/???" method="_on_pressed"]
-[connection signal="pressed" from="UI/OptionsView/VBoxContainer/BackButton" to="UI/DefaultView" method="showMe"]
-[connection signal="pressed" from="UI/OptionsView/VBoxContainer/BackButton" to="UI/OptionsView" method="HideMe"]
-[connection signal="pressed" from="UI/CreditsView/VBoxContainer2/BackButton" to="UI/DefaultView" method="showMe"]
-[connection signal="pressed" from="UI/CreditsView/VBoxContainer2/BackButton" to="UI/CreditsView" method="HideMe"]
+[node name="Camera2D" type="Camera2D" parent="SubViewport/Node2D"]
+position = Vector2(960, 540)
+
+[node name="PageFlip" type="Sprite2D" parent="SubViewport/Node2D" node_paths=PackedStringArray("current_view", "sprite_to_flip", "animation_player")]
+position = Vector2(960, 540)
+texture = SubResource("ViewportTexture_ow34m")
+script = ExtResource("4_826wr")
+current_view = NodePath("../..")
+sprite_to_flip = NodePath("SubViewport/Node3D/Sprite3D")
+animation_player = NodePath("SubViewport/Node3D/AnimationPlayer")
+
+[node name="SubViewport" type="SubViewport" parent="SubViewport/Node2D/PageFlip"]
+world_3d = SubResource("World3D_l72w3")
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="SubViewport/Node2D/PageFlip/SubViewport"]
+
+[node name="Sprite3D" type="Sprite3D" parent="SubViewport/Node2D/PageFlip/SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+texture = ExtResource("4_l72w3")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport/Node2D/PageFlip/SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7.05, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewport/Node2D/PageFlip/SubViewport/Node3D"]
+libraries = {
+&"": SubResource("AnimationLibrary_mipys")
+}
+
+[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/VBoxContainer/PlayButton" to="SubViewport/Node2D/UI/DefaultView/VBoxContainer/PlayButton" method="startGame"]
+[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/VBoxContainer/OptionsButton" to="SubViewport/Node2D/UI/DefaultView" method="HideMe"]
+[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/VBoxContainer/OptionsButton" to="SubViewport/Node2D/UI/OptionsView" method="showMe"]
+[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/VBoxContainer/CreditsButton" to="SubViewport/Node2D/UI/DefaultView" method="HideMe"]
+[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/VBoxContainer/CreditsButton" to="SubViewport/Node2D/UI/CreditsView" method="showMe"]
+[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/VBoxContainer/QuitButton" to="SubViewport/Node2D/UI/DefaultView/VBoxContainer/QuitButton" method="forcequit"]
+[connection signal="page_flip" from="SubViewport/Node2D/UI/OptionsView" to="SubViewport/Node2D/PageFlip" method="_on_page_flip"]
+[connection signal="pressed" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteSoundCheckButton" to="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteSoundCheckButton" method="_on_pressed"]
+[connection signal="pressed" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/???" to="SubViewport/Node2D/UI/OptionsView/VBoxContainer/???" method="_on_pressed"]
+[connection signal="pressed" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/BackButton" to="SubViewport/Node2D/UI/DefaultView" method="showMe"]
+[connection signal="pressed" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/BackButton" to="SubViewport/Node2D/UI/OptionsView" method="HideMe"]
+[connection signal="page_flip" from="SubViewport/Node2D/UI/CreditsView" to="SubViewport/Node2D/PageFlip" method="_on_page_flip"]
+[connection signal="pressed" from="SubViewport/Node2D/UI/CreditsView/VBoxContainer2/BackButton" to="SubViewport/Node2D/UI/DefaultView" method="showMe"]
+[connection signal="pressed" from="SubViewport/Node2D/UI/CreditsView/VBoxContainer2/BackButton" to="SubViewport/Node2D/UI/CreditsView" method="HideMe"]
