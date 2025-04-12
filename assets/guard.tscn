@@ -916,3 +916,4 @@ mesh = SubResource("BoxMesh_m4837")
 
 [node name="SpottedSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_lngpj")
+bus = &"SFX"

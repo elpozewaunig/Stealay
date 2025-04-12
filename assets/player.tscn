@@ -218,3 +218,4 @@ shape = SubResource("CapsuleShape3D_insbl")
 
 [node name="HopSound" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_2asft")
+bus = &"SFX"
