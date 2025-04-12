@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://tfksyvs2qbdu"]
+[gd_scene load_steps=24 format=3 uid="uid://tfksyvs2qbdu"]
 
 [ext_resource type="Script" uid="uid://lntsseib6ktx" path="res://scripts/planning_scene.gd" id="1_i05ib"]
 [ext_resource type="PackedScene" uid="uid://csr8qdvijf7o8" path="res://assets/HeistPlanner.tscn" id="2_sfq2c"]
 [ext_resource type="Script" uid="uid://d0klmhrydubhb" path="res://scripts/game_manager.gd" id="3_pbho8"]
+[ext_resource type="PackedScene" uid="uid://dptpc6b54d3bn" path="res://assets/ui/button_audio_player.tscn" id="5_a8q4l"]
 [ext_resource type="Theme" uid="uid://cb6idjbop8kw2" path="res://assets/sprites/CheckButtonBetter/BetterButton.tres" id="5_rly6o"]
 [ext_resource type="Script" uid="uid://dbq3ndy5purel" path="res://scripts/TuringBandUIManager.gd" id="7_1rttj"]
 [ext_resource type="Script" uid="uid://bxcsx3v1tofol" path="res://scripts/bandlController.gd" id="8_0acuf"]
@@ -188,11 +189,15 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 42
 text = "Options"
 
+[node name="ButtonAudioPlayer" parent="PauseMenu/UI/DefaultView/VBoxContainer/OptionsButton" instance=ExtResource("5_a8q4l")]
+
 [node name="MainMenu" type="Button" parent="PauseMenu/UI/DefaultView/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 42
 text = "Main Menu"
 script = SubResource("GDScript_y7sd5")
+
+[node name="ButtonAudioPlayer" parent="PauseMenu/UI/DefaultView/VBoxContainer/MainMenu" instance=ExtResource("5_a8q4l")]
 
 [node name="OptionsView" type="Control" parent="PauseMenu/UI"]
 visible = false
@@ -229,6 +234,8 @@ vertical_icon_alignment = 0
 expand_icon = true
 script = SubResource("GDScript_un3xe")
 
+[node name="ButtonAudioPlayer" parent="PauseMenu/UI/OptionsView/VBoxContainer/MuteSoundCheckButton" instance=ExtResource("5_a8q4l")]
+
 [node name="MuteMusicAudioCheckButton" type="CheckButton" parent="PauseMenu/UI/OptionsView/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("5_rly6o")
@@ -238,6 +245,8 @@ text = "Mute Music"
 vertical_icon_alignment = 0
 expand_icon = true
 script = SubResource("GDScript_a8q4l")
+
+[node name="ButtonAudioPlayer" parent="PauseMenu/UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" instance=ExtResource("5_a8q4l")]
 
 [node name="???" type="CheckButton" parent="PauseMenu/UI/OptionsView/VBoxContainer"]
 layout_mode = 2
@@ -249,10 +258,14 @@ vertical_icon_alignment = 0
 expand_icon = true
 script = SubResource("GDScript_ibx1f")
 
+[node name="ButtonAudioPlayer" parent="PauseMenu/UI/OptionsView/VBoxContainer/???" instance=ExtResource("5_a8q4l")]
+
 [node name="BackButton" type="Button" parent="PauseMenu/UI/OptionsView/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 42
 text = "Back"
+
+[node name="ButtonAudioPlayer" parent="PauseMenu/UI/OptionsView/VBoxContainer/BackButton" instance=ExtResource("5_a8q4l")]
 
 [node name="Label" type="Label" parent="PauseMenu/UI/OptionsView"]
 layout_mode = 1
@@ -354,11 +367,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -22)
 [connection signal="heist_planned" from="HeistPlanner" to="MovementManager/PlanningScenePlayerController" method="_on_heist_planner_heist_planned"]
 [connection signal="remove_last_movement" from="HeistPlanner" to="TuringBandlUI" method="_on_heist_planner_remove_last_movement"]
 [connection signal="remove_last_movement" from="HeistPlanner" to="MovementManager/PlanningScenePlayerController" method="_on_heist_planner_remove_last_movement"]
+[connection signal="mouse_entered" from="PauseMenu/UI/DefaultView/VBoxContainer/OptionsButton" to="PauseMenu/UI/DefaultView/VBoxContainer/OptionsButton/ButtonAudioPlayer" method="_on_hover"]
 [connection signal="pressed" from="PauseMenu/UI/DefaultView/VBoxContainer/OptionsButton" to="PauseMenu/UI/DefaultView" method="HideMe"]
 [connection signal="pressed" from="PauseMenu/UI/DefaultView/VBoxContainer/OptionsButton" to="PauseMenu/UI/OptionsView" method="showMe"]
+[connection signal="pressed" from="PauseMenu/UI/DefaultView/VBoxContainer/OptionsButton" to="PauseMenu/UI/DefaultView/VBoxContainer/OptionsButton/ButtonAudioPlayer" method="_on_click"]
+[connection signal="mouse_entered" from="PauseMenu/UI/DefaultView/VBoxContainer/MainMenu" to="PauseMenu/UI/DefaultView/VBoxContainer/MainMenu/ButtonAudioPlayer" method="_on_hover"]
 [connection signal="pressed" from="PauseMenu/UI/DefaultView/VBoxContainer/MainMenu" to="PauseMenu/UI/DefaultView/VBoxContainer/MainMenu" method="backMainMenu"]
+[connection signal="pressed" from="PauseMenu/UI/DefaultView/VBoxContainer/MainMenu" to="PauseMenu/UI/DefaultView/VBoxContainer/MainMenu/ButtonAudioPlayer" method="_on_click"]
+[connection signal="mouse_entered" from="PauseMenu/UI/OptionsView/VBoxContainer/MuteSoundCheckButton" to="PauseMenu/UI/OptionsView/VBoxContainer/MuteSoundCheckButton/ButtonAudioPlayer" method="_on_hover"]
 [connection signal="pressed" from="PauseMenu/UI/OptionsView/VBoxContainer/MuteSoundCheckButton" to="PauseMenu/UI/OptionsView/VBoxContainer/MuteSoundCheckButton" method="_on_pressed"]
+[connection signal="pressed" from="PauseMenu/UI/OptionsView/VBoxContainer/MuteSoundCheckButton" to="PauseMenu/UI/OptionsView/VBoxContainer/MuteSoundCheckButton/ButtonAudioPlayer" method="_on_click"]
+[connection signal="mouse_entered" from="PauseMenu/UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" to="PauseMenu/UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton/ButtonAudioPlayer" method="_on_hover"]
 [connection signal="pressed" from="PauseMenu/UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" to="PauseMenu/UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" method="_on_pressed"]
+[connection signal="pressed" from="PauseMenu/UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" to="PauseMenu/UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton/ButtonAudioPlayer" method="_on_click"]
+[connection signal="mouse_entered" from="PauseMenu/UI/OptionsView/VBoxContainer/???" to="PauseMenu/UI/OptionsView/VBoxContainer/???/ButtonAudioPlayer" method="_on_hover"]
 [connection signal="pressed" from="PauseMenu/UI/OptionsView/VBoxContainer/???" to="PauseMenu/UI/OptionsView/VBoxContainer/???" method="_on_pressed"]
+[connection signal="pressed" from="PauseMenu/UI/OptionsView/VBoxContainer/???" to="PauseMenu/UI/OptionsView/VBoxContainer/???/ButtonAudioPlayer" method="_on_click"]
+[connection signal="mouse_entered" from="PauseMenu/UI/OptionsView/VBoxContainer/BackButton" to="PauseMenu/UI/OptionsView/VBoxContainer/BackButton/ButtonAudioPlayer" method="_on_hover"]
 [connection signal="pressed" from="PauseMenu/UI/OptionsView/VBoxContainer/BackButton" to="PauseMenu/UI/DefaultView" method="showMe"]
 [connection signal="pressed" from="PauseMenu/UI/OptionsView/VBoxContainer/BackButton" to="PauseMenu/UI/OptionsView" method="HideMe"]
+[connection signal="pressed" from="PauseMenu/UI/OptionsView/VBoxContainer/BackButton" to="PauseMenu/UI/OptionsView/VBoxContainer/BackButton/ButtonAudioPlayer" method="_on_click"]
