@@ -29,7 +29,7 @@ func hide_all():
 	LeftArrowSymbol.hide()
 	RightArrowSymbol.hide()
 	HideArrowSymbol.hide()
-	EmptyArrowSymbol.hide()
+	EmptyArrowSymbol.show()
 func change_visibility(sel: movement, empty) -> void:
 	hide_all()
 	movementPos = sel

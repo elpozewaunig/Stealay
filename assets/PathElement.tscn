@@ -1,3 +1,13 @@
-[gd_scene load_steps=0 format=3 uid="uid://bg05c2k8pghfo"]
+[gd_scene load_steps=3 format=3 uid="uid://bg05c2k8pghfo"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_esxmd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nxj2s"]
+transparency = 1
+albedo_color = Color(0, 1, 1, 0.52549)
 
 [node name="PathElement" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_esxmd")
+surface_material_override/0 = SubResource("StandardMaterial3D_nxj2s")
