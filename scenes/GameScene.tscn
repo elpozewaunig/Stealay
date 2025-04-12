@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://emtjvummxi6o" path="res://scripts/guard_mover.gd" id="6_xs4ih"]
 [ext_resource type="Script" uid="uid://fve4ylqy7j1n" path="res://scripts/player_mover.gd" id="7_6ytau"]
 [ext_resource type="PackedScene" uid="uid://dsn1mnxuhm7jh" path="res://assets/GoalObject.tscn" id="8_vijgj"]
-[ext_resource type="Script" uid="uid://cjqf4q1mwbr5e" path="res://scripts/place_walls.gd" id="9_pynjx"]
+[ext_resource type="Script" path="res://scripts/place_walls.gd" id="9_pynjx"]
 
 [sub_resource type="GDScript" id="GDScript_pynjx"]
 resource_name = "pausetry"

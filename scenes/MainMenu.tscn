@@ -664,32 +664,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_7qnyy")
 }
 
-[node name="SubViewport_Node2D_UI_DefaultView_VBoxContainer_PlayButton#ButtonAudioPlayer" parent="." instance=ExtResource("1_mipys")]
-position = Vector2(-841.5, -363)
-
-[node name="SubViewport_Node2D_UI_DefaultView_VBoxContainer#OptionsButton" type="Button" parent="."]
-layout_mode = 2
-theme_override_font_sizes/font_size = 42
-text = "Options"
-
-[node name="SubViewport_Node2D_UI_DefaultView_VBoxContainer_OptionsButton#ButtonAudioPlayer" parent="." instance=ExtResource("1_mipys")]
-
-[node name="SubViewport_Node2D_UI_DefaultView_VBoxContainer_OptionsButton#PageAudioPlayer" parent="." instance=ExtResource("2_8a8k8")]
-
-[node name="SubViewport_Node2D_UI_DefaultView_VBoxContainer#CreditsButton" type="Button" parent="."]
-layout_mode = 2
-theme_override_font_sizes/font_size = 42
-text = "Credits"
-
-[node name="SubViewport_Node2D_UI_DefaultView_VBoxContainer_CreditsButton#ButtonAudioPlayer" parent="." instance=ExtResource("1_mipys")]
-
-[node name="SubViewport_Node2D_UI_DefaultView_VBoxContainer_CreditsButton#PageAudioPlayer" parent="." instance=ExtResource("2_8a8k8")]
-
-[node name="SubViewport_Node2D_UI_DefaultView_VBoxContainer#QuitButton" type="Button" parent="."]
-layout_mode = 2
-
-[node name="SubViewport_Node2D_UI_DefaultView_VBoxContainer_QuitButton#ButtonAudioPlayer" parent="." instance=ExtResource("1_mipys")]
-
 [connection signal="mouse_entered" from="SubViewport/Node2D/UI/DefaultView/PlayButton" to="SubViewport/Node2D/UI/DefaultView/PlayButton/FancyButton" method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_entered" from="SubViewport/Node2D/UI/DefaultView/PlayButton" to="SubViewport/Node2D/UI/DefaultView/PlayButton/ButtonAudioPlayer" method="_on_hover"]
 [connection signal="mouse_exited" from="SubViewport/Node2D/UI/DefaultView/PlayButton" to="SubViewport/Node2D/UI/DefaultView/PlayButton/FancyButton" method="_on_area_2d_mouse_exited"]
