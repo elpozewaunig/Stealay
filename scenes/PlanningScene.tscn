@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b44tvfhd3lcf1" path="res://assets/player.tscn" id="10_ec7cf"]
 [ext_resource type="Script" uid="uid://emtjvummxi6o" path="res://scripts/guard_mover.gd" id="11_y7sd5"]
 [ext_resource type="Script" uid="uid://der2d8iibxg75" path="res://scripts/planning_scene_player_controller.gd" id="12_y7sd5"]
-[ext_resource type="Texture2D" uid="uid://bqdq7qusxlios" path="res://assets/ui/planningscreenmap/map_in_lineart_scaled.jpg" id="13_tpsa2"]
+[ext_resource type="Texture2D" uid="uid://cwu2sxpm5by5h" path="res://assets/ui/planningscreenmap/map_in_lineart_scaled.png" id="13_un3xe"]
 [ext_resource type="PackedScene" uid="uid://dsn1mnxuhm7jh" path="res://assets/GoalObject.tscn" id="14_un3xe"]
 
 [sub_resource type="Environment" id="Environment_1rttj"]
@@ -340,7 +340,7 @@ player = NodePath("../../Player")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(2.325, 0, 0, 0, -1.01629e-07, 2.325, 0, -2.325, -1.01629e-07, -11.955, -1.443, -11.964)
-texture = ExtResource("13_tpsa2")
+texture = ExtResource("13_un3xe")
 
 [node name="GoalObject" parent="." instance=ExtResource("14_un3xe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -22)
