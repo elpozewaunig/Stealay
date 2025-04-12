@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cauctc1dvn3a7"]
+
+[ext_resource type="Texture2D" uid="uid://bypfwcvr5tmx2" path="res://assets/models/mapv3/BorderWall_Bake_V1.png" id="1_761k7"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_761k7")

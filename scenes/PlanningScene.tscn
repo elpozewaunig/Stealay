@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://emtjvummxi6o" path="res://scripts/guard_mover.gd" id="11_y7sd5"]
 [ext_resource type="Script" uid="uid://der2d8iibxg75" path="res://scripts/planning_scene_player_controller.gd" id="12_y7sd5"]
 [ext_resource type="Texture2D" uid="uid://bqdq7qusxlios" path="res://assets/ui/planningscreenmap/map_in_lineart_scaled.jpg" id="13_tpsa2"]
-[ext_resource type="PackedScene" uid="uid://dsn1mnxuhm7jh" path="res://assets/GoalObject.tscn" id="14_un3xe"]
+[ext_resource type="PackedScene" path="res://assets/GoalObject.tscn" id="14_un3xe"]
 
 [sub_resource type="Environment" id="Environment_1rttj"]
 background_energy_multiplier = 0.0

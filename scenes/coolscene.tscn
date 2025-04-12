@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dubl7608be7qp" path="res://assets/sounds/ultra low quality funky town.mp3" id="4_g3jp6"]
 [ext_resource type="Theme" uid="uid://cb6idjbop8kw2" path="res://assets/sprites/CheckButtonBetter/BetterButton.tres" id="5_f3fys"]
 [ext_resource type="PackedScene" uid="uid://caljcteyi14oj" path="res://assets/models/seal.tscn" id="6_m7f3s"]
-[ext_resource type="Script" uid="uid://dbq3ndy5purel" path="res://scripts/TestingSkript.gd" id="7_plimm"]
+[ext_resource type="Script" uid="uid://dbq3ndy5purel" path="res://scripts/TuringBandUIManager.gd" id="7_plimm"]
 [ext_resource type="Script" uid="uid://bxcsx3v1tofol" path="res://scripts/bandlController.gd" id="8_8f0e8"]
 [ext_resource type="PackedScene" uid="uid://cxy4hikcjoxb7" path="res://assets/ui/turing_bandl_instruction_element_ui_scene.tscn" id="9_3ba6g"]
 
