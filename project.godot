@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="KluJam 2025"
+config/name="Stealay"
 config/tags=PackedStringArray("game", "jam")
 run/main_scene="uid://bg4w7m5cvf82n"
 config/features=PackedStringArray("4.4", "GL Compatibility")
