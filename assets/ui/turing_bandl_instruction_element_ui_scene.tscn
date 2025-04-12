@@ -1,12 +1,12 @@
 [gd_scene load_steps=20 format=3 uid="uid://cxy4hikcjoxb7"]
 
 [ext_resource type="Script" uid="uid://oi8rybdakg5l" path="res://scripts/ui_bandlinstruction.gd" id="1_0xnjm"]
-[ext_resource type="Texture2D" uid="uid://bl7oxsweocw2o" path="res://assets/ui/turingbandlarrowicons/up.png" id="1_8itmi"]
-[ext_resource type="Texture2D" uid="uid://2nu052otf56u" path="res://assets/ui/turingbandlarrowicons/empty.png" id="2_0xnjm"]
-[ext_resource type="Texture2D" uid="uid://45bo3oxe8h6v" path="res://assets/ui/turingbandlarrowicons/down.png" id="3_5ifky"]
-[ext_resource type="Texture2D" uid="uid://dpe143xfk4gv0" path="res://assets/ui/turingbandlarrowicons/left.png" id="4_8308m"]
-[ext_resource type="Texture2D" uid="uid://brssr5d7i7si6" path="res://assets/ui/turingbandlarrowicons/right.png" id="5_mhnxi"]
-[ext_resource type="Texture2D" uid="uid://c8umfhef54iul" path="res://assets/ui/turingbandlarrowicons/hide.png" id="6_urn0h"]
+[ext_resource type="Texture2D" uid="uid://caws74fycwoi2" path="res://assets/ui/post_its/arrowUp.png" id="2_mhnxi"]
+[ext_resource type="Texture2D" uid="uid://bmw0r7wnp1my7" path="res://assets/ui/post_its/arrowDown.png" id="3_urn0h"]
+[ext_resource type="Texture2D" uid="uid://w1eneq7xmy85" path="res://assets/ui/post_its/arrowLeft.png" id="4_pcu6u"]
+[ext_resource type="Texture2D" uid="uid://dccwu5lwgfhps" path="res://assets/ui/post_its/arrowR.png" id="5_48324"]
+[ext_resource type="Texture2D" uid="uid://bnpx5induylqr" path="res://assets/ui/post_its/eye.png" id="6_s88lv"]
+[ext_resource type="Texture2D" uid="uid://cl4lwnow7hmmq" path="res://assets/ui/post_its/empty.png" id="7_0de6y"]
 [ext_resource type="Texture2D" uid="uid://7qxcvhr2tmlp" path="res://assets/ui/turingbandlarrowicons/selectionsymbol.png" id="8_8308m"]
 [ext_resource type="Texture2D" uid="uid://byu231mdxjm12" path="res://assets/ui/turingbandlarrowicons/notselectionsymbol.png" id="9_mhnxi"]
 
@@ -14,22 +14,22 @@
 bg_color = Color(0.447059, 0.72549, 0.647059, 0.709804)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pcu6u"]
-texture = ExtResource("1_8itmi")
+texture = ExtResource("2_mhnxi")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_48324"]
-texture = ExtResource("3_5ifky")
+texture = ExtResource("3_urn0h")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s88lv"]
-texture = ExtResource("4_8308m")
+texture = ExtResource("4_pcu6u")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0de6y"]
-texture = ExtResource("5_mhnxi")
+texture = ExtResource("5_48324")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_60um3"]
-texture = ExtResource("6_urn0h")
+texture = ExtResource("6_s88lv")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0xnjm"]
-texture = ExtResource("2_0xnjm")
+texture = ExtResource("7_0de6y")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8itmi"]
 bg_color = Color(0.490717, 0.63602, 0.604071, 1)
