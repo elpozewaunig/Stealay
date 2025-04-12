@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://dmgued37oqehb" path="res://assets/models/mapv3/materials/rim.tres" id="3_ar1pb"]
 [ext_resource type="Material" uid="uid://b3v0ndrebcu4m" path="res://assets/models/mapv3/materials/floor.tres" id="4_k187t"]
 [ext_resource type="Material" uid="uid://owangkvtqk7i" path="res://assets/models/mapv3/materials/outerwalltopdeckel.tres" id="5_elcyq"]
+[ext_resource type="Script" uid="uid://cjqf4q1mwbr5e" path="res://scripts/place_walls.gd" id="5_k187t"]
 [ext_resource type="Material" uid="uid://cauctc1dvn3a7" path="res://assets/models/mapv3/materials/outerwall.tres" id="5_suxna"]
 [ext_resource type="Material" uid="uid://dwgd8is7xxw70" path="res://assets/models/mapv3/materials/decorations/newspaperwall.tres" id="7_elcyq"]
 [ext_resource type="Material" uid="uid://2p411d47gi7u" path="res://assets/models/mapv3/materials/decorations/museumbigtextonwall.tres" id="7_f2m7g"]
@@ -3093,3 +3094,6 @@ skeleton = NodePath("")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.810232, -0.539215, -0.229721, 0.529732, 0.50598, 0.680711, -0.250816, -0.673225, 0.695601, 0, 1.67337, 0)
+
+[node name="Walls" type="Node3D" parent="."]
+script = ExtResource("5_k187t")

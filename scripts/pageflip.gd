@@ -1,12 +1,19 @@
 extends Sprite2D
 
 @export var current_view: Viewport
-@export var sprite_to_flip: Sprite3D
+#@export var sprite_to_flip: Sprite3D
+@export var mesh_material_to_flip: StandardMaterial3D
 @export var animation_player: AnimationPlayer
 
+
+func _ready() -> void:
+	hide()
+
 func _on_page_flip(direction: int = 1) -> void:
+	show()
 	var current_image = current_view.get_texture().get_image()
-	sprite_to_flip.texture = ImageTexture.create_from_image(current_image)
+	#sprite_to_flip.texture = ImageTexture.create_from_image(current_image)
+	mesh_material_to_flip.albedo_texture = ImageTexture.create_from_image(current_image)
 	
 	# Fly in
 	if direction > 0:
