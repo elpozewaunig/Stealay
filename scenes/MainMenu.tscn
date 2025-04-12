@@ -82,6 +82,7 @@ script/source = "extends CheckButton
 var musicBus = AudioServer.get_bus_index(\"Music\")
 func _on_pressed() -> void:
 	AudioServer.set_bus_mute(musicBus, not AudioServer.is_bus_mute(musicBus))
+	print(AudioServer.is_bus_mute(musicBus))
 "
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ow34m"]
@@ -667,7 +668,7 @@ libraries = {
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_l4mxc")
-volume_db = -5.0
+volume_db = -7.0
 autoplay = true
 bus = &"Music"
 
@@ -703,6 +704,7 @@ bus = &"Music"
 [connection signal="pressed" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteSoundCheckButton" to="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteSoundCheckButton" method="_on_pressed"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteSoundCheckButton" to="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteSoundCheckButton/ButtonAudioPlayer" method="_on_click"]
 [connection signal="mouse_entered" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" to="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton/ButtonAudioPlayer" method="_on_hover"]
+[connection signal="pressed" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" to="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" method="_on_pressed"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" to="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton/ButtonAudioPlayer" method="_on_click"]
 [connection signal="mouse_entered" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/BackButton" to="SubViewport/Node2D/UI/OptionsView/VBoxContainer/BackButton/ButtonAudioPlayer" method="_on_hover"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/BackButton" to="SubViewport/Node2D/UI/DefaultView" method="showMe"]
