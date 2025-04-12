@@ -1,7 +1,7 @@
 extends Node
 
 @export var player: Node3D
-@export var input_sequence: Array[Globals.movement] = []
+var input_sequence: Array[Globals.movement]
 
 var delay: float = Globals.time_between_moves
 var time_passed: float = 0.0
@@ -10,7 +10,10 @@ var movecount: int = 0
 
 
 func _ready() -> void:
-	pass
+	input_sequence = Globals.player_sequence
+	
+	if input_sequence.is_empty():
+		push_error("Michi")
 	
 func _process(delta: float) -> void:
 	if time_passed >= delay:
@@ -26,11 +29,11 @@ func move() -> void:
 
 
 func change_position() -> void:
-	pass
-	"""
-	var sequence: Array[Globals.movement] = player.input_sequence
-	var i: int  = movecount%len(sequence)
-	var current_move: Globals.movement = sequence[i]
+	var sequence: Array[Globals.movement] = input_sequence
+	if (movecount >= sequence.size()):
+		return # TODO: Failed
+	
+	var current_move: Globals.movement = sequence[movecount]
 		
 	if (current_move == Globals.movement.UP):
 		player.moveUp()
@@ -43,7 +46,6 @@ func change_position() -> void:
 	
 	
 	movecount+=1
-	"""
 	
 
 

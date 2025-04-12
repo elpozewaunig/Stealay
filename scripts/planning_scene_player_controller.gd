@@ -5,15 +5,20 @@ extends Node
 var PathElementScene: PackedScene = preload("res://assets/PathElement.tscn")
 
 
-var current_position: Vector2i = Vector2i(0, 0)
+@onready
+var current_position: Vector2i
 var child_list: Array[Node3D] = []
 
-var dev_mode: bool = true
-var pos_list: Array[Vector2i] = [current_position]
+var dev_mode: bool = false
+var pos_list: Array[Vector2i] 
+
+func _ready() -> void:
+	current_position=  calculate_pos_vector_from_global_pos()
+	pos_list= [current_position]
 
 func _on_heist_planner_add_movement(action: Globals.movement, pos: Vector2i) -> void:
 	move(action)
-	#print(pos)
+	#rint(pos)
 	current_position = pos
 	if action != Globals.movement.HIDE and action != Globals.movement.NULL:
 		var glob_pos: Vector3 = player.transform.origin
@@ -107,3 +112,9 @@ func calculate_global_position_from_pos(pos: Vector2i) -> Vector3:
 	myPosition.z = -pos.x
 	
 	return myPosition
+	
+func calculate_pos_vector_from_global_pos() -> Vector2i:
+	var position: Vector2i = Vector2i(0, 0)
+	position.y = player.transform.origin.x
+	position.x = -player.transform.origin.z
+	return position

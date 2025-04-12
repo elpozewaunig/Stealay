@@ -10,4 +10,5 @@ func _process(_delta):
 		get_tree().paused = not get_tree().paused
 		$"../PauseMenu".resetUI()
 		
-		
+	if Globals.player_spotted and get_tree().current_scene.name == Globals.game_scene_name:
+		print("Game over")

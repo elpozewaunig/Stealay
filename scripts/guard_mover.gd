@@ -30,7 +30,7 @@ func move() -> void:
 			# guard is Kruskalin
 			kruskal(guard)
 	
-		movecount+=1
+	movecount+=1
 
 
 func patrol(guard: Node3D) -> void:

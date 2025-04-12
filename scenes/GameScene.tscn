@@ -253,21 +253,30 @@ environment = SubResource("Environment_18ig4")
 projection = 1
 size = 2.85
 
-[node name="Guard" parent="." instance=ExtResource("4_18ig4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 1, -7)
-input_sequence = Array[int]([0, 0, 0, 0, 0, 2, 2, 1, 1, 1, 1, 1, 3, 3, 1, 3, 1, 1, 2, 2, 0, 0, 0, 3])
-
 [node name="Player" parent="." instance=ExtResource("5_7s5hy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 1, -15)
 
 [node name="MovementManager" type="Node" parent="."]
 
 [node name="GuardMovementController" type="Node" parent="MovementManager" node_paths=PackedStringArray("guard_list")]
 script = ExtResource("6_xs4ih")
-guard_list = [NodePath("../../Guard")]
+guard_list = [NodePath("../../Guards/Guard"), NodePath("../../Guards/Guard2")]
 
-[node name="PlayerMovementController" type="Node" parent="MovementManager"]
+[node name="PlayerMovementController" type="Node" parent="MovementManager" node_paths=PackedStringArray("player")]
 script = ExtResource("7_6ytau")
+player = NodePath("../../Player")
+
+[node name="Guards" type="Node3D" parent="."]
+
+[node name="Guard" parent="Guards" instance=ExtResource("4_18ig4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -7)
+input_sequence = Array[int]([0, 0, 0, 0, 0, 2, 2, 1, 1, 1, 1, 1, 3, 3, 1, 3, 1, 1, 2, 2, 0, 0, 0, 3])
+
+[node name="Guard2" parent="Guards" instance=ExtResource("4_18ig4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -2)
+input_sequence = Array[int]([2, 2, 2, 2, 0, 2, 2, 2, 0, 0, 0, 0, 2, 2, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 1, 1, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 2, 2, 1, 1, 1, 2, 2])
+
+[node name="Guard3" parent="Guards" instance=ExtResource("4_18ig4")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 100, -2)
 
 [connection signal="pressed" from="PauseMenu/UI/DefaultView/VBoxContainer/OptionsButton" to="PauseMenu/UI/DefaultView" method="HideMe"]
 [connection signal="pressed" from="PauseMenu/UI/DefaultView/VBoxContainer/OptionsButton" to="PauseMenu/UI/OptionsView" method="showMe"]
