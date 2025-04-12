@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://tfksyvs2qbdu"]
+[gd_scene load_steps=23 format=3 uid="uid://tfksyvs2qbdu"]
 
 [ext_resource type="Script" uid="uid://lntsseib6ktx" path="res://scripts/planning_scene.gd" id="1_i05ib"]
 [ext_resource type="PackedScene" uid="uid://csr8qdvijf7o8" path="res://assets/HeistPlanner.tscn" id="2_sfq2c"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://emtjvummxi6o" path="res://scripts/guard_mover.gd" id="11_y7sd5"]
 [ext_resource type="Script" uid="uid://der2d8iibxg75" path="res://scripts/planning_scene_player_controller.gd" id="12_y7sd5"]
 [ext_resource type="Texture2D" uid="uid://bqdq7qusxlios" path="res://assets/ui/planningscreenmap/map_in_lineart_scaled.jpg" id="13_tpsa2"]
+[ext_resource type="PackedScene" uid="uid://dsn1mnxuhm7jh" path="res://assets/GoalObject.tscn" id="14_un3xe"]
 
 [sub_resource type="Environment" id="Environment_1rttj"]
 background_energy_multiplier = 0.0
@@ -98,8 +99,9 @@ script = ExtResource("1_i05ib")
 [node name="HeistPlanner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_sfq2c")]
 player = NodePath("../Player")
 
-[node name="GameManager" type="Node" parent="."]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("3_pbho8")
+player = NodePath("..")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3.64, 7.594, -11.905)
@@ -338,6 +340,9 @@ player = NodePath("../../Player")
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(2.325, 0, 0, 0, -1.01629e-07, 2.325, 0, -2.325, -1.01629e-07, -11.955, -1.443, -11.964)
 texture = ExtResource("13_tpsa2")
+
+[node name="GoalObject" parent="." instance=ExtResource("14_un3xe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -22)
 
 [connection signal="add_movement" from="HeistPlanner" to="TuringBandlUI" method="_on_heist_planner_add_movement"]
 [connection signal="add_movement" from="HeistPlanner" to="MovementManager/PlanningScenePlayerController" method="_on_heist_planner_add_movement"]
