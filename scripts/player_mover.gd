@@ -26,6 +26,8 @@ func move() -> void:
 
 
 func change_position() -> void:
+	pass
+	"""
 	var sequence: Array[Globals.movement] = player.input_sequence
 	var i: int  = movecount%len(sequence)
 	var current_move: Globals.movement = sequence[i]
@@ -41,6 +43,8 @@ func change_position() -> void:
 	
 	
 	movecount+=1
+	"""
+	
 
 
 	

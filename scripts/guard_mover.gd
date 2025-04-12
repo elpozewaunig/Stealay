@@ -21,9 +21,7 @@ func _process(delta: float) -> void:
 
 func move() -> void: 
 	for guard in guard_list:
-		# check if player in sight
-		check_for_player(guard)
-		
+		# constantly cvhecks if player is in sight
 		# move
 		if guard.on_patrol:
 			# guard is patroling
@@ -31,9 +29,6 @@ func move() -> void:
 		else:
 			# guard is Kruskalin
 			kruskal(guard)
-		
-		# check if player in sight
-		check_for_player(guard)
 	
 		movecount+=1
 
@@ -51,10 +46,6 @@ func patrol(guard: Node3D) -> void:
 		guard.moveRight()
 	elif (current_move == Globals.movement.LEFT):
 		guard.moveLeft()
-	
-func check_for_player(guard: Node3D) -> void:
-	pass
-	
 	
 	
 func kruskal(guard: Node3D) -> void:

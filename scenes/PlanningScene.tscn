@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://tfksyvs2qbdu"]
+[gd_scene load_steps=22 format=3 uid="uid://tfksyvs2qbdu"]
 
 [ext_resource type="Script" uid="uid://lntsseib6ktx" path="res://scripts/planning_scene.gd" id="1_i05ib"]
 [ext_resource type="PackedScene" uid="uid://csr8qdvijf7o8" path="res://assets/HeistPlanner.tscn" id="2_sfq2c"]
@@ -6,6 +6,9 @@
 [ext_resource type="AudioStream" uid="uid://dubl7608be7qp" path="res://assets/sounds/ultra low quality funky town.mp3" id="4_hke3g"]
 [ext_resource type="Theme" uid="uid://cb6idjbop8kw2" path="res://assets/sprites/CheckButtonBetter/BetterButton.tres" id="5_rly6o"]
 [ext_resource type="PackedScene" uid="uid://caljcteyi14oj" path="res://assets/models/seal.tscn" id="6_pbho8"]
+[ext_resource type="Script" uid="uid://dbq3ndy5purel" path="res://scripts/TestingSkript.gd" id="7_1rttj"]
+[ext_resource type="Script" uid="uid://bxcsx3v1tofol" path="res://scripts/bandlController.gd" id="8_0acuf"]
+[ext_resource type="PackedScene" uid="uid://cxy4hikcjoxb7" path="res://assets/ui/turing_bandl_instruction_element_ui_scene.tscn" id="9_ec7cf"]
 
 [sub_resource type="Environment" id="Environment_1rttj"]
 background_energy_multiplier = 0.0
@@ -301,6 +304,54 @@ mesh = SubResource("PlaneMesh_rly6o")
 [node name="seal" parent="." instance=ExtResource("6_pbho8")]
 transform = Transform3D(-0.004, 0, 3.49691e-10, 0, 0.004, 0, -3.49691e-10, 0, -0.004, -1.1485, 0, 0)
 script = SubResource("GDScript_1rttj")
+
+[node name="TuringBandlUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("7_1rttj")
+
+[node name="Panel" type="Panel" parent="TuringBandlUI"]
+modulate = Color(1, 1, 1, 0.384314)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -372.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TuringBandlUI/Panel" node_paths=PackedStringArray("bandl1", "bandl2", "bandl3", "bandl4")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("8_0acuf")
+bandl1 = NodePath("TuringBandlInstruction")
+bandl2 = NodePath("TuringBandlInstruction2")
+bandl3 = NodePath("TuringBandlInstruction3")
+bandl4 = NodePath("TuringBandlInstruction4")
+
+[node name="TuringBandlInstruction" parent="TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("9_ec7cf")]
+layout_mode = 2
+
+[node name="TuringBandlInstruction2" parent="TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("9_ec7cf")]
+layout_mode = 2
+
+[node name="TuringBandlInstruction3" parent="TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("9_ec7cf")]
+layout_mode = 2
+
+[node name="TuringBandlInstruction4" parent="TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("9_ec7cf")]
+layout_mode = 2
 
 [connection signal="heist_planned" from="HeistPlanner" to="." method="_on_heist_planner_heist_planned"]
 [connection signal="pressed" from="PauseMenu/UI/DefaultView/VBoxContainer/OptionsButton" to="PauseMenu/UI/DefaultView" method="HideMe"]
