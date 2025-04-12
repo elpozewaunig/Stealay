@@ -13,9 +13,15 @@ func _process(_delta):
 		get_tree().paused = not get_tree().paused
 		$"../PauseMenu".resetUI()
 		
-	if Globals.player_spotted and get_tree().current_scene.name == Globals.game_scene_name:
-		print("Game over")
+	if get_tree().current_scene.name == Globals.game_scene_name:
+		check_lose()
+		check_win()
 		
 
 func check_win():
 	pass
+
+func check_lose():
+	if Globals.player_spotted :
+		print("Game over")
+	

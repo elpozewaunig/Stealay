@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=4 uid="uid://blbae5xp247m5"]
+[gd_scene load_steps=14 format=4 uid="uid://blbae5xp247m5"]
 
 [ext_resource type="Texture2D" uid="uid://ceietg2mpq3b6" path="res://assets/models/mapv2/michi1.png" id="1_ar1pb"]
 [ext_resource type="Texture2D" uid="uid://4sprrbup6joh" path="res://assets/models/mapv2/michi3.png" id="2_34sf1"]
 [ext_resource type="Texture2D" uid="uid://ci7u0oqam1jmc" path="res://assets/models/mapv2/michi2.png" id="3_k187t"]
 [ext_resource type="Texture2D" uid="uid://d01w0suxahsgk" path="res://assets/models/mapv2/michicover.png" id="4_34sf1"]
+[ext_resource type="Script" uid="uid://cjqf4q1mwbr5e" path="res://scripts/place_walls.gd" id="5_k187t"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_suxna"]
 shading_mode = 0
@@ -141,3 +142,6 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.121942, 0)
 mesh = SubResource("ArrayMesh_suxna")
 skeleton = NodePath("")
+
+[node name="Walls" type="Node3D" parent="."]
+script = ExtResource("5_k187t")

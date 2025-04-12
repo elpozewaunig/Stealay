@@ -9,7 +9,7 @@ var PathElementScene: PackedScene = preload("res://assets/PathElement.tscn")
 var current_position: Vector2i
 var child_list: Array[Node3D] = []
 
-var dev_mode: bool = false
+var dev_mode: bool = true
 var pos_list: Array[Vector2i] 
 
 func _ready() -> void:
@@ -18,7 +18,8 @@ func _ready() -> void:
 
 func _on_heist_planner_add_movement(action: Globals.movement, pos: Vector2i) -> void:
 	move(action)
-	#rint(pos)
+	if dev_mode:
+		print(pos)
 	current_position = pos
 	if action != Globals.movement.HIDE and action != Globals.movement.NULL:
 		var glob_pos: Vector3 = player.transform.origin
