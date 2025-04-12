@@ -1,6 +1,7 @@
 extends Node
 
 @export var player: Node3D
+@export var goal: Node3D
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -19,7 +20,8 @@ func _process(_delta):
 		
 
 func check_win():
-	pass
+	if goal.transform.origin.distance_to(player.transform.origin) < 1.5:
+		print("You won.")
 
 func check_lose():
 	if Globals.player_spotted :

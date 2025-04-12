@@ -9,8 +9,9 @@ var PathElementScene: PackedScene = preload("res://assets/PathElement.tscn")
 var current_position: Vector2i
 var child_list: Array[Node3D] = []
 
-var dev_mode: bool = false
+var dev_mode: bool = Globals.dev_mode
 var pos_list: Array[Vector2i] 
+var dev_mode_list: Array[Vector2i] 
 
 func _ready() -> void:
 	current_position=  calculate_pos_vector_from_global_pos()
@@ -38,20 +39,6 @@ func _on_heist_planner_remove_last_movement(pos: Vector2i) -> void:
 		if pos_list.size() > 1:
 			pos_list.pop_back()
 
-
-func _on_heist_planner_heist_planned(sequence: Variant) -> void:
-	if dev_mode:
-		print("Sequence of Path: ")
-		print(sequence)
-		
-		print("Visited positions: ")
-		var pos_set: Array[Vector2i] = []
-		for pos in pos_list:
-			if pos not in pos_set:
-				pos_set.append(pos)
-		
-		#pos_set.sort()
-		print(pos_set)
 
 
 func move(current_move: Globals.movement):
@@ -119,3 +106,31 @@ func calculate_pos_vector_from_global_pos() -> Vector2i:
 	position.y = player.transform.origin.x
 	position.x = -player.transform.origin.z
 	return position
+
+
+func _input(event: InputEvent) -> void:
+	if not dev_mode:
+		return
+		
+	if not event.is_pressed():
+		return
+	
+	if event.is_action("PrintPositionInDevMode", true):
+		dev_mode_list.append(current_position)
+		
+func _on_heist_planner_heist_planned(sequence: Variant) -> void:
+	if dev_mode:
+		print("Sequence of Path: ")
+		print(sequence)
+		
+		print("Visited positions: ")
+		var pos_set: Array[Vector2i] = []
+		for pos in pos_list:
+			if pos not in pos_set:
+				pos_set.append(pos)
+		
+		#pos_set.sort()
+		print(pos_set)
+		
+		print("Dev List")
+		print(dev_mode_list)

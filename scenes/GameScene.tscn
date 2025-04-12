@@ -91,9 +91,10 @@ reflected_light_source = 1
 
 [node name="Game" type="Node3D"]
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("player")]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("player", "goal")]
 script = ExtResource("1_xy3my")
 player = NodePath("../Player")
+goal = NodePath("../GoalObject")
 
 [node name="PauseMenu" type="Control" parent="."]
 visible = false
@@ -282,7 +283,7 @@ input_sequence = Array[int]([2, 2, 2, 2, 0, 2, 2, 2, 0, 0, 0, 0, 2, 2, 0, 0, 3, 
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 100, -2)
 
 [node name="GoalObject" parent="." instance=ExtResource("8_vijgj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -22)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0, -22)
 
 [node name="Walls" type="Node3D" parent="."]
 script = ExtResource("9_pynjx")

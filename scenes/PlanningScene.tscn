@@ -99,9 +99,10 @@ script = ExtResource("1_i05ib")
 [node name="HeistPlanner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_sfq2c")]
 player = NodePath("../Player")
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("player")]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("player", "goal")]
 script = ExtResource("3_pbho8")
 player = NodePath("..")
+goal = NodePath("../GoalObject")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3.64, 7.594, -11.905)
