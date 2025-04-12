@@ -5,7 +5,7 @@ signal player_spotted()
 var was_colliding_last_frame: bool = false
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var is_colliding_now: bool = is_colliding()
 
 	if is_colliding_now and not was_colliding_last_frame:

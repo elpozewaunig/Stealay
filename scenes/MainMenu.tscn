@@ -23,8 +23,8 @@ script/source = "extends Button
 
 
 func startGame() -> void:
-	get_tree().change_scene_to_file(\"res://scenes/GameScene.tscn\")
-	#get_tree().change_scene_to_file(\"res://scenes/PlanningScene.tscn\")
+	#get_tree().change_scene_to_file(\"res://scenes/GameScene.tscn\")
+	get_tree().change_scene_to_file(\"res://scenes/PlanningScene.tscn\")
 "
 
 [sub_resource type="GDScript" id="GDScript_2wh52"]
@@ -138,7 +138,7 @@ anchor_bottom = 0.138
 offset_bottom = 157.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 115
-text = "#Q1 Game"
+text = "#Q1's Eigenplagiat"
 horizontal_alignment = 1
 
 [node name="OptionsView" type="Control" parent="UI"]

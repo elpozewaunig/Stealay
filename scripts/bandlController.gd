@@ -16,9 +16,9 @@ enum movement {
 	HIDE,
 	NONE
 	}
-var done = false
+var done = true
 
-func _process(delta):
+func _process(_delta):
 	if(!done):
 		insert_new_movement(movement.UP,self)
 		insert_new_movement(movement.DOWN,self)

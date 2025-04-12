@@ -1,6 +1,8 @@
 extends Control
 
 signal heist_planned(sequence) # signal when done
+signal add_movement(move: Globals.movement)
+signal remove_last_movement()
 
 var input_sequence: Array[Globals.movement] = []
 
@@ -52,12 +54,14 @@ func _input(event: InputEvent) -> void:
 			pass
 		
 		
-func add_action(action_string: Globals.movement) -> void:
-	input_sequence.append(action_string)
+func add_action(action: Globals.movement) -> void:
+	input_sequence.append(action)
+	emit_signal("add_movement", action) 
 	update_display(true)
 
 func remove_last_action() -> void:
 	if not input_sequence.is_empty():
+		emit_signal("remove_last_movement")
 		input_sequence.pop_back() 
 		update_display(true)
 

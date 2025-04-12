@@ -9,7 +9,7 @@ func _on_heist_planner_heist_planned(sequence: Variant) -> void:
 	$HeistPlanner.hide()
 	print("Main script received sequence: ", sequence)
 	planned_heist_sequence = sequence
-	start_execution_phase() 
+	start_game() 
 
 
 func start_planning_phase():
@@ -17,9 +17,11 @@ func start_planning_phase():
 	$HeistPlanner.show() 
 
 
-func start_execution_phase():
+func start_game():
 	if planned_heist_sequence.is_empty():
 		print("No sequence planned!")
 		return
 
-	print("Executing sequence: ", planned_heist_sequence)
+	print("Start game: ", planned_heist_sequence)
+	get_tree().change_scene_to_file("res://scenes/GameScene.tscn")
+	
