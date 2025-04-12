@@ -7,17 +7,20 @@ extends Sprite2D
 
 
 func _ready() -> void:
-	hide()
+	show()
 
-func _on_page_flip(direction: int = 1) -> void:
+func _on_page_flip(direction: int = 3) -> void:
 	show()
 	var current_image = current_view.get_texture().get_image()
 	#sprite_to_flip.texture = ImageTexture.create_from_image(current_image)
 	mesh_material_to_flip.albedo_texture = ImageTexture.create_from_image(current_image)
 	
 	# Fly in
-	if direction > 0:
+	if direction == 1:
 		animation_player.play("flip_up")
 	# Fly out
-	if direction < 0:
+	elif direction == 2:
 		animation_player.play("flip_down")
+		
+	elif direction == 3:
+		animation_player.play("deformflip")
