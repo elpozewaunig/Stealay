@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cxy4hikcjoxb7" path="res://assets/ui/turing_bandl_instruction_element_ui_scene.tscn" id="9_ec7cf"]
 [ext_resource type="PackedScene" uid="uid://b44tvfhd3lcf1" path="res://assets/player.tscn" id="10_ec7cf"]
 [ext_resource type="Script" uid="uid://emtjvummxi6o" path="res://scripts/guard_mover.gd" id="11_y7sd5"]
-[ext_resource type="Script" uid="uid://fve4ylqy7j1n" path="res://scripts/player_mover.gd" id="12_tpsa2"]
+[ext_resource type="Script" uid="uid://der2d8iibxg75" path="res://scripts/planning_scene_player_controller.gd" id="12_y7sd5"]
 
 [sub_resource type="Environment" id="Environment_1rttj"]
 background_energy_multiplier = 0.0
@@ -322,13 +322,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 1, -15)
 script = ExtResource("11_y7sd5")
 guard_list = [NodePath("../../Guard")]
 
-[node name="PlayerMovementController" type="Node" parent="MovementManager" node_paths=PackedStringArray("player")]
-script = ExtResource("12_tpsa2")
+[node name="PlanningScenePlayerController" type="Node" parent="MovementManager" node_paths=PackedStringArray("player")]
+script = ExtResource("12_y7sd5")
 player = NodePath("../../Player")
 
 [connection signal="add_movement" from="HeistPlanner" to="TuringBandlUI" method="_on_heist_planner_add_movement"]
+[connection signal="add_movement" from="HeistPlanner" to="MovementManager/PlanningScenePlayerController" method="_on_heist_planner_add_movement"]
 [connection signal="heist_planned" from="HeistPlanner" to="." method="_on_heist_planner_heist_planned"]
 [connection signal="remove_last_movement" from="HeistPlanner" to="TuringBandlUI" method="_on_heist_planner_remove_last_movement"]
+[connection signal="remove_last_movement" from="HeistPlanner" to="MovementManager/PlanningScenePlayerController" method="_on_heist_planner_remove_last_movement"]
 [connection signal="pressed" from="PauseMenu/UI/DefaultView/VBoxContainer/OptionsButton" to="PauseMenu/UI/DefaultView" method="HideMe"]
 [connection signal="pressed" from="PauseMenu/UI/DefaultView/VBoxContainer/OptionsButton" to="PauseMenu/UI/OptionsView" method="showMe"]
 [connection signal="pressed" from="PauseMenu/UI/DefaultView/VBoxContainer/MainMenu" to="PauseMenu/UI/DefaultView/VBoxContainer/MainMenu" method="backMainMenu"]

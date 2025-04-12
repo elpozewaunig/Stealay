@@ -6,7 +6,8 @@ enum movement {
 	DOWN,
 	RIGHT, 
 	LEFT, 
-	HIDE 
+	HIDE, 
+	NULL
 	}
 
 var starting_pos: Vector2i = Vector2i(0, 0)

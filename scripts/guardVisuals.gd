@@ -67,6 +67,7 @@ func _move(direction: Vector3) -> void:
 	AnimPlayer.play("hop")
 	time = 0.0
 	prev_position = next_position
+	global_position = prev_position
 	next_position = global_position + direction
 	
 func _rotateVisually(rot: Vector3) -> void:

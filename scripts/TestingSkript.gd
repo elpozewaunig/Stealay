@@ -14,8 +14,8 @@ enum movement {
 	NONE
 	}
 	
-func _on_heist_planner_add_movement(move: Globals.movement) -> void:
+func _on_heist_planner_add_movement(move: Globals.movement, pos: Vector2i) -> void:
 	turingBandl.insert_new_movement(move, self)
 
-func _on_heist_planner_remove_last_movement() -> void:
+func _on_heist_planner_remove_last_movement(pos: Vector2i) -> void:
 	turingBandl.delete_movement(self)
