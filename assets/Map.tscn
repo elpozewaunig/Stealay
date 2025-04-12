@@ -6,12 +6,15 @@
 [ext_resource type="Texture2D" uid="uid://d01w0suxahsgk" path="res://assets/models/mapv2/michicover.png" id="4_34sf1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_suxna"]
+shading_mode = 0
 albedo_texture = ExtResource("1_ar1pb")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_elcyq"]
+shading_mode = 0
 albedo_texture = ExtResource("2_34sf1")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d45jv"]
+shading_mode = 0
 albedo_texture = ExtResource("3_k187t")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_clnrn"]
@@ -93,6 +96,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_clnrn")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k187t"]
+shading_mode = 0
 albedo_texture = ExtResource("4_34sf1")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_rungq"]
