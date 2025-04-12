@@ -180,7 +180,7 @@ stream_9/stream = ExtResource("14_1npgd")
 stream_10/stream = ExtResource("5_dclhl")
 stream_11/stream = ExtResource("6_cbn5g")
 
-[node name="Guard" type="Node3D" node_paths=PackedStringArray("hop_sound", "AnimPlayer", "HopAnimator", "RotationAnimator")]
+[node name="Guard2" type="Node3D" node_paths=PackedStringArray("hop_sound", "AnimPlayer", "HopAnimator", "RotationAnimator")]
 script = ExtResource("1_3mip4")
 hop_sound = NodePath("HopSound")
 AnimPlayer = NodePath("RotationAnimator/AnimationPlayer")

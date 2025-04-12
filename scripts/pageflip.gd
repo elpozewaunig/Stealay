@@ -15,12 +15,12 @@ func _on_page_flip(direction: int = 3) -> void:
 	mesh_material_to_flip.albedo_texture = ImageTexture.create_from_image(current_image)
 	
 	# Fly in
-	if direction == 1:
-		animation_player.play("flip_up")
+	#if direction == 1:
+	#	animation_player.play("flip_up")
 	# Fly out
-	elif direction == 2:
-		animation_player.play("flip_down")
-		
-	elif direction == 3:
-		animation_player.play("deformflip")
-	show()
+	#elif direction == 2:
+	#	animation_player.play("flip_down")
+
+	#elif direction == 3:
+	
+	animation_player.play("deformflip")

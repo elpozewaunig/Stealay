@@ -1,14 +1,18 @@
 [gd_scene load_steps=30 format=4 uid="uid://bg4w7m5cvf82n"]
 
 [ext_resource type="PackedScene" uid="uid://dptpc6b54d3bn" path="res://assets/ui/button_audio_player.tscn" id="1_mipys"]
-[ext_resource type="Texture2D" uid="uid://bkc0f8pxf48qy" path="res://assets/sprites/icon.svg" id="1_yqorp"]
 [ext_resource type="Script" uid="uid://ctbg2yqhvown5" path="res://scripts/script.gd" id="2_0ykhv"]
 [ext_resource type="PackedScene" uid="uid://u155dxc1ieh" path="res://assets/ui/page_audio_player.tscn" id="2_8a8k8"]
+[ext_resource type="Script" uid="uid://dqkwefcstr5y7" path="res://scripts/fancy_button.gd" id="1_2nypq"]
+[ext_resource type="Texture2D" uid="uid://cduu48nagk7au" path="res://assets/newui/texticons_fillonly.png" id="1_7la6k"]
+[ext_resource type="Texture2D" uid="uid://caiv810gq1dvv" path="res://assets/newui/paper.jpg" id="1_bky6r"]
+[ext_resource type="Texture2D" uid="uid://dk6q5fclpp8db" path="res://assets/newui/texticons_borderonly.png" id="2_2nypq"]
 [ext_resource type="Theme" uid="uid://cb6idjbop8kw2" path="res://assets/sprites/CheckButtonBetter/BetterButton.tres" id="3_2wh52"]
 [ext_resource type="Script" uid="uid://dxfbi5lg82tc3" path="res://scripts/pageflip.gd" id="4_826wr"]
 [ext_resource type="Texture2D" uid="uid://cq3u3h02epvfg" path="res://assets/sprites/menu_placeholder.png" id="4_l72w3"]
 [ext_resource type="Material" uid="uid://cux2uimlb1q0u" path="res://scenes/flippermaterial.tres" id="6_826wr"]
 [ext_resource type="Texture2D" uid="uid://cnjhuew5ssw74" path="res://assets/models/flippage/papertexture.jpg" id="7_ucygd"]
+[ext_resource type="Texture2D" uid="uid://dkscqwlxx0n5r" path="res://assets/newui/stealay_logo.png" id="8_mipys"]
 
 [sub_resource type="GDScript" id="GDScript_ow34m"]
 resource_name = "buttonlogic"
@@ -78,15 +82,6 @@ script/source = "extends CheckButton
 var musicBus = AudioServer.get_bus_index(\"Music\")
 func _on_pressed() -> void:
 	AudioServer.set_bus_mute(musicBus, not AudioServer.is_bus_mute(musicBus))
-"
-
-[sub_resource type="GDScript" id="GDScript_ucygd"]
-resource_name = "michisecret"
-script/source = "extends CheckButton
-
-
-func _on_pressed() -> void:
-	OS.shell_open(\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\")
 "
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ow34m"]
@@ -246,7 +241,7 @@ size = Vector2(1920, 1080)
 resource_name = "BackPaper"
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+albedo_color = Color(0.627451, 0.627451, 0.627451, 1)
 albedo_texture = ExtResource("7_ucygd")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_826wr"]
@@ -332,25 +327,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_ow34m")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/Node2D/UI/DefaultView"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -118.5
-offset_top = -177.0
-offset_right = 118.5
-offset_bottom = 177.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 30
-
-[node name="PlayButton" type="Button" parent="SubViewport/Node2D/UI/DefaultView/VBoxContainer"]
-layout_mode = 2
+[node name="PlayButton" type="Button" parent="SubViewport/Node2D/UI/DefaultView"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 70.0
+offset_top = 540.0
+offset_right = 205.0
+offset_bottom = 611.0
+scale = Vector2(2.26657, 2.26657)
 theme_override_font_sizes/font_size = 42
-text = "Play"
+text = "
+"
 script = SubResource("GDScript_826wr")
 
 [node name="ButtonAudioPlayer" parent="SubViewport/Node2D/UI/DefaultView/VBoxContainer/PlayButton" instance=ExtResource("1_mipys")]
@@ -376,22 +362,117 @@ text = "Credits"
 
 [node name="QuitButton" type="Button" parent="SubViewport/Node2D/UI/DefaultView/VBoxContainer"]
 layout_mode = 2
+[node name="FancyButton" type="Node2D" parent="SubViewport/Node2D/UI/DefaultView/PlayButton"]
+position = Vector2(118.5, 32)
+scale = Vector2(0.249995, 0.249995)
+script = ExtResource("1_2nypq")
+
+[node name="Fills" type="Sprite2D" parent="SubViewport/Node2D/UI/DefaultView/PlayButton/FancyButton"]
+position = Vector2(-212.01, 8.99738)
+texture = ExtResource("1_7la6k")
+region_enabled = true
+region_rect = Rect2(175.153, 118.287, 520.3, 274.267)
+
+[node name="Lines" type="Sprite2D" parent="SubViewport/Node2D/UI/DefaultView/PlayButton/FancyButton"]
+position = Vector2(-212.01, 8.99738)
+texture = ExtResource("2_2nypq")
+region_enabled = true
+region_rect = Rect2(175.153, 118.287, 520.3, 274.267)
+
+[node name="OptionsButton" type="Button" parent="SubViewport/Node2D/UI/DefaultView"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 70.0
+offset_top = 709.0
+offset_right = 213.0
+offset_bottom = 775.0
+scale = Vector2(1.49704, 1.49704)
 theme_override_font_sizes/font_size = 42
-text = "Quit"
+text = "
+"
+
+[node name="FancyButton" type="Node2D" parent="SubViewport/Node2D/UI/DefaultView/OptionsButton"]
+position = Vector2(118.5, 32)
+scale = Vector2(0.249995, 0.249995)
+script = ExtResource("1_2nypq")
+
+[node name="Fills" type="Sprite2D" parent="SubViewport/Node2D/UI/DefaultView/OptionsButton/FancyButton"]
+position = Vector2(-178.948, 6.77126)
+scale = Vector2(0.524241, 0.524241)
+texture = ExtResource("1_7la6k")
+region_enabled = true
+region_rect = Rect2(922.928, 138.386, 1057.81, 270.378)
+
+[node name="Lines" type="Sprite2D" parent="SubViewport/Node2D/UI/DefaultView/OptionsButton/FancyButton"]
+position = Vector2(-178.948, 6.77126)
+scale = Vector2(0.524241, 0.524241)
+texture = ExtResource("2_2nypq")
+region_enabled = true
+region_rect = Rect2(922.928, 138.386, 1057.81, 270.378)
+
+[node name="CreditsButton" type="Button" parent="SubViewport/Node2D/UI/DefaultView"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 70.0
+offset_top = 813.0
+offset_right = 203.0
+offset_bottom = 879.0
+scale = Vector2(1.49704, 1.49704)
+theme_override_font_sizes/font_size = 42
+text = "
+"
+
+[node name="FancyButton" type="Node2D" parent="SubViewport/Node2D/UI/DefaultView/CreditsButton"]
+position = Vector2(68.5, 32)
+scale = Vector2(0.249995, 0.249995)
+script = ExtResource("1_2nypq")
+
+[node name="Fills" type="Sprite2D" parent="SubViewport/Node2D/UI/DefaultView/CreditsButton/FancyButton"]
+scale = Vector2(0.568, 0.568)
+texture = ExtResource("1_7la6k")
+region_enabled = true
+region_rect = Rect2(922.928, 552.704, 913.611, 223.445)
+
+[node name="Lines" type="Sprite2D" parent="SubViewport/Node2D/UI/DefaultView/CreditsButton/FancyButton"]
+scale = Vector2(0.568, 0.568)
+texture = ExtResource("2_2nypq")
+region_enabled = true
+region_rect = Rect2(922.928, 552.704, 913.611, 223.445)
+
+[node name="QuitButton" type="Button" parent="SubViewport/Node2D/UI/DefaultView"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 70.0
+offset_top = 917.0
+offset_right = 149.0
+offset_bottom = 983.0
+scale = Vector2(1.49704, 1.49704)
+theme_override_font_sizes/font_size = 42
+text = "
+"
 script = SubResource("GDScript_2wh52")
 
 [node name="ButtonAudioPlayer" parent="SubViewport/Node2D/UI/DefaultView/VBoxContainer/QuitButton" instance=ExtResource("1_mipys")]
+[node name="FancyButton" type="Node2D" parent="SubViewport/Node2D/UI/DefaultView/QuitButton"]
+position = Vector2(118.5, 32)
+scale = Vector2(0.249995, 0.249995)
+script = ExtResource("1_2nypq")
 
-[node name="Label" type="Label" parent="SubViewport/Node2D/UI/DefaultView"]
-layout_mode = 1
-anchors_preset = -1
-offset_right = 1920.0
-offset_bottom = 1080.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 115
-text = "#Q1's Eigenplagiat"
-horizontal_alignment = 1
+[node name="Fills" type="Sprite2D" parent="SubViewport/Node2D/UI/DefaultView/QuitButton/FancyButton"]
+position = Vector2(-307.478, 1.49735)
+scale = Vector2(0.568, 0.568)
+texture = ExtResource("1_7la6k")
+region_enabled = true
+region_rect = Rect2(174.548, 424.49, 523.465, 259.374)
+
+[node name="Lines" type="Sprite2D" parent="SubViewport/Node2D/UI/DefaultView/QuitButton/FancyButton"]
+position = Vector2(-307.478, 1.49735)
+scale = Vector2(0.568, 0.568)
+texture = ExtResource("2_2nypq")
+region_enabled = true
+region_rect = Rect2(174.548, 424.49, 523.465, 259.374)
+
+[node name="StealayLogo" type="Sprite2D" parent="SubViewport/Node2D/UI/DefaultView"]
+position = Vector2(547.347, 210.375)
+scale = Vector2(0.309977, 0.309977)
+texture = ExtResource("8_mipys")
 
 [node name="OptionsView" type="Control" parent="SubViewport/Node2D/UI"]
 visible = false
@@ -410,9 +491,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -118.5
+offset_left = 262.0
 offset_top = -177.0
-offset_right = 118.5
+offset_right = 499.0
 offset_bottom = 177.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -442,18 +523,6 @@ script = SubResource("GDScript_8a8k8")
 
 [node name="ButtonAudioPlayer" parent="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" instance=ExtResource("1_mipys")]
 
-[node name="???" type="CheckButton" parent="SubViewport/Node2D/UI/OptionsView/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("3_2wh52")
-theme_override_constants/icon_max_width = 60
-theme_override_font_sizes/font_size = 27
-text = "Michi"
-vertical_icon_alignment = 0
-expand_icon = true
-script = SubResource("GDScript_ucygd")
-
-[node name="ButtonAudioPlayer" parent="SubViewport/Node2D/UI/OptionsView/VBoxContainer/???" instance=ExtResource("1_mipys")]
-
 [node name="BackButton" type="Button" parent="SubViewport/Node2D/UI/OptionsView/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 42
@@ -469,7 +538,9 @@ anchors_preset = -1
 anchor_top = 0.062
 anchor_right = 1.0
 anchor_bottom = 0.138
-offset_bottom = 157.0
+offset_left = 776.0
+offset_top = 0.0400009
+offset_bottom = 156.96
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 115
 text = "Settings"
@@ -533,11 +604,13 @@ theme_override_font_sizes/font_size = 115
 text = "Settings"
 horizontal_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="SubViewport/Node2D"]
-position = Vector2(244.68, 845.665)
-scale = Vector2(2.2, 2.2)
-texture = ExtResource("1_yqorp")
-script = ExtResource("2_0ykhv")
+[node name="Paper" type="Sprite2D" parent="SubViewport/Node2D/UI"]
+self_modulate = Color(0.625597, 0.625597, 0.625597, 1)
+show_behind_parent = true
+position = Vector2(960, 540)
+rotation = 1.57079
+scale = Vector2(0.554761, 0.554761)
+texture = ExtResource("1_bky6r")
 
 [node name="Camera2D" type="Camera2D" parent="SubViewport/Node2D"]
 position = Vector2(960, 540)
@@ -616,6 +689,22 @@ libraries = {
 [connection signal="mouse_entered" from="SubViewport/Node2D/UI/DefaultView/VBoxContainer/QuitButton" to="SubViewport/Node2D/UI/DefaultView/VBoxContainer/QuitButton/ButtonAudioPlayer" method="_on_hover"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/VBoxContainer/QuitButton" to="SubViewport/Node2D/UI/DefaultView/VBoxContainer/QuitButton" method="forcequit"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/VBoxContainer/QuitButton" to="SubViewport/Node2D/UI/DefaultView/VBoxContainer/QuitButton/ButtonAudioPlayer" method="_on_click"]
+[connection signal="mouse_entered" from="SubViewport/Node2D/UI/DefaultView/PlayButton" to="SubViewport/Node2D/UI/DefaultView/PlayButton/FancyButton" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="SubViewport/Node2D/UI/DefaultView/PlayButton" to="SubViewport/Node2D/UI/DefaultView/PlayButton/FancyButton" method="_on_area_2d_mouse_exited"]
+[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/PlayButton" to="SubViewport/Node2D/UI/DefaultView" method="HideMe"]
+[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/PlayButton" to="SubViewport/Node2D/UI/DefaultView/PlayButton" method="startGame"]
+[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/PlayButton" to="SubViewport/Node2D/PageFlip" method="_on_page_flip" binds= [3]]
+[connection signal="mouse_entered" from="SubViewport/Node2D/UI/DefaultView/OptionsButton" to="SubViewport/Node2D/UI/DefaultView/OptionsButton/FancyButton" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="SubViewport/Node2D/UI/DefaultView/OptionsButton" to="SubViewport/Node2D/UI/DefaultView/OptionsButton/FancyButton" method="_on_area_2d_mouse_exited"]
+[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/OptionsButton" to="SubViewport/Node2D/UI/DefaultView" method="HideMe"]
+[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/OptionsButton" to="SubViewport/Node2D/UI/OptionsView" method="showMe"]
+[connection signal="mouse_entered" from="SubViewport/Node2D/UI/DefaultView/CreditsButton" to="SubViewport/Node2D/UI/DefaultView/CreditsButton/FancyButton" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="SubViewport/Node2D/UI/DefaultView/CreditsButton" to="SubViewport/Node2D/UI/DefaultView/CreditsButton/FancyButton" method="_on_area_2d_mouse_exited"]
+[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/CreditsButton" to="SubViewport/Node2D/UI/DefaultView" method="HideMe"]
+[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/CreditsButton" to="SubViewport/Node2D/UI/CreditsView" method="showMe"]
+[connection signal="mouse_entered" from="SubViewport/Node2D/UI/DefaultView/QuitButton" to="SubViewport/Node2D/UI/DefaultView/QuitButton/FancyButton" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="SubViewport/Node2D/UI/DefaultView/QuitButton" to="SubViewport/Node2D/UI/DefaultView/QuitButton/FancyButton" method="_on_area_2d_mouse_exited"]
+[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/QuitButton" to="SubViewport/Node2D/UI/DefaultView/QuitButton" method="forcequit"]
 [connection signal="page_flip" from="SubViewport/Node2D/UI/OptionsView" to="SubViewport/Node2D/PageFlip" method="_on_page_flip"]
 [connection signal="mouse_entered" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteSoundCheckButton" to="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteSoundCheckButton/ButtonAudioPlayer" method="_on_hover"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteSoundCheckButton" to="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteSoundCheckButton" method="_on_pressed"]

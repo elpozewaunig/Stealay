@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://cb36gbar6tdv"]
+[gd_scene load_steps=35 format=4 uid="uid://cb36gbar6tdv"]
 
 [ext_resource type="PackedScene" uid="uid://dnj8dlx4y3qhe" path="res://assets/models/placeholderguard/figure.tscn" id="1_a4vwu"]
 [ext_resource type="Script" uid="uid://c16qi3cfubcaj" path="res://scripts/guardVisuals.gd" id="1_m4837"]
