@@ -6,6 +6,7 @@ var tutorial_progress: int = 0
 @export var movement_hint: Control
 @export var undo_hint: Control
 @export var start_hint: Control
+@export var hide_hint: Control
 
 @onready var chats: Array[ChatSection] = [
 	$Chat,
@@ -103,3 +104,4 @@ func set_hint_visibility(visibility: bool) -> void:
 	movement_hint.visible = visibility
 	undo_hint.visible = visibility
 	start_hint.visible = visibility
+	hide_hint.visible = visibility

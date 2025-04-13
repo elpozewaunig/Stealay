@@ -23,7 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://brfhrtwxt1nw" path="res://assets/sounds/voicelines/tutorial/voiceline5.ogg" id="14_kitgh"]
 [ext_resource type="PackedScene" uid="uid://dsn1mnxuhm7jh" path="res://assets/GoalObject.tscn" id="14_un3xe"]
 [ext_resource type="AudioStream" uid="uid://bd5g7tc1nufnr" path="res://assets/sounds/voicelines/tutorial/voiceline6.ogg" id="15_yivre"]
-[ext_resource type="Script" uid="uid://cjqf4q1mwbr5e" path="res://scripts/place_walls.gd" id="16_ibx1f"]
+[ext_resource type="Script" path="res://scripts/place_walls.gd" id="16_ibx1f"]
 [ext_resource type="AudioStream" uid="uid://c8hxsk8w5cdvs" path="res://assets/sounds/voicelines/tutorial/voiceline7.ogg" id="16_jlbm7"]
 [ext_resource type="AudioStream" uid="uid://blr07d13c8auj" path="res://assets/sounds/voicelines/tutorial/voiceline8.ogg" id="17_ntchk"]
 [ext_resource type="AudioStream" uid="uid://bng8v7av61ahh" path="res://assets/sounds/voicelines/tutorial/voiceline9.ogg" id="17_yefry"]
@@ -35,7 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://bp4ut1tshuu0t" path="res://assets/sprites/Tutorial/skip.png" id="27_jlbm7"]
 [ext_resource type="Texture2D" uid="uid://cl4lwnow7hmmq" path="res://assets/ui/post_its/empty.png" id="28_b5yxx"]
 [ext_resource type="Texture2D" uid="uid://cqrrr7nyd22q" path="res://assets/ui/post_its/scribble.png" id="29_01txo"]
-[ext_resource type="Script" uid="uid://dqkwefcstr5y7" path="res://scripts/fancy_button.gd" id="31_vf1sc"]
+[ext_resource type="Script" path="res://scripts/fancy_button.gd" id="31_vf1sc"]
 [ext_resource type="Texture2D" uid="uid://cduu48nagk7au" path="res://assets/newui/texticons_fillonly.png" id="32_4fghf"]
 [ext_resource type="Texture2D" uid="uid://bogsrnq6djf7d" path="res://assets/sprites/keys/enter.png" id="33_kitgh"]
 [ext_resource type="Texture2D" uid="uid://dk6q5fclpp8db" path="res://assets/newui/texticons_borderonly.png" id="33_xgh5o"]
@@ -266,7 +266,7 @@ layout_mode = 2
 [node name="TuringBandlInstruction4" parent="TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("9_ec7cf")]
 layout_mode = 2
 
-[node name="TutorialUI2" type="Control" parent="." node_paths=PackedStringArray("heist_planner", "movement_hint", "undo_hint", "start_hint")]
+[node name="TutorialUI2" type="Control" parent="." node_paths=PackedStringArray("heist_planner", "movement_hint", "undo_hint", "start_hint", "hide_hint")]
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -275,6 +275,7 @@ heist_planner = NodePath("../HeistPlanner")
 movement_hint = NodePath("../Hints/Panel/Move")
 undo_hint = NodePath("../Hints/Panel/Undo")
 start_hint = NodePath("../Hints/Panel/Start")
+hide_hint = NodePath("../Hints/Panel/Hide")
 
 [node name="Chat" parent="TutorialUI2" instance=ExtResource("10_ibx1f")]
 messages = Array[String](["I fulfilled my part of the bargain.
