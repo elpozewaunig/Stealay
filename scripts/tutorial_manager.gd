@@ -3,6 +3,9 @@ extends Control
 var tutorial_progress: int = 0
 
 @export var heist_planner: Control
+@export var movement_hint: Control
+@export var undo_hint: Control
+@export var start_hint: Control
 
 @onready var chats: Array[ChatSection] = [
 	$Chat,
@@ -13,7 +16,12 @@ var tutorial_progress: int = 0
 ]
 @onready var instructions: Label = $Instructions
 
+var tutorial_completed: bool = false
+
+var current_chat: ChatSection
+
 func _ready() -> void:
+	set_hint_visibility(false)
 	for chat in chats:
 		chat.hide()
 
@@ -21,10 +29,11 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("SkipTutorial"):
 		Globals.tutorial_enabled = false
 	
-	if Globals.tutorial_enabled:
-		var current_chat = chats[0]
+	if Globals.tutorial_enabled and not tutorial_completed:
+		show()
 		
 		if tutorial_progress == 0:
+			current_chat = chats[0]
 			current_chat.show()
 			if current_chat.done:
 				current_chat.hide()
@@ -40,6 +49,7 @@ func _process(delta: float) -> void:
 		if tutorial_progress == 2:
 			instructions.text = "Plan your moves using the arrow keys."
 			instructions.show()
+			movement_hint.show()
 			heist_planner.allow_move = true
 			
 			if heist_planner.move_history.size() > 1:
@@ -71,14 +81,23 @@ func _process(delta: float) -> void:
 				tutorial_progress += 1
 				instructions.text = "Finish your plan, then execute it by pressing enter."
 				instructions.show()
+				undo_hint.show()
+				start_hint.show()
 				heist_planner.allow_move = true
 				heist_planner.allow_commit = true
+				tutorial_completed = true
 				Globals.tutorial_enabled = false
 				
 		if Input.is_action_just_pressed("PlannerCommit"):
-				current_chat.advance_dialogue()
+			current_chat.advance_dialogue()
 	
 	else:
 		hide()
+		set_hint_visibility(true)
 		heist_planner.allow_move = true
 		heist_planner.allow_commit = true
+
+func set_hint_visibility(visibility: bool) -> void:
+	movement_hint.visible = visibility
+	undo_hint.visible = visibility
+	start_hint.visible = visibility

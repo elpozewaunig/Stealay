@@ -38,6 +38,7 @@ func startGame() -> void:
 	#get_tree().change_scene_to_file(\"res://scenes/GameScene.tscn\")
 	
 	await get_tree().create_timer(1).timeout
+	Globals.tutorial_enabled = true
 	get_tree().change_scene_to_file(\"res://scenes/PlanningScene.tscn\")
 "
 

@@ -47,6 +47,7 @@ func _process(delta: float) -> void:
 		
 		var current_bubble = speech_bubbles[current_msg_index]
 		var current_label = bubble_labels[current_msg_index]
+
 		var current_message = messages[current_msg_index]
 		
 		current_bubble.show()

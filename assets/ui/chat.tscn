@@ -11,6 +11,7 @@ font_size = 64
 
 [sub_resource type="LabelSettings" id="LabelSettings_l2q88"]
 font_size = 36
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0uyyy"]
 animations = [{
