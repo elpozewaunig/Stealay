@@ -2,7 +2,7 @@ extends Node
 
 @export var guard_list: Array[Node3D] = []
 
-var delay: float = Globals.time_between_moves
+
 var time_passed: float = 0.0
 
 var movecount: int = 0
@@ -12,7 +12,7 @@ func _ready() -> void:
 	pass
 	
 func _process(delta: float) -> void:
-	if time_passed >= delay:
+	if time_passed >= Globals.time_between_moves:
 		time_passed = 0.0
 		move()
 	
