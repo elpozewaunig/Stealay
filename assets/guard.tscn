@@ -563,6 +563,7 @@ root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_d2mtx")
 }
+speed_scale = 1.5
 
 [node name="HopAnimator" type="Node3D" parent="RotationAnimator"]
 

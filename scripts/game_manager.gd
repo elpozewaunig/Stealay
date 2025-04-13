@@ -16,22 +16,29 @@ func _ready():
 func _process(_delta):
 	if Input.is_action_just_pressed("Escape"):
 		$"../PauseMenu".visible = not $"../PauseMenu".visible
-		$"../TuringBandlUI".visible = not $"../TuringBandlUI".visible
+		if get_tree().current_scene.name != Globals.game_scene_name:
+			$"../TuringBandlUI".visible = not $"../TuringBandlUI".visible
 		get_tree().paused = not get_tree().paused
 		$"../PauseMenu".resetUI()
 		
 	if get_tree().current_scene.name == Globals.game_scene_name:
-		check_lose()
-		check_win()
+		if not check_win():
+			check_lose()
+		
 		
 
 func check_win():
-	if goal.transform.origin.distance_to(player.transform.origin) < 1.5:
+	if goal.transform.origin.distance_to(player.transform.origin) <= 3:
 		print("You won.")
 		win.show()
 		emit_signal("won")
+		return true
+	return false
 
 func check_lose():
+	if Globals.dev_mode:
+		return
+		
 	if Globals.player_spotted :
 		print("Game over")
 		lose.show()
