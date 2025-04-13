@@ -5,6 +5,7 @@ signal player_spotted()
 @export var spotted_sound: AudioStreamPlayer
 
 @export var cone_color: Color 
+var id:int
 
 var was_colliding_last_frame = {} 
 var raycasts: Array[RayCast3D] = [] 
@@ -18,6 +19,10 @@ var vision_cone_material: StandardMaterial3D
 
 func _ready() -> void:
 	# --- setup raycast ---
+
+	id = get_parent().get_parent().id
+	
+		
 	var unsorted_rays: Array[RayCast3D] = []
 	for child in get_children():
 		if child is RayCast3D:
@@ -80,6 +85,8 @@ func detect_player() -> void:
 			if object_hit and object_hit.collision_layer == 1 and not player_detected_this_frame:
 				emit_signal("player_spotted")
 				if not Globals.player_spotted:
+					Globals.guard = id
+					print(id)
 					spotted_sound.play()
 				Globals.player_spotted = true
 				player_detected_this_frame = true

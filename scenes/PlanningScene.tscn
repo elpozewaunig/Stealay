@@ -621,22 +621,27 @@ texture = ExtResource("38_yefry")
 [node name="mainCircleGuard" parent="." instance=ExtResource("9_0acuf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -7)
 input_sequence = Array[int]([1, 1, 1, 2, 2, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 3, 3, 3, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 0, 1, 3, 1, 1, 3, 1])
+id = 1
 
 [node name="redfloorGuard" parent="." instance=ExtResource("9_0acuf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -6)
 input_sequence = Array[int]([3, 3, 1, 2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3])
+id = 2
 
 [node name="randompillarroomguard" parent="." instance=ExtResource("9_0acuf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -21)
 input_sequence = Array[int]([1, 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 3, 3, 3, 3, 1])
+id = 3
 
 [node name="theFinalBoss" parent="." instance=ExtResource("9_0acuf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -23)
 input_sequence = Array[int]([3, 3, 3, 1, 3, 3, 0, 3, 3, 3, 1, 1, 2, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 2, 2, 0, 0, 0, 3, 3, 3])
+id = 4
 
 [node name="startingGumba" parent="." instance=ExtResource("9_0acuf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -2)
 input_sequence = Array[int]([2, 2, 2, 2, 0, 2, 2, 2, 0, 0, 0, 0, 2, 2, 0, 0, 3, 3, 3, 2, 0, 0, 2, 2, 1, 1, 3, 3, 0, 0, 0, 0, 3, 3, 3, 0, 3, 3, 3, 1, 1, 3, 3, 3, 1, 1, 1, 2, 1, 1, 1, 3, 1, 1, 1, 1, 2, 2])
+id = 5
 
 [connection signal="load_game_board" from="." to="GameManager" method="_on_planning_scene_load_game_board"]
 [connection signal="ready" from="Player" to="HeistPlanner" method="_on_player_ready"]

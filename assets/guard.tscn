@@ -550,12 +550,13 @@ _data = {
 
 [sub_resource type="BoxMesh" id="BoxMesh_m4837"]
 
-[node name="Guard" type="Node3D" node_paths=PackedStringArray("AnimPlayer", "HopAnimator", "RotationAnimator", "token")]
+[node name="Guard" type="Node3D" node_paths=PackedStringArray("AnimPlayer", "HopAnimator", "RotationAnimator", "token", "alert")]
 script = ExtResource("1_m4837")
 AnimPlayer = NodePath("RotationAnimator/AnimationPlayer")
 HopAnimator = NodePath("RotationAnimator/HopAnimator")
 RotationAnimator = NodePath("RotationAnimator")
 token = NodePath("Sprite3D")
+alert = NodePath("Alert")
 
 [node name="RotationAnimator" type="Node3D" parent="."]
 

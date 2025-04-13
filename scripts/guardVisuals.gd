@@ -7,7 +7,7 @@ extends Node3D
 @export var AnimPlayer: AnimationPlayer
 @export var HopAnimator: Node3D
 @export var RotationAnimator: Node3D
-
+@export var id:int
 
 func _onready():
 	AnimPlayer.play("RESET")
@@ -25,8 +25,15 @@ var speed: float
 
 @onready var prev := "up"
 @export var token:Sprite3D
+@export var alert:Label3D
 
 func _ready() -> void:
+
+	if id !=10 && id != 0:
+		if Globals.guard == id: 
+			alert.show()
+		else: 
+			alert.hide()
 	next_position = global_position
 	prev_position = global_position
 	#print("Instanciating guard somewhere ")

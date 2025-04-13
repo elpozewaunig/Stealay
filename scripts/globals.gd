@@ -32,7 +32,7 @@ var previous_sequence: Array[movement] = []
 var previous_move_count:int = 0
 
 var hide_active: bool = false
-
+var guard:int = -1 
 
 func _init() -> void:
 	for y in range(0, 25):
