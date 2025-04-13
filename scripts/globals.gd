@@ -1,6 +1,8 @@
 extends Node
 
 
+var tutorial_enabled: bool = true
+
 enum movement { 
 	UP,
 	DOWN,

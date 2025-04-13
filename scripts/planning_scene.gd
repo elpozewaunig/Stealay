@@ -9,7 +9,7 @@ func _on_heist_planner_heist_planned(sequence: Variant) -> void:
 	$HeistPlanner.hide()
 	print("Main script received sequence: ", sequence)
 	Globals.player_sequence = sequence.duplicate(true)
-	start_game() 
+	start_game()
 
 
 func start_planning_phase():

@@ -11,6 +11,9 @@ signal place_skull(pos: Vector2i)
 
 var input_sequence: Array[Globals.movement] = []
 
+var allow_move: bool = false
+var allow_commit: bool = false
+
 var valid_pos: Array[Vector2i] = Globals.valid_pos.duplicate(true)
 var current_pos: Vector2i #= starting_pos
 var move_history: Array[Vector2i]# = [starting_pos]
@@ -51,20 +54,21 @@ func _input(event: InputEvent) -> void:
 
 	var move: Globals.movement = Globals.movement.NULL
 	
-	if event.is_action("PlannerUp", true):
-		move = Globals.movement.UP
-	elif event.is_action("PlannerDown", true):
-		move = Globals.movement.DOWN
-	elif event.is_action("PlannerLeft", true):
-		move = Globals.movement.LEFT
-	elif event.is_action("PlannerRight", true):
-		move = Globals.movement.RIGHT
-	elif event.is_action("PlannerHide", true):
-		move = Globals.movement.HIDE
-	elif event.is_action("PlannerDelete", true):
-		remove_last_action()
-	elif event.is_action("PlannerCommit", true):
-		finalize_sequence()
+	if allow_move:
+		if event.is_action("PlannerUp", true):
+			move = Globals.movement.UP
+		elif event.is_action("PlannerDown", true):
+			move = Globals.movement.DOWN
+		elif event.is_action("PlannerLeft", true):
+			move = Globals.movement.LEFT
+		elif event.is_action("PlannerRight", true):
+			move = Globals.movement.RIGHT
+		elif event.is_action("PlannerHide", true):
+			move = Globals.movement.HIDE
+		elif event.is_action("PlannerDelete", true):
+			remove_last_action()
+		elif event.is_action("PlannerCommit", true) and allow_commit:
+			finalize_sequence()
 
 	if move != Globals.movement.NULL:
 		if (check_move(move)):

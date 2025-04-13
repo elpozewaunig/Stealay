@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://tfksyvs2qbdu"]
+[gd_scene load_steps=29 format=3 uid="uid://tfksyvs2qbdu"]
 
 [ext_resource type="Script" uid="uid://lntsseib6ktx" path="res://scripts/planning_scene.gd" id="1_i05ib"]
 [ext_resource type="PackedScene" uid="uid://csr8qdvijf7o8" path="res://assets/HeistPlanner.tscn" id="2_sfq2c"]
@@ -11,16 +11,24 @@
 [ext_resource type="PackedScene" uid="uid://cb36gbar6tdv" path="res://assets/guard.tscn" id="9_0acuf"]
 [ext_resource type="PackedScene" uid="uid://cxy4hikcjoxb7" path="res://assets/ui/turing_bandl_instruction_element_ui_scene.tscn" id="9_ec7cf"]
 [ext_resource type="PackedScene" uid="uid://b44tvfhd3lcf1" path="res://assets/player.tscn" id="10_ec7cf"]
+[ext_resource type="PackedScene" uid="uid://crkpn5vqe2wwa" path="res://assets/ui/chat.tscn" id="10_ibx1f"]
+[ext_resource type="Script" uid="uid://bncnyql6noftg" path="res://scripts/dialogue_manager.gd" id="10_nivii"]
 [ext_resource type="Script" uid="uid://emtjvummxi6o" path="res://scripts/guard_mover.gd" id="11_y7sd5"]
 [ext_resource type="Script" uid="uid://der2d8iibxg75" path="res://scripts/planning_scene_player_controller.gd" id="12_y7sd5"]
 [ext_resource type="Texture2D" uid="uid://cwu2sxpm5by5h" path="res://assets/ui/planningscreenmap/map_in_lineart_scaled.png" id="13_un3xe"]
 [ext_resource type="PackedScene" uid="uid://dsn1mnxuhm7jh" path="res://assets/GoalObject.tscn" id="14_un3xe"]
-[ext_resource type="Script" uid="uid://cjqf4q1mwbr5e" path="res://scripts/place_walls.gd" id="16_ibx1f"]
+[ext_resource type="Script" path="res://scripts/place_walls.gd" id="16_ibx1f"]
 
 [sub_resource type="Environment" id="Environment_1rttj"]
 background_energy_multiplier = 0.0
 ambient_light_source = 2
 ambient_light_energy = 0.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_ibx1f"]
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_r1aly"]
+font_size = 36
 
 [sub_resource type="GDScript" id="GDScript_0acuf"]
 resource_name = "pausetry"
@@ -119,6 +127,98 @@ environment = SubResource("Environment_1rttj")
 projection = 1
 fov = 50.0
 size = 26.478
+
+[node name="TuringBandlUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("7_1rttj")
+
+[node name="Panel" type="Panel" parent="TuringBandlUI"]
+modulate = Color(1, 1, 1, 0.384314)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -372.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TuringBandlUI/Panel" node_paths=PackedStringArray("bandl1", "bandl2", "bandl3", "bandl4")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("8_0acuf")
+bandl1 = NodePath("TuringBandlInstruction")
+bandl2 = NodePath("TuringBandlInstruction2")
+bandl3 = NodePath("TuringBandlInstruction3")
+bandl4 = NodePath("TuringBandlInstruction4")
+
+[node name="TuringBandlInstruction" parent="TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("9_ec7cf")]
+layout_mode = 2
+
+[node name="TuringBandlInstruction2" parent="TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("9_ec7cf")]
+layout_mode = 2
+
+[node name="TuringBandlInstruction3" parent="TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("9_ec7cf")]
+layout_mode = 2
+
+[node name="TuringBandlInstruction4" parent="TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("9_ec7cf")]
+layout_mode = 2
+
+[node name="TutorialUI2" type="Control" parent="." node_paths=PackedStringArray("heist_planner")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("10_nivii")
+heist_planner = NodePath("../HeistPlanner")
+
+[node name="Chat" parent="TutorialUI2" instance=ExtResource("10_ibx1f")]
+messages = Array[String](["I fulfilled my part of the bargain.
+...", "The building plan and patrol routes are all yours.
+...", "But this won't be easy. You'll have to come up with a foolproof plan."])
+
+[node name="Chat2" parent="TutorialUI2" instance=ExtResource("10_ibx1f")]
+messages = Array[String](["But with my intel, this should be as easy as...", "... heh... stealing candy from a baby. Or stealing a gem from a museum.", "You can plan your heist using the arrow keys. Go ahead."])
+
+[node name="Chat3" parent="TutorialUI2" instance=ExtResource("10_ibx1f")]
+messages = Array[String](["Splendid. On the right, you can see your move sequence.", "Don't let these guards see you. Unless you really like jail.", "If you mess up your plan, you can always hit \"backspace\" to undo."])
+
+[node name="Chat4" parent="TutorialUI2" instance=ExtResource("10_ibx1f")]
+messages = Array[String](["If you're confident about your plan, hit enter.", "Then get in there, and steal that precious gem.", "And remember..."])
+
+[node name="Chat5" parent="TutorialUI2" instance=ExtResource("10_ibx1f")]
+messages = Array[String](["You owe me.", "I'm watching you."])
+chat_icon = 1
+
+[node name="Instructions" type="Label" parent="TutorialUI2"]
+visible = false
+layout_mode = 0
+offset_left = -1.0
+offset_top = 43.0
+offset_right = 1913.0
+offset_bottom = 110.0
+text = "Use the arrow keys to plan your heist."
+label_settings = SubResource("LabelSettings_ibx1f")
+horizontal_alignment = 1
+
+[node name="SkipLabel" type="Label" parent="TutorialUI2"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 986.0
+offset_right = 471.0
+offset_bottom = 1036.0
+text = "Press \"X\" to skip tutorial"
+label_settings = SubResource("LabelSettings_r1aly")
 
 [node name="PauseMenu" type="Control" parent="."]
 visible = false
@@ -283,54 +383,6 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 70
 text = "Settings"
 horizontal_alignment = 1
-
-[node name="TuringBandlUI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-script = ExtResource("7_1rttj")
-
-[node name="Panel" type="Panel" parent="TuringBandlUI"]
-modulate = Color(1, 1, 1, 0.384314)
-layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -372.0
-grow_horizontal = 0
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TuringBandlUI/Panel" node_paths=PackedStringArray("bandl1", "bandl2", "bandl3", "bandl4")]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-script = ExtResource("8_0acuf")
-bandl1 = NodePath("TuringBandlInstruction")
-bandl2 = NodePath("TuringBandlInstruction2")
-bandl3 = NodePath("TuringBandlInstruction3")
-bandl4 = NodePath("TuringBandlInstruction4")
-
-[node name="TuringBandlInstruction" parent="TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("9_ec7cf")]
-layout_mode = 2
-
-[node name="TuringBandlInstruction2" parent="TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("9_ec7cf")]
-layout_mode = 2
-
-[node name="TuringBandlInstruction3" parent="TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("9_ec7cf")]
-layout_mode = 2
-
-[node name="TuringBandlInstruction4" parent="TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("9_ec7cf")]
-layout_mode = 2
 
 [node name="Map" parent="." instance=ExtResource("8_rly6o")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -16.5, 1.5, -19.5)

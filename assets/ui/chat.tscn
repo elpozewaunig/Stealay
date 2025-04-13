@@ -1,0 +1,93 @@
+[gd_scene load_steps=9 format=3 uid="uid://crkpn5vqe2wwa"]
+
+[ext_resource type="Script" uid="uid://8ypg4mvasyqw" path="res://scripts/chat.gd" id="1_1vpf0"]
+[ext_resource type="Texture2D" uid="uid://dlpc8t81caida" path="res://assets/sprites/Tutorial/speech_bubble.png" id="2_bhmos"]
+[ext_resource type="Texture2D" uid="uid://c5w5mt4ir5daw" path="res://assets/sprites/Tutorial/speech_rect.PNG" id="3_fnrej"]
+[ext_resource type="Texture2D" uid="uid://qsm0kleuyn4t" path="res://assets/sprites/Tutorial/chat_guy.png" id="4_1vpvk"]
+[ext_resource type="Texture2D" uid="uid://c2wn5l7pkj5qk" path="res://assets/sprites/Tutorial/chat_guy_angry.png" id="5_7tx8e"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_t1nil"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_l2q88"]
+font_size = 36
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0uyyy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_1vpvk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7tx8e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Chat" type="Node2D"]
+script = ExtResource("1_1vpf0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 620.0
+offset_top = -5.0
+offset_right = 1920.0
+offset_bottom = 1075.0
+color = Color(1, 1, 1, 0.627451)
+
+[node name="SpeechBubble" type="Sprite2D" parent="."]
+position = Vector2(1198, 190)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_bhmos")
+
+[node name="Label" type="Label" parent="SpeechBubble"]
+offset_left = -494.0
+offset_top = -177.0
+offset_right = 384.0
+offset_bottom = 126.0
+text = "I fulfilled my part of the bargain.
+..."
+label_settings = SubResource("LabelSettings_t1nil")
+autowrap_mode = 3
+
+[node name="SpeechRect" type="Sprite2D" parent="."]
+position = Vector2(1160, 480)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_fnrej")
+
+[node name="Label" type="Label" parent="SpeechRect"]
+offset_left = -447.0
+offset_top = -151.0
+offset_right = 443.0
+offset_bottom = 152.0
+text = "The building plan and patrol routes are yours.
+..."
+label_settings = SubResource("LabelSettings_t1nil")
+autowrap_mode = 3
+
+[node name="SpeechRect2" type="Sprite2D" parent="."]
+position = Vector2(1160, 790)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_fnrej")
+
+[node name="Label" type="Label" parent="SpeechRect2"]
+offset_left = -447.0
+offset_top = -151.0
+offset_right = 443.0
+offset_bottom = 152.0
+text = "But this won't be easy. You'll have to come up with a foolproof plan."
+label_settings = SubResource("LabelSettings_t1nil")
+autowrap_mode = 3
+
+[node name="ContinueLabel" type="Label" parent="."]
+offset_left = 1061.0
+offset_top = 960.0
+offset_right = 1466.0
+offset_bottom = 1010.0
+text = "Press enter to continue"
+label_settings = SubResource("LabelSettings_l2q88")
+
+[node name="ChatGuy" type="AnimatedSprite2D" parent="."]
+position = Vector2(1691, 313)
+sprite_frames = SubResource("SpriteFrames_0uyyy")
