@@ -40,6 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://dsxfyk0txjm5a" path="res://assets/ui/planningscreenmap/getdia.png" id="38_yefry"]
 
 [sub_resource type="Environment" id="Environment_1rttj"]
+background_color = Color(0.0588235, 0.0588235, 0.0588235, 1)
 background_energy_multiplier = 0.0
 ambient_light_source = 2
 ambient_light_energy = 0.0
@@ -218,7 +219,6 @@ size_flags_vertical = 3
 script = ExtResource("7_1rttj")
 
 [node name="Panel" type="Panel" parent="TuringBandlUI"]
-modulate = Color(1, 1, 1, 0.384314)
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0

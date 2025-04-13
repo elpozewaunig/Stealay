@@ -10,8 +10,17 @@
 [ext_resource type="Texture2D" uid="uid://7qxcvhr2tmlp" path="res://assets/ui/turingbandlarrowicons/selectionsymbol.png" id="8_8308m"]
 [ext_resource type="Texture2D" uid="uid://byu231mdxjm12" path="res://assets/ui/turingbandlarrowicons/notselectionsymbol.png" id="9_mhnxi"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8itmi"]
+bg_color = Color(0.490717, 0.63602, 0.604071, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_urn0h"]
+texture = ExtResource("8_8308m")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mhnxi"]
+texture = ExtResource("9_mhnxi")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojfeb"]
-bg_color = Color(0.447059, 0.72549, 0.647059, 0.709804)
+bg_color = Color(0.270608, 0.267456, 0.352527, 0.666667)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pcu6u"]
 texture = ExtResource("2_mhnxi")
@@ -30,15 +39,6 @@ texture = ExtResource("6_s88lv")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0xnjm"]
 texture = ExtResource("7_0de6y")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8itmi"]
-bg_color = Color(0.490717, 0.63602, 0.604071, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_urn0h"]
-texture = ExtResource("8_8308m")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mhnxi"]
-texture = ExtResource("9_mhnxi")
 
 [node name="TuringBandlInstruction" type="Control" node_paths=PackedStringArray("UpArrowSymbol", "DownArrowSymbol", "LeftArrowSymbol", "RightArrowSymbol", "HideArrowSymbol", "EmptyArrowSymbol", "SelectionRibbon")]
 layout_mode = 3
@@ -61,6 +61,36 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="SelectionRibbon" type="Panel" parent="HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.33
+theme_override_styles/panel = SubResource("StyleBoxFlat_8itmi")
+
+[node name="SelectionIcon" type="Panel" parent="HBoxContainer/SelectionRibbon"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_right = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_urn0h")
+
+[node name="NotSelectIcon" type="Panel" parent="HBoxContainer/SelectionRibbon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_right = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mhnxi")
 
 [node name="BandlSymbol" type="Panel" parent="HBoxContainer"]
 layout_mode = 2
@@ -126,32 +156,3 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_0xnjm")
-
-[node name="SelectionRibbon" type="Panel" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.33
-theme_override_styles/panel = SubResource("StyleBoxFlat_8itmi")
-
-[node name="SelectionIcon" type="Panel" parent="HBoxContainer/SelectionRibbon"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -4.0
-offset_right = -4.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_urn0h")
-
-[node name="NotSelectIcon" type="Panel" parent="HBoxContainer/SelectionRibbon"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -4.0
-offset_right = -4.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_mhnxi")
