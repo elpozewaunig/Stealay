@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c2yoiy1dygm2x"]
+
+[ext_resource type="Texture2D" uid="uid://eflg282v6x4k" path="res://assets/map_final/papertexture_Vase.jpg" id="1_bfeau"]
+
+[resource]
+albedo_texture = ExtResource("1_bfeau")
+metallic = 0.22
+metallic_specular = 1.0
