@@ -23,7 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://brfhrtwxt1nw" path="res://assets/sounds/voicelines/tutorial/voiceline5.ogg" id="14_kitgh"]
 [ext_resource type="PackedScene" uid="uid://dsn1mnxuhm7jh" path="res://assets/GoalObject.tscn" id="14_un3xe"]
 [ext_resource type="AudioStream" uid="uid://bd5g7tc1nufnr" path="res://assets/sounds/voicelines/tutorial/voiceline6.ogg" id="15_yivre"]
-[ext_resource type="Script" path="res://scripts/place_walls.gd" id="16_ibx1f"]
+[ext_resource type="Script" uid="uid://cjqf4q1mwbr5e" path="res://scripts/place_walls.gd" id="16_ibx1f"]
 [ext_resource type="AudioStream" uid="uid://c8hxsk8w5cdvs" path="res://assets/sounds/voicelines/tutorial/voiceline7.ogg" id="16_jlbm7"]
 [ext_resource type="AudioStream" uid="uid://blr07d13c8auj" path="res://assets/sounds/voicelines/tutorial/voiceline8.ogg" id="17_ntchk"]
 [ext_resource type="AudioStream" uid="uid://bng8v7av61ahh" path="res://assets/sounds/voicelines/tutorial/voiceline9.ogg" id="17_yefry"]

@@ -1,6 +1,6 @@
-[gd_scene load_steps=33 format=4 uid="uid://bg4w7m5cvf82n"]
+[gd_scene load_steps=44 format=4 uid="uid://bg4w7m5cvf82n"]
 
-[ext_resource type="Script" path="res://scripts/fancy_button.gd" id="1_2nypq"]
+[ext_resource type="Script" uid="uid://dqkwefcstr5y7" path="res://scripts/fancy_button.gd" id="1_2nypq"]
 [ext_resource type="Texture2D" uid="uid://cduu48nagk7au" path="res://assets/newui/texticons_fillonly.png" id="1_7la6k"]
 [ext_resource type="Texture2D" uid="uid://caiv810gq1dvv" path="res://assets/newui/paper.jpg" id="1_bky6r"]
 [ext_resource type="PackedScene" uid="uid://dptpc6b54d3bn" path="res://assets/ui/button_audio_player.tscn" id="1_mipys"]
@@ -11,8 +11,19 @@
 [ext_resource type="Texture2D" uid="uid://cq3u3h02epvfg" path="res://assets/sprites/menu_placeholder.png" id="4_l72w3"]
 [ext_resource type="Material" uid="uid://cux2uimlb1q0u" path="res://scenes/flippermaterial.tres" id="6_826wr"]
 [ext_resource type="Texture2D" uid="uid://cnjhuew5ssw74" path="res://assets/models/flippage/papertexture.jpg" id="7_ucygd"]
+[ext_resource type="Texture2D" uid="uid://ctg6jvq15i2l3" path="res://assets/ui/post_its/DiaPostits.png" id="7_v41fp"]
+[ext_resource type="Texture2D" uid="uid://c68y4ruoox0ya" path="res://assets/ui/post_its/guard_token.png" id="8_7shrw"]
 [ext_resource type="Texture2D" uid="uid://dkscqwlxx0n5r" path="res://assets/newui/stealay_logo.png" id="8_mipys"]
+[ext_resource type="Texture2D" uid="uid://cw2cxuyhuu2p2" path="res://assets/ui/post_its/player_token.png" id="9_viowm"]
+[ext_resource type="Texture2D" uid="uid://cl4lwnow7hmmq" path="res://assets/ui/post_its/empty.png" id="10_1n6yq"]
+[ext_resource type="Texture2D" uid="uid://bnpx5induylqr" path="res://assets/ui/post_its/eye.png" id="12_yovvs"]
+[ext_resource type="Texture2D" uid="uid://4vch2c573xoj" path="res://assets/ui/post_its/death.png" id="13_2axsc"]
 [ext_resource type="AudioStream" uid="uid://cb88ggjx4kabs" path="res://assets/music/main_theme.ogg" id="13_l4mxc"]
+[ext_resource type="Texture2D" uid="uid://301bnjb80arh" path="res://assets/ui/post_its/hand.png" id="14_2axsc"]
+[ext_resource type="Texture2D" uid="uid://ciakldria1fgl" path="res://assets/ui/post_its/turn.png" id="15_wrgne"]
+[ext_resource type="Texture2D" uid="uid://cj2qv55fkab47" path="res://assets/ui/post_its/x.png" id="16_hm0al"]
+[ext_resource type="Texture2D" uid="uid://cqrrr7nyd22q" path="res://assets/ui/post_its/scribble.png" id="17_i7r3k"]
+[ext_resource type="Texture2D" uid="uid://cw5kpeeq2q0sv" path="res://assets/ui/post_its/check.png" id="18_os5dr"]
 
 [sub_resource type="GDScript" id="GDScript_ow34m"]
 resource_name = "buttonlogic"
@@ -321,6 +332,7 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 
 [node name="DefaultView" type="Control" parent="SubViewport/Node2D/UI"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -470,6 +482,21 @@ position = Vector2(547.347, 210.375)
 scale = Vector2(0.309977, 0.309977)
 texture = ExtResource("8_mipys")
 
+[node name="Dia" type="Sprite2D" parent="SubViewport/Node2D/UI/DefaultView"]
+position = Vector2(1385, 676)
+scale = Vector2(0.452308, 0.400677)
+texture = ExtResource("7_v41fp")
+
+[node name="Token" type="Sprite2D" parent="SubViewport/Node2D/UI/DefaultView"]
+position = Vector2(1173, 201)
+scale = Vector2(0.452308, 0.400677)
+texture = ExtResource("8_7shrw")
+
+[node name="Token2" type="Sprite2D" parent="SubViewport/Node2D/UI/DefaultView"]
+position = Vector2(1452, 197)
+scale = Vector2(0.452308, 0.400677)
+texture = ExtResource("9_viowm")
+
 [node name="OptionsView" type="Control" parent="SubViewport/Node2D/UI"]
 visible = false
 layout_mode = 1
@@ -480,6 +507,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_l72w3")
 
+[node name="Dia" type="Sprite2D" parent="SubViewport/Node2D/UI/OptionsView"]
+position = Vector2(943, 560)
+scale = Vector2(1.24408, 1.10206)
+texture = ExtResource("10_1n6yq")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/Node2D/UI/OptionsView"]
 layout_mode = 1
 anchors_preset = 8
@@ -487,10 +519,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 262.0
-offset_top = -177.0
-offset_right = 499.0
-offset_bottom = 177.0
+offset_left = -121.0
+offset_top = -137.0
+offset_right = 116.0
+offset_bottom = 217.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 30
@@ -500,47 +532,86 @@ layout_mode = 2
 theme = ExtResource("3_2wh52")
 theme_override_constants/icon_max_width = 60
 theme_override_font_sizes/font_size = 27
-text = "Mute Sound"
+text = "
+"
 vertical_icon_alignment = 0
 expand_icon = true
 script = SubResource("GDScript_mipys")
 
 [node name="ButtonAudioPlayer" parent="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteSoundCheckButton" instance=ExtResource("1_mipys")]
 
+[node name="Lines" type="Sprite2D" parent="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteSoundCheckButton/ButtonAudioPlayer"]
+position = Vector2(72, 42)
+scale = Vector2(0.131058, 0.131058)
+texture = ExtResource("2_2nypq")
+region_enabled = true
+region_rect = Rect2(118.75, 1572.03, 1465.8, 237.56)
+
 [node name="MuteMusicAudioCheckButton" type="CheckButton" parent="SubViewport/Node2D/UI/OptionsView/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_2wh52")
 theme_override_constants/icon_max_width = 60
 theme_override_font_sizes/font_size = 27
-text = "Mute Music"
+text = "
+"
 vertical_icon_alignment = 0
 expand_icon = true
 script = SubResource("GDScript_8a8k8")
 
 [node name="ButtonAudioPlayer" parent="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" instance=ExtResource("1_mipys")]
 
+[node name="Lines" type="Sprite2D" parent="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton/ButtonAudioPlayer"]
+position = Vector2(72, 42)
+scale = Vector2(0.131058, 0.131058)
+texture = ExtResource("2_2nypq")
+region_enabled = true
+region_rect = Rect2(130.176, 1813.9, 1392.59, 262.373)
+
 [node name="BackButton" type="Button" parent="SubViewport/Node2D/UI/OptionsView/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 42
-text = "Back"
+text = "
+"
+
+[node name="FancyButton" type="Node2D" parent="SubViewport/Node2D/UI/OptionsView/VBoxContainer/BackButton"]
+position = Vector2(159, 32)
+scale = Vector2(0.249995, 0.249995)
+script = ExtResource("1_2nypq")
+
+[node name="Fills" type="Sprite2D" parent="SubViewport/Node2D/UI/OptionsView/VBoxContainer/BackButton/FancyButton"]
+visible = false
+position = Vector2(-212.01, 8.99738)
+texture = ExtResource("1_7la6k")
+region_enabled = true
+region_rect = Rect2(918.539, 921.904, 618.93, 242.19)
+
+[node name="Lines" type="Sprite2D" parent="SubViewport/Node2D/UI/OptionsView/VBoxContainer/BackButton/FancyButton"]
+position = Vector2(-212.01, 8.99738)
+texture = ExtResource("2_2nypq")
+region_enabled = true
+region_rect = Rect2(918.539, 921.904, 618.93, 242.19)
 
 [node name="ButtonAudioPlayer" parent="SubViewport/Node2D/UI/OptionsView/VBoxContainer/BackButton" instance=ExtResource("1_mipys")]
 
 [node name="PageAudioPlayer" parent="SubViewport/Node2D/UI/OptionsView/VBoxContainer/BackButton" instance=ExtResource("2_8a8k8")]
 
-[node name="Label" type="Label" parent="SubViewport/Node2D/UI/OptionsView"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.062
-anchor_right = 1.0
-anchor_bottom = 0.138
-offset_left = 776.0
-offset_top = 0.0400009
-offset_bottom = 156.96
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 115
-text = "Settings"
-horizontal_alignment = 1
+[node name="Lines" type="Sprite2D" parent="SubViewport/Node2D/UI/OptionsView"]
+position = Vector2(974, 196)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_2nypq")
+region_enabled = true
+region_rect = Rect2(918.539, 94.421, 1103.31, 322.92)
+
+[node name="Token" type="Sprite2D" parent="SubViewport/Node2D/UI/OptionsView"]
+position = Vector2(593, 193)
+scale = Vector2(0.452308, 0.400677)
+texture = ExtResource("12_yovvs")
+
+[node name="Token2" type="Sprite2D" parent="SubViewport/Node2D/UI/OptionsView"]
+position = Vector2(1326, 189)
+scale = Vector2(0.452308, 0.400677)
+texture = ExtResource("13_2axsc")
 
 [node name="CreditsView" type="Control" parent="SubViewport/Node2D/UI"]
 visible = false
@@ -551,6 +622,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_l72w3")
+
+[node name="Lines" type="Sprite2D" parent="SubViewport/Node2D/UI/CreditsView"]
+position = Vector2(971, 134)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_2nypq")
+region_enabled = true
+region_rect = Rect2(898.357, 477.889, 1009.13, 336.375)
+
+[node name="Empty" type="Sprite2D" parent="SubViewport/Node2D/UI/CreditsView"]
+position = Vector2(960, 541)
+scale = Vector2(1.424, 1.424)
+texture = ExtResource("10_1n6yq")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="SubViewport/Node2D/UI/CreditsView"]
 layout_mode = 1
@@ -580,25 +663,58 @@ Tobias Wurzer"
 horizontal_alignment = 1
 
 [node name="BackButton" type="Button" parent="SubViewport/Node2D/UI/CreditsView/VBoxContainer2"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 42
-text = "Back"
+text = "
+"
+
+[node name="FancyButton" type="Node2D" parent="SubViewport/Node2D/UI/CreditsView/VBoxContainer2/BackButton"]
+position = Vector2(190.5, 32)
+scale = Vector2(0.249995, 0.249995)
+script = ExtResource("1_2nypq")
+
+[node name="Fills" type="Sprite2D" parent="SubViewport/Node2D/UI/CreditsView/VBoxContainer2/BackButton/FancyButton"]
+visible = false
+position = Vector2(-212.01, 8.99738)
+texture = ExtResource("1_7la6k")
+region_enabled = true
+region_rect = Rect2(918.539, 921.904, 618.93, 242.19)
+
+[node name="Lines" type="Sprite2D" parent="SubViewport/Node2D/UI/CreditsView/VBoxContainer2/BackButton/FancyButton"]
+position = Vector2(-212.01, 8.99738)
+texture = ExtResource("2_2nypq")
+region_enabled = true
+region_rect = Rect2(918.539, 921.904, 618.93, 242.19)
 
 [node name="ButtonAudioPlayer" parent="SubViewport/Node2D/UI/CreditsView/VBoxContainer2/BackButton" instance=ExtResource("1_mipys")]
 
 [node name="PageAudioPlayer" parent="SubViewport/Node2D/UI/CreditsView/VBoxContainer2/BackButton" instance=ExtResource("2_8a8k8")]
 
-[node name="Label" type="Label" parent="SubViewport/Node2D/UI/CreditsView"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.062
-anchor_right = 1.0
-anchor_bottom = 0.138
-offset_bottom = 157.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 115
-text = "Settings"
-horizontal_alignment = 1
+[node name="Hand" type="Sprite2D" parent="SubViewport/Node2D/UI/CreditsView"]
+position = Vector2(1618, 319)
+scale = Vector2(0.63, 0.63)
+texture = ExtResource("14_2axsc")
+
+[node name="Turn" type="Sprite2D" parent="SubViewport/Node2D/UI/CreditsView"]
+position = Vector2(264, 243)
+scale = Vector2(0.732, 0.732)
+texture = ExtResource("15_wrgne")
+
+[node name="X" type="Sprite2D" parent="SubViewport/Node2D/UI/CreditsView"]
+position = Vector2(438, 642)
+scale = Vector2(0.684, 0.684)
+texture = ExtResource("16_hm0al")
+
+[node name="Scribble" type="Sprite2D" parent="SubViewport/Node2D/UI/CreditsView"]
+position = Vector2(964, 541)
+scale = Vector2(1.106, 1.09)
+texture = ExtResource("17_i7r3k")
+
+[node name="Check" type="Sprite2D" parent="SubViewport/Node2D/UI/CreditsView"]
+position = Vector2(1493, 777)
+scale = Vector2(0.668, 0.668)
+texture = ExtResource("18_os5dr")
 
 [node name="Paper" type="Sprite2D" parent="SubViewport/Node2D/UI"]
 self_modulate = Color(0.625597, 0.625597, 0.625597, 1)
@@ -707,13 +823,17 @@ bus = &"Music"
 [connection signal="mouse_entered" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" to="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton/ButtonAudioPlayer" method="_on_hover"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" to="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" method="_on_pressed"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" to="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton/ButtonAudioPlayer" method="_on_click"]
+[connection signal="mouse_entered" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/BackButton" to="SubViewport/Node2D/UI/OptionsView/VBoxContainer/BackButton/FancyButton" method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_entered" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/BackButton" to="SubViewport/Node2D/UI/OptionsView/VBoxContainer/BackButton/ButtonAudioPlayer" method="_on_hover"]
+[connection signal="mouse_exited" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/BackButton" to="SubViewport/Node2D/UI/OptionsView/VBoxContainer/BackButton/FancyButton" method="_on_area_2d_mouse_exited"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/BackButton" to="SubViewport/Node2D/UI/DefaultView" method="showMe"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/BackButton" to="SubViewport/Node2D/UI/OptionsView" method="HideMe"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/BackButton" to="SubViewport/Node2D/UI/OptionsView/VBoxContainer/BackButton/ButtonAudioPlayer" method="_on_click"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/BackButton" to="SubViewport/Node2D/UI/OptionsView/VBoxContainer/BackButton/PageAudioPlayer" method="_on_page_turn"]
 [connection signal="page_flip" from="SubViewport/Node2D/UI/CreditsView" to="SubViewport/Node2D/PageFlip" method="_on_page_flip"]
 [connection signal="mouse_entered" from="SubViewport/Node2D/UI/CreditsView/VBoxContainer2/BackButton" to="SubViewport/Node2D/UI/CreditsView/VBoxContainer2/BackButton/ButtonAudioPlayer" method="_on_hover"]
+[connection signal="mouse_entered" from="SubViewport/Node2D/UI/CreditsView/VBoxContainer2/BackButton" to="SubViewport/Node2D/UI/CreditsView/VBoxContainer2/BackButton/FancyButton" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="SubViewport/Node2D/UI/CreditsView/VBoxContainer2/BackButton" to="SubViewport/Node2D/UI/CreditsView/VBoxContainer2/BackButton/FancyButton" method="_on_area_2d_mouse_exited"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/CreditsView/VBoxContainer2/BackButton" to="SubViewport/Node2D/UI/DefaultView" method="showMe"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/CreditsView/VBoxContainer2/BackButton" to="SubViewport/Node2D/UI/CreditsView" method="HideMe"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/CreditsView/VBoxContainer2/BackButton" to="SubViewport/Node2D/UI/CreditsView/VBoxContainer2/BackButton/ButtonAudioPlayer" method="_on_click"]
