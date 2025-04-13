@@ -13,7 +13,7 @@ signal request_data()
 @export var lose_jingle: AudioStreamPlayer
 @export var music: AudioStreamPlayer
 
-var has_won: bool = false
+var game_over: bool = false
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -35,15 +35,15 @@ func _process(_delta):
 		
 
 func check_win():
-	if goal.transform.origin.distance_to(player.transform.origin) <= 3 and not has_won:
+	if goal.transform.origin.distance_to(player.transform.origin) <= 3 and not game_over:
 		print("You won.")
+		game_over = true
 		Globals.previous_sequence = [] 
 		Globals.previous_move_count = 0
 		win.show()
 		music.stop()
 		win_jingle.play()
 		emit_signal("won")
-		has_won = true
 		return true
 	return false
 
@@ -51,18 +51,21 @@ func check_lose():
 	if Globals.dev_mode:
 		return
 		
-	if Globals.player_spotted :
+	if Globals.player_spotted and not game_over:
 		print("Game over")
+		game_over = true
 		Globals.time_between_moves *= 100
 		lose.show()
 		music.stop()
 		lose_jingle.play()
 
 func _on_player_movement_controller_out_of_moves() -> void:
-	Globals.time_between_moves *= 100
-	lose.show()
-	music.stop()
-	lose_jingle.play()
+	if not game_over:
+		game_over = true
+		Globals.time_between_moves *= 100
+		lose.show()
+		music.stop()
+		lose_jingle.play()
 	#post_lose_precedure()
 	
 func post_lose_precedure():
