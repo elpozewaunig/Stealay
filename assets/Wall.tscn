@@ -8,12 +8,15 @@ albedo_color = Color(0.45098, 0, 0, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_7wufe"]
 
 [node name="Wall" type="Node3D"]
+visible = false
 
 [node name="Area3D" type="Area3D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000290871, -4.76837e-07, -0.0474644)
 visible = false
 layers = 4
 mesh = SubResource("BoxMesh_1ak2g")
@@ -21,5 +24,7 @@ skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_bxykg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+visible = false
 shape = SubResource("BoxShape3D_7wufe")
 debug_color = Color(0.98465, 0, 0.341512, 0.42)
+debug_fill = false

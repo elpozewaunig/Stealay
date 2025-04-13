@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bg05c2k8pghfo"]
+[gd_scene load_steps=5 format=3 uid="uid://wg8m75jsgvyy"]
 
-[ext_resource type="Texture2D" uid="uid://cqrrr7nyd22q" path="res://assets/ui/post_its/scribble.png" id="1_nxj2s"]
+[ext_resource type="Texture2D" uid="uid://4vch2c573xoj" path="res://assets/ui/post_its/death.png" id="1_4wc2p"]
 
 [sub_resource type="GDScript" id="GDScript_iqd85"]
 script/source = "extends Sprite3D
@@ -25,7 +25,7 @@ albedo_color = Color(0, 1, 1, 0.52549)
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.5, 0)
 axis = 1
-texture = ExtResource("1_nxj2s")
+texture = ExtResource("1_4wc2p")
 script = SubResource("GDScript_iqd85")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
