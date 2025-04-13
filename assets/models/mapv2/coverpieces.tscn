@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://jstyb6vd7dhp"]
-
-[ext_resource type="PackedScene" uid="uid://dwxm1jpn2sr3r" path="res://assets/models/mapv2/coverpieces.glb" id="1_p50ya"]
-
-[node name="coverpieces" instance=ExtResource("1_p50ya")]

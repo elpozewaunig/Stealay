@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3hk1h7np7mj2"]
-
-[ext_resource type="PackedScene" uid="uid://bve07thhvudgp" path="res://assets/models/mapv3/fullmap_v1.gltf" id="1_t4pja"]
-
-[node name="fullmap_v1" instance=ExtResource("1_t4pja")]
