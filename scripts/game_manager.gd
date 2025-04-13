@@ -13,9 +13,12 @@ signal request_data()
 @export var lose_jingle: AudioStreamPlayer
 @export var music: AudioStreamPlayer
 
+var has_won: bool = false
+
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	Globals.player_spotted = false
+	Globals.time_between_moves = 1.2
 		
 func _process(_delta):
 	if Input.is_action_just_pressed("Escape"):
@@ -32,7 +35,7 @@ func _process(_delta):
 		
 
 func check_win():
-	if goal.transform.origin.distance_to(player.transform.origin) <= 3:
+	if goal.transform.origin.distance_to(player.transform.origin) <= 3 and not has_won:
 		print("You won.")
 		Globals.previous_sequence = [] 
 		Globals.previous_move_count = 0
@@ -40,6 +43,7 @@ func check_win():
 		music.stop()
 		win_jingle.play()
 		emit_signal("won")
+		has_won = true
 		return true
 	return false
 
