@@ -7,6 +7,8 @@ signal place_skull(pos: Vector2i)
 
 @export var player: Node3D
 
+@onready var invalid_sound: AudioStreamPlayer = $InvalidSound
+
 var input_sequence: Array[Globals.movement] = []
 
 var valid_pos: Array[Vector2i] = Globals.valid_pos.duplicate(true)
@@ -69,6 +71,7 @@ func _input(event: InputEvent) -> void:
 			add_action(move)
 		else:
 			# TODO: Signal user invalid move by shaking screen
+			invalid_sound.play()
 			pass
 			
 		

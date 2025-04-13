@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://csr8qdvijf7o8"]
+[gd_scene load_steps=3 format=3 uid="uid://csr8qdvijf7o8"]
 
 [ext_resource type="Script" uid="uid://kffkeo6bcao7" path="res://scripts/planner.gd" id="1_qk7fk"]
+[ext_resource type="AudioStream" uid="uid://yfbjoe2wleiq" path="res://assets/sounds/error/error.wav" id="2_j03c0"]
 
 [node name="HeistPlanner" type="Control"]
 layout_mode = 3
@@ -10,3 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qk7fk")
+
+[node name="InvalidSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_j03c0")
+volume_db = -2.0
