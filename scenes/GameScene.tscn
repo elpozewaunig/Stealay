@@ -88,7 +88,8 @@ func _on_pressed() -> void:
 [sub_resource type="Environment" id="Environment_18ig4"]
 background_mode = 1
 background_energy_multiplier = 0.0
-ambient_light_source = 1
+ambient_light_source = 3
+ambient_light_color = Color(0.759369, 0.831966, 0.865193, 1)
 reflected_light_source = 1
 
 [node name="Game" type="Node3D"]
