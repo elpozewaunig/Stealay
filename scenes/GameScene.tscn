@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bk3bgljl4ox8h"]
+[gd_scene load_steps=20 format=3 uid="uid://bk3bgljl4ox8h"]
 
 [ext_resource type="Theme" uid="uid://cb6idjbop8kw2" path="res://assets/sprites/CheckButtonBetter/BetterButton.tres" id="1_vh257"]
 [ext_resource type="Script" uid="uid://d0klmhrydubhb" path="res://scripts/game_manager.gd" id="1_xy3my"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://fve4ylqy7j1n" path="res://scripts/player_mover.gd" id="7_6ytau"]
 [ext_resource type="PackedScene" uid="uid://dsn1mnxuhm7jh" path="res://assets/GoalObject.tscn" id="8_vijgj"]
 [ext_resource type="Script" path="res://scripts/place_walls.gd" id="9_pynjx"]
+[ext_resource type="AudioStream" uid="uid://cb88ggjx4kabs" path="res://assets/music/main_theme.ogg" id="11_j40tv"]
 
 [sub_resource type="GDScript" id="GDScript_pynjx"]
 resource_name = "pausetry"
@@ -305,6 +306,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0, -22)
 [node name="Walls" type="Node3D" parent="."]
 visible = false
 script = ExtResource("9_pynjx")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_j40tv")
+volume_db = -7.0
+autoplay = true
+bus = &"Music"
 
 [connection signal="request_data" from="GameManager" to="MovementManager/PlayerMovementController" method="_on_game_manager_request_data"]
 [connection signal="mouse_entered" from="PauseMenu/UI/DefaultView/VBoxContainer/OptionsButton" to="PauseMenu/UI/DefaultView/VBoxContainer/OptionsButton/ButtonAudioPlayer" method="_on_hover"]
