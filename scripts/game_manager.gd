@@ -9,6 +9,10 @@ signal request_data()
 @export var lose:Control
 @export var win:Control
 
+@export var win_jingle: AudioStreamPlayer
+@export var lose_jingle: AudioStreamPlayer
+@export var music: AudioStreamPlayer
+
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	Globals.player_spotted = false
@@ -33,6 +37,8 @@ func check_win():
 		Globals.previous_sequence = [] 
 		Globals.previous_move_count = 0
 		win.show()
+		music.stop()
+		win_jingle.play()
 		emit_signal("won")
 		return true
 	return false
@@ -45,10 +51,14 @@ func check_lose():
 		print("Game over")
 		Globals.time_between_moves *= 100
 		lose.show()
+		music.stop()
+		lose_jingle.play()
 
 func _on_player_movement_controller_out_of_moves() -> void:
 	Globals.time_between_moves *= 100
 	lose.show()
+	music.stop()
+	lose_jingle.play()
 	#post_lose_precedure()
 	
 func post_lose_precedure():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bk3bgljl4ox8h"]
+[gd_scene load_steps=29 format=3 uid="uid://bk3bgljl4ox8h"]
 
 [ext_resource type="Theme" uid="uid://cb6idjbop8kw2" path="res://assets/sprites/CheckButtonBetter/BetterButton.tres" id="1_vh257"]
 [ext_resource type="Script" uid="uid://d0klmhrydubhb" path="res://scripts/game_manager.gd" id="1_xy3my"]
@@ -13,10 +13,12 @@
 [ext_resource type="Texture2D" uid="uid://dk6q5fclpp8db" path="res://assets/newui/texticons_borderonly.png" id="6_1npfk"]
 [ext_resource type="Script" uid="uid://emtjvummxi6o" path="res://scripts/guard_mover.gd" id="6_xs4ih"]
 [ext_resource type="Script" uid="uid://fve4ylqy7j1n" path="res://scripts/player_mover.gd" id="7_6ytau"]
+[ext_resource type="AudioStream" uid="uid://bwiwh1ddpoigc" path="res://assets/sounds/game_over_jingle/game_over.ogg" id="8_2gh7q"]
 [ext_resource type="Texture2D" uid="uid://cw5kpeeq2q0sv" path="res://assets/ui/post_its/check.png" id="8_6nmf6"]
 [ext_resource type="PackedScene" uid="uid://dsn1mnxuhm7jh" path="res://assets/GoalObject.tscn" id="8_vijgj"]
 [ext_resource type="Texture2D" uid="uid://cqrrr7nyd22q" path="res://assets/ui/post_its/scribble.png" id="9_icif4"]
 [ext_resource type="Script" path="res://scripts/place_walls.gd" id="9_pynjx"]
+[ext_resource type="AudioStream" uid="uid://csb3t8vt3lf7x" path="res://assets/sounds/victory_jingle/victory.ogg" id="10_a5tct"]
 [ext_resource type="AudioStream" uid="uid://cb88ggjx4kabs" path="res://assets/music/main_theme.ogg" id="11_j40tv"]
 [ext_resource type="PackedScene" uid="uid://bpmfmcswsqh3g" path="res://assets/models/Attractions/Ground.fbx" id="19_iaegw"]
 
@@ -29,6 +31,7 @@ func _ready():
 func resetUI():
 	$UI/DefaultView.visible = true
 	$UI/OptionsView.visible = false
+	
 "
 
 [sub_resource type="GDScript" id="GDScript_xy3my"]
@@ -93,12 +96,25 @@ reflected_light_source = 1
 
 [node name="Game" type="Node3D"]
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("player", "goal", "lose", "win")]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("player", "goal", "lose", "win", "win_jingle", "lose_jingle", "music")]
 script = ExtResource("1_xy3my")
 player = NodePath("../Player")
 goal = NodePath("../GoalObject")
 lose = NodePath("../Lose")
 win = NodePath("../Win")
+win_jingle = NodePath("../WinJingle")
+lose_jingle = NodePath("../LoseJingle")
+music = NodePath("../MusicPlayer")
+
+[node name="WinJingle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_a5tct")
+volume_db = -5.0
+bus = &"Music"
+
+[node name="LoseJingle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_2gh7q")
+volume_db = -5.0
+bus = &"Music"
 
 [node name="Lose" type="Control" parent="."]
 visible = false
@@ -612,7 +628,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0, -22)
 visible = false
 script = ExtResource("9_pynjx")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_j40tv")
 volume_db = -7.0
 autoplay = true
