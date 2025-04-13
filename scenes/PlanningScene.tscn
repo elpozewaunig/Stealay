@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://tfksyvs2qbdu"]
+[gd_scene load_steps=50 format=3 uid="uid://tfksyvs2qbdu"]
 
 [ext_resource type="Script" uid="uid://lntsseib6ktx" path="res://scripts/planning_scene.gd" id="1_i05ib"]
 [ext_resource type="PackedScene" uid="uid://csr8qdvijf7o8" path="res://assets/HeistPlanner.tscn" id="2_sfq2c"]
@@ -37,8 +37,10 @@
 [ext_resource type="Texture2D" uid="uid://dhpy1ykqcskhk" path="res://assets/sprites/keys/backspace.png" id="34_yivre"]
 [ext_resource type="Texture2D" uid="uid://boa7jf3ocbkmv" path="res://assets/sprites/keys/arrow_keys.png" id="35_jlbm7"]
 [ext_resource type="AudioStream" uid="uid://dgku8m2ydkvlt" path="res://assets/music/planning_theme.ogg" id="36_yivre"]
+[ext_resource type="Texture2D" uid="uid://dsxfyk0txjm5a" path="res://assets/ui/planningscreenmap/getdia.png" id="38_yefry"]
 
 [sub_resource type="Environment" id="Environment_1rttj"]
+background_color = Color(0.0588235, 0.0588235, 0.0588235, 1)
 background_energy_multiplier = 0.0
 ambient_light_source = 2
 ambient_light_energy = 0.0
@@ -217,7 +219,6 @@ size_flags_vertical = 3
 script = ExtResource("7_1rttj")
 
 [node name="Panel" type="Panel" parent="TuringBandlUI"]
-modulate = Color(1, 1, 1, 0.384314)
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
@@ -524,6 +525,10 @@ stream = ExtResource("36_yivre")
 volume_db = -10.0
 autoplay = true
 bus = &"Music"
+
+[node name="DiamondSticker" type="Sprite3D" parent="."]
+transform = Transform3D(1.2, 0, 0, 0, -5.24537e-08, 1.2, 0, -1.2, -5.24537e-08, -24.2727, 3.08171, -21.7178)
+texture = ExtResource("38_yefry")
 
 [connection signal="load_game_board" from="." to="GameManager" method="_on_planning_scene_load_game_board"]
 [connection signal="ready" from="Player" to="HeistPlanner" method="_on_player_ready"]

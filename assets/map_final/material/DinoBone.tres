@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cqnx2acolmocs"]
+
+[ext_resource type="Texture2D" uid="uid://bnc6n24uamblo" path="res://assets/map_final/papertexture_Bone.jpg" id="1_v8w2k"]
+
+[resource]
+albedo_texture = ExtResource("1_v8w2k")
+metallic_specular = 0.0

@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://pw6g8xwe3wdo"]
+
+[resource]
+resource_name = "Walldecor"
+cull_mode = 2
+albedo_color = Color(0.617455, 0.617455, 0.617454, 1)
+metallic = 0.9
+roughness = 0.4

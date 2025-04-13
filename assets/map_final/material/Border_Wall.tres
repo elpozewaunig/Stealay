@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://5pmyncjsm7oc"]
+
+[ext_resource type="Texture2D" uid="uid://c5whp1j3cbaoc" path="res://assets/map_final/BORDERWALL.png" id="1_708v7"]
+
+[resource]
+albedo_texture = ExtResource("1_708v7")
+metallic = 0.19
+metallic_specular = 0.7
+roughness = 0.0

@@ -1,7 +1,0 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://7825aw7ugtvc"]
-
-[ext_resource type="Texture2D" uid="uid://bydqote1qevrv" path="res://assets/models/mapv3/Wall_Bake_V1.001_render.png" id="1_5ngww"]
-
-[resource]
-shading_mode = 0
-albedo_texture = ExtResource("1_5ngww")
