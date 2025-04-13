@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://tfksyvs2qbdu"]
+[gd_scene load_steps=49 format=3 uid="uid://tfksyvs2qbdu"]
 
 [ext_resource type="Script" uid="uid://lntsseib6ktx" path="res://scripts/planning_scene.gd" id="1_i05ib"]
 [ext_resource type="PackedScene" uid="uid://csr8qdvijf7o8" path="res://assets/HeistPlanner.tscn" id="2_sfq2c"]
@@ -32,6 +32,7 @@
 [ext_resource type="AudioStream" uid="uid://y0ekpm2xsbdl" path="res://assets/sounds/voicelines/tutorial/voiceline12.ogg" id="20_w8kyp"]
 [ext_resource type="AudioStream" uid="uid://bgnee16go2fyd" path="res://assets/sounds/voicelines/tutorial/voiceline13.ogg" id="21_nup1x"]
 [ext_resource type="AudioStream" uid="uid://c84yvamstgjtx" path="res://assets/sounds/voicelines/tutorial/voiceline14.ogg" id="22_b5yxx"]
+[ext_resource type="Texture2D" uid="uid://bp4ut1tshuu0t" path="res://assets/sprites/Tutorial/skip.png" id="27_jlbm7"]
 [ext_resource type="Texture2D" uid="uid://bogsrnq6djf7d" path="res://assets/sprites/keys/enter.png" id="33_kitgh"]
 [ext_resource type="Texture2D" uid="uid://dhpy1ykqcskhk" path="res://assets/sprites/keys/backspace.png" id="34_yivre"]
 [ext_resource type="Texture2D" uid="uid://boa7jf3ocbkmv" path="res://assets/sprites/keys/arrow_keys.png" id="35_jlbm7"]
@@ -296,14 +297,27 @@ text = "Use the arrow keys to plan your heist."
 label_settings = SubResource("LabelSettings_ibx1f")
 horizontal_alignment = 1
 
+[node name="ColorRect" type="ColorRect" parent="TutorialUI2"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 975.0
+offset_right = 581.0
+offset_bottom = 1055.0
+color = Color(0.306923, 0.306923, 0.306923, 1)
+
 [node name="SkipLabel" type="Label" parent="TutorialUI2"]
 layout_mode = 0
-offset_left = 50.0
-offset_top = 986.0
-offset_right = 471.0
-offset_bottom = 1036.0
+offset_left = 141.0
+offset_top = 989.0
+offset_right = 562.0
+offset_bottom = 1039.0
 text = "Press \"X\" to skip tutorial"
 label_settings = SubResource("LabelSettings_r1aly")
+
+[node name="Sprite2D" type="Sprite2D" parent="TutorialUI2/SkipLabel"]
+position = Vector2(-60, 25)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("27_jlbm7")
 
 [node name="PauseMenu" type="Control" parent="."]
 visible = false
