@@ -13,8 +13,6 @@ func _onready():
 	AnimPlayer.play("RESET")
 		
 
-var speed: float
-
 
 @onready var time = 0
 @onready var rot_time = 0
@@ -43,9 +41,9 @@ func _ready() -> void:
 	elif get_tree().current_scene.name =="Game":
 		token.hide()
 	if get_tree().current_scene.name != Globals.game_scene_name:
-		speed = 10
+		Globals.speed = 10
 	else: 
-		speed = Globals.speed
+		Globals.speed = 1.2
 
 func moveUp() -> void:
 	_move(Vector3(0,0,-1))
@@ -108,10 +106,10 @@ func _rotateVisually(rot: Vector3) -> void:
 	next_rotation += rot
 	
 func _process(delta):
-	time += delta * speed
+	time += delta * Globals.speed
 	time = clamp(time, 0.0, 1.0)
 	global_position = prev_position.lerp(next_position,time)
 	
-	rot_time += delta * speed
+	rot_time += delta * Globals.speed
 	rot_time = clamp(rot_time, 0.0, 1.0)
 	RotationAnimator.rotation = prev_rotation.lerp(next_rotation,rot_time)
