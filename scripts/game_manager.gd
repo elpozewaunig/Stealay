@@ -30,6 +30,8 @@ func _process(_delta):
 func check_win():
 	if goal.transform.origin.distance_to(player.transform.origin) <= 3:
 		print("You won.")
+		Globals.previous_sequence = [] 
+		Globals.previous_move_count = 0
 		win.show()
 		emit_signal("won")
 		return true
@@ -41,14 +43,19 @@ func check_lose():
 		
 	if Globals.player_spotted :
 		print("Game over")
+		Globals.time_between_moves *= 100
 		lose.show()
 
 func _on_player_movement_controller_out_of_moves() -> void:
+	Globals.time_between_moves *= 100
 	lose.show()
 	#post_lose_precedure()
 	
 func post_lose_precedure():
 	lose.hide()
+	Globals.time_between_moves = 1.2
+	print("run again")
+	print(Globals.time_between_moves)
 	emit_signal("lost")
 	emit_signal("request_data")
 

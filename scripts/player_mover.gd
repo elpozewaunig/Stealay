@@ -6,7 +6,7 @@ signal send_data(movecount: int, input_sequence: Array[Globals.movement])
 @export var player: Node3D
 var input_sequence: Array[Globals.movement]
 
-var delay: float = Globals.time_between_moves
+
 var time_passed: float = 0.0
 
 var movecount: int = 0
@@ -20,7 +20,7 @@ func _ready() -> void:
 		push_error("Michi")
 	
 func _process(delta: float) -> void:
-	if time_passed >= delay:
+	if time_passed >= Globals.time_between_moves:
 		time_passed = 0.0
 		change_position()
 	
