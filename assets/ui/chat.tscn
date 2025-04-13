@@ -91,3 +91,6 @@ label_settings = SubResource("LabelSettings_l2q88")
 [node name="ChatGuy" type="AnimatedSprite2D" parent="."]
 position = Vector2(1691, 313)
 sprite_frames = SubResource("SpriteFrames_0uyyy")
+
+[node name="VoicelinePlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"

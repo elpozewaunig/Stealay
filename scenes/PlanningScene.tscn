@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://tfksyvs2qbdu"]
+[gd_scene load_steps=43 format=3 uid="uid://tfksyvs2qbdu"]
 
 [ext_resource type="Script" uid="uid://lntsseib6ktx" path="res://scripts/planning_scene.gd" id="1_i05ib"]
 [ext_resource type="PackedScene" uid="uid://csr8qdvijf7o8" path="res://assets/HeistPlanner.tscn" id="2_sfq2c"]
@@ -12,12 +12,26 @@
 [ext_resource type="PackedScene" uid="uid://cxy4hikcjoxb7" path="res://assets/ui/turing_bandl_instruction_element_ui_scene.tscn" id="9_ec7cf"]
 [ext_resource type="PackedScene" uid="uid://b44tvfhd3lcf1" path="res://assets/player.tscn" id="10_ec7cf"]
 [ext_resource type="PackedScene" uid="uid://crkpn5vqe2wwa" path="res://assets/ui/chat.tscn" id="10_ibx1f"]
+[ext_resource type="AudioStream" uid="uid://dpchh6yw6wdxn" path="res://assets/sounds/voicelines/tutorial/voiceline1.ogg" id="10_lxu5f"]
 [ext_resource type="Script" uid="uid://bncnyql6noftg" path="res://scripts/dialogue_manager.gd" id="10_nivii"]
+[ext_resource type="AudioStream" uid="uid://cwc3amyupydne" path="res://assets/sounds/voicelines/tutorial/voiceline2.ogg" id="11_ntchk"]
 [ext_resource type="Script" uid="uid://emtjvummxi6o" path="res://scripts/guard_mover.gd" id="11_y7sd5"]
+[ext_resource type="AudioStream" uid="uid://b5mmgknvk7eng" path="res://assets/sounds/voicelines/tutorial/voiceline3.ogg" id="12_jerq1"]
 [ext_resource type="Script" uid="uid://der2d8iibxg75" path="res://scripts/planning_scene_player_controller.gd" id="12_y7sd5"]
+[ext_resource type="AudioStream" uid="uid://il8nn1kyps6r" path="res://assets/sounds/voicelines/tutorial/voiceline4.ogg" id="13_m2q86"]
 [ext_resource type="Texture2D" uid="uid://cwu2sxpm5by5h" path="res://assets/ui/planningscreenmap/map_in_lineart_scaled.png" id="13_un3xe"]
+[ext_resource type="AudioStream" uid="uid://brfhrtwxt1nw" path="res://assets/sounds/voicelines/tutorial/voiceline5.ogg" id="14_kitgh"]
 [ext_resource type="PackedScene" uid="uid://dsn1mnxuhm7jh" path="res://assets/GoalObject.tscn" id="14_un3xe"]
+[ext_resource type="AudioStream" uid="uid://bd5g7tc1nufnr" path="res://assets/sounds/voicelines/tutorial/voiceline6.ogg" id="15_yivre"]
 [ext_resource type="Script" path="res://scripts/place_walls.gd" id="16_ibx1f"]
+[ext_resource type="AudioStream" uid="uid://c8hxsk8w5cdvs" path="res://assets/sounds/voicelines/tutorial/voiceline7.ogg" id="16_jlbm7"]
+[ext_resource type="AudioStream" uid="uid://blr07d13c8auj" path="res://assets/sounds/voicelines/tutorial/voiceline8.ogg" id="17_ntchk"]
+[ext_resource type="AudioStream" uid="uid://bng8v7av61ahh" path="res://assets/sounds/voicelines/tutorial/voiceline9.ogg" id="17_yefry"]
+[ext_resource type="AudioStream" uid="uid://daqcyl1av6ahj" path="res://assets/sounds/voicelines/tutorial/voiceline10.ogg" id="18_ynj1n"]
+[ext_resource type="AudioStream" uid="uid://bfa673yrrdhcb" path="res://assets/sounds/voicelines/tutorial/voiceline11.ogg" id="19_po8np"]
+[ext_resource type="AudioStream" uid="uid://y0ekpm2xsbdl" path="res://assets/sounds/voicelines/tutorial/voiceline12.ogg" id="20_w8kyp"]
+[ext_resource type="AudioStream" uid="uid://bgnee16go2fyd" path="res://assets/sounds/voicelines/tutorial/voiceline13.ogg" id="21_nup1x"]
+[ext_resource type="AudioStream" uid="uid://c84yvamstgjtx" path="res://assets/sounds/voicelines/tutorial/voiceline14.ogg" id="22_b5yxx"]
 
 [sub_resource type="Environment" id="Environment_1rttj"]
 background_energy_multiplier = 0.0
@@ -186,18 +200,23 @@ heist_planner = NodePath("../HeistPlanner")
 messages = Array[String](["I fulfilled my part of the bargain.
 ...", "The building plan and patrol routes are all yours.
 ...", "But this won't be easy. You'll have to come up with a foolproof plan."])
+voicelines = Array[AudioStream]([ExtResource("10_lxu5f"), ExtResource("11_ntchk"), ExtResource("12_jerq1")])
 
 [node name="Chat2" parent="TutorialUI2" instance=ExtResource("10_ibx1f")]
 messages = Array[String](["But with my intel, this should be as easy as...", "... heh... stealing candy from a baby. Or stealing a gem from a museum.", "You can plan your heist using the arrow keys. Go ahead."])
+voicelines = Array[AudioStream]([ExtResource("13_m2q86"), ExtResource("14_kitgh"), ExtResource("15_yivre")])
 
 [node name="Chat3" parent="TutorialUI2" instance=ExtResource("10_ibx1f")]
 messages = Array[String](["Splendid. On the right, you can see your move sequence.", "Don't let these guards see you. Unless you really like jail.", "If you mess up your plan, you can always hit \"backspace\" to undo."])
+voicelines = Array[AudioStream]([ExtResource("16_jlbm7"), ExtResource("17_ntchk"), ExtResource("17_yefry")])
 
 [node name="Chat4" parent="TutorialUI2" instance=ExtResource("10_ibx1f")]
 messages = Array[String](["If you're confident about your plan, hit enter.", "Then get in there, and steal that precious gem.", "And remember..."])
+voicelines = Array[AudioStream]([ExtResource("18_ynj1n"), ExtResource("19_po8np"), ExtResource("20_w8kyp")])
 
 [node name="Chat5" parent="TutorialUI2" instance=ExtResource("10_ibx1f")]
 messages = Array[String](["You owe me.", "I'm watching you."])
+voicelines = Array[AudioStream]([ExtResource("21_nup1x"), ExtResource("22_b5yxx")])
 chat_icon = 1
 
 [node name="Instructions" type="Label" parent="TutorialUI2"]
