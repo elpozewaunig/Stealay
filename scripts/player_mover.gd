@@ -14,6 +14,7 @@ var movecount: int = 0
 
 func _ready() -> void:
 	input_sequence = Globals.player_sequence
+	Globals.hide_active = false
 	
 	if input_sequence.is_empty():
 		push_error("Michi")
@@ -33,6 +34,11 @@ func change_position() -> void:
 		emit_signal("out_of_moves")
 		return
 	
+	if (Globals.hide_active):
+		Globals.hide_active = false
+		
+		
+	
 	var current_move: Globals.movement = sequence[movecount]
 		
 	if (current_move == Globals.movement.UP):
@@ -43,6 +49,9 @@ func change_position() -> void:
 		player.moveRight()
 	elif (current_move == Globals.movement.LEFT):
 		player.moveLeft()
+	elif (current_move == Globals.movement.HIDE):
+		Globals.hide_active = true
+		
 	
 	
 	movecount+=1

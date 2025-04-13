@@ -31,6 +31,9 @@ var max_sight:int = 4
 var previous_sequence: Array[movement] = []
 var previous_move_count:int = 0
 
+var hide_active: bool = false
+
+
 func _init() -> void:
 	for y in range(0, 25):
 		for x in range(-27, 4):

@@ -8,6 +8,7 @@ signal player_spotted()
 
 var was_colliding_last_frame = {} 
 var raycasts: Array[RayCast3D] = [] 
+var original_side_ray_targets = {}
 
 # Stupid MeshStuff
 var mesh_instance: MeshInstance3D
@@ -24,6 +25,8 @@ func _ready() -> void:
 			child.target_position = child.target_position * Globals.max_sight
 			was_colliding_last_frame[child] = false
 			unsorted_rays.append(child)
+			if child.is_in_group("side_ray_cast_shit"):
+				original_side_ray_targets[child] = child.target_position
 
 	
 	# lambda sorting function to sort raycasts according to rotation
@@ -55,6 +58,7 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	# update rays, to create correct cone aaaaaaaaaaaaaaaaaaaaaaaaaaaa
+	update_length_of_ray()
 	for ray in raycasts:
 		ray.force_raycast_update()
 	
@@ -126,3 +130,16 @@ func update_vision_cone_mesh() -> void:
 	# --- lets make michi visible ---
 	vision_cone_mesh.clear_surfaces() #clear old
 	vision_cone_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, surface_array)
+
+
+func update_length_of_ray():
+	if Globals.hide_active:
+		for ray in raycasts:
+			if ray.is_in_group("side_ray_cast_shit"):
+				if original_side_ray_targets.has(ray):
+					ray.target_position = original_side_ray_targets[ray] * 0.1 # Scale original down
+	else:
+		for ray in raycasts:
+			if ray.is_in_group("side_ray_cast_shit"):
+				if original_side_ray_targets.has(ray):
+					ray.target_position = original_side_ray_targets[ray] # Restore original
