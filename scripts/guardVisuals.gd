@@ -13,7 +13,7 @@ func _onready():
 	AnimPlayer.play("RESET")
 		
 
-var speed: int = 1
+var speed: float
 
 
 @onready var time = 0
@@ -37,6 +37,8 @@ func _ready() -> void:
 		token.hide()
 	if get_tree().current_scene.name != Globals.game_scene_name:
 		speed = 10
+	else: 
+		speed = Globals.speed
 
 func moveUp() -> void:
 	_move(Vector3(0,0,-1))

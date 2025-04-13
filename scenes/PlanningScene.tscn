@@ -131,7 +131,6 @@ func _on_pressed() -> void:
 script = ExtResource("1_i05ib")
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("10_ec7cf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -2)
 play_hop_sound = true
 
 [node name="HeistPlanner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_sfq2c")]

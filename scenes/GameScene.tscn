@@ -267,7 +267,6 @@ horizontal_alignment = 1
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -16.5, 1.5, -19.5)
 
 [node name="Player" parent="." instance=ExtResource("5_7s5hy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -6)
 play_hop_sound = true
 
 [node name="Camera3D" type="Camera3D" parent="Player"]
