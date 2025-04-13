@@ -3,7 +3,7 @@ extends Control
 signal heist_planned(sequence) # signal when done
 signal add_movement(move: Globals.movement, pos: Vector2i)
 signal remove_last_movement(pos: Vector2i)
-signal replace_last_path_with_skull()
+signal place_skull(pos: Vector2i)
 
 @export var player: Node3D
 
@@ -136,11 +136,11 @@ func load_sequence() -> void:
 	#print(old_input_sequence)
 	#print(Globals.previous_move_count)
 	
-	for i in range(Globals.previous_move_count):
+	for i in range(Globals.previous_move_count-1):
 		if (check_move(old_input_sequence[i])):
 			add_action(old_input_sequence[i])
 	
-	if Globals.previous_move_count != 0:
-		emit_signal("replace_last_path_with_skull")
+	emit_signal("place_skull", current_pos)
+		
 	
 	print("hmm")

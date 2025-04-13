@@ -103,20 +103,6 @@ func removeTrace():
 		push_error("Cry")
 		
 
-func calculate_global_position_from_pos(pos: Vector2i) -> Vector3:
-	var myPosition: Vector3 = Vector3(0, 0, 0)
-	myPosition.x = pos.y
-	myPosition.z = -pos.x
-	
-	return myPosition
-	
-func calculate_pos_vector_from_global_pos() -> Vector2i:
-	var position: Vector2i = Vector2i(0, 0)
-	position.y = player.transform.origin.x
-	position.x = -player.transform.origin.z
-	return position
-
-
 func _input(event: InputEvent) -> void:
 	if not dev_mode:
 		return
@@ -145,19 +131,26 @@ func _on_heist_planner_heist_planned(sequence: Variant) -> void:
 		print(dev_mode_list)
 
 
-func _on_heist_planner_replace_last_path_with_skull() -> void:
-	if child_list.size() == 0:
-		return
-		
-	var child: Node3D = child_list.pop_back()
-	if is_instance_valid(child):
-		child.queue_free()
+func _on_heist_planner_place_skull(pos: Vector2i) -> void:
 	
-	var glob_pos: Vector3 = player.transform.origin
+	var glob_pos: Vector3 = calculate_global_position_from_pos(pos)
 	var new_path_element = SkullElementScene.instantiate()
 	new_path_element.position = glob_pos
 	new_path_element.position.y -= 1
 
 	add_child(new_path_element, false)
-	child_list.append(new_path_element)
+
+
+
+func calculate_global_position_from_pos(pos: Vector2i) -> Vector3:
+	var myPosition: Vector3 = Vector3(0, 0, 0)
+	myPosition.x = pos.y
+	myPosition.z = -pos.x
 	
+	return myPosition
+	
+func calculate_pos_vector_from_global_pos() -> Vector2i:
+	var position: Vector2i = Vector2i(0, 0)
+	position.y = player.transform.origin.x
+	position.x = -player.transform.origin.z
+	return position
