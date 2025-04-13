@@ -3,7 +3,8 @@ extends Node
 @export var player: Node3D
 
 var PathElementScene: PackedScene = preload("res://assets/PathElement.tscn")
-
+var HideElementScene: PackedScene = preload("res://assets/HideElement.tscn")
+var SkullElementScene: PackedScene = preload("res://assets/SkullElement.tscn")
 
 @onready
 var current_position: Vector2i
@@ -22,10 +23,10 @@ func _on_heist_planner_add_movement(action: Globals.movement, pos: Vector2i) -> 
 	if dev_mode:
 		print(pos)
 	current_position = pos
-	if action != Globals.movement.HIDE and action != Globals.movement.NULL:
+	if action != Globals.movement.NULL:
 		var glob_pos: Vector3 = player.transform.origin
 		#glob_pos =  calculate_global_position_from_pos(pos)
-		spawnTrace(glob_pos)
+		spawnTrace(glob_pos, action)
 	
 	if dev_mode:
 		pos_list.append(pos)
@@ -72,16 +73,24 @@ func revert_move(new_position: Vector2i):
 		removeTrace()
 	# 14, 7 -> 14, 7 -> 0, 0 -> removed hide, do nothing
 	elif difference == Vector2i(0, 0):
-		pass
+		removeTrace()
 	# else: cry
 	else:
 		push_error("HUH")
 	
 
-func spawnTrace(pos: Vector3):
+func spawnTrace(pos: Vector3, action):
 	#print(pos)
-	var new_path_element = PathElementScene.instantiate()
-	new_path_element.position = pos
+	var new_path_element
+	if action != Globals.movement.HIDE:
+		new_path_element = PathElementScene.instantiate()
+		new_path_element.position = pos
+		new_path_element.position.y -= 1.02
+	else: 
+		new_path_element = HideElementScene.instantiate()
+		new_path_element.position = pos
+		new_path_element.position.y -= 1.01
+
 	add_child(new_path_element, false)
 	child_list.append(new_path_element)
 
@@ -134,3 +143,21 @@ func _on_heist_planner_heist_planned(sequence: Variant) -> void:
 		
 		print("Dev List")
 		print(dev_mode_list)
+
+
+func _on_heist_planner_replace_last_path_with_skull() -> void:
+	if child_list.size() == 0:
+		return
+		
+	var child: Node3D = child_list.pop_back()
+	if is_instance_valid(child):
+		child.queue_free()
+	
+	var glob_pos: Vector3 = player.transform.origin
+	var new_path_element = SkullElementScene.instantiate()
+	new_path_element.position = glob_pos
+	new_path_element.position.y -= 1
+
+	add_child(new_path_element, false)
+	child_list.append(new_path_element)
+	
