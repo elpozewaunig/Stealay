@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b44tvfhd3lcf1"]
+[gd_scene load_steps=23 format=3 uid="uid://b44tvfhd3lcf1"]
 
 [ext_resource type="Script" uid="uid://c16qi3cfubcaj" path="res://scripts/guardVisuals.gd" id="1_3mip4"]
 [ext_resource type="PackedScene" uid="uid://djrqqx1mo8ppp" path="res://assets/models/player2/PlayerGuy_Angemalen_Animation.gltf" id="2_3mip4"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://cd12uejv21sf6" path="res://assets/sounds/step/step9.wav" id="13_m0ick"]
 [ext_resource type="AudioStream" uid="uid://cda7r78rqof6g" path="res://assets/sounds/step/step10.wav" id="14_1npgd"]
 [ext_resource type="Texture2D" uid="uid://cw2cxuyhuu2p2" path="res://assets/ui/post_its/player_token.png" id="15_lgdun"]
+[ext_resource type="Texture2D" uid="uid://26qhodnsdo50" path="res://assets/models/flippage/Shadow.png" id="16_dclhl"]
 
 [sub_resource type="Animation" id="Animation_k7l5m"]
 length = 0.001
@@ -226,3 +227,8 @@ bus = &"SFX"
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 0, 0.899369, 0)
 texture = ExtResource("15_lgdun")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(0.05, 0, 0, 0, -2.18557e-09, -0.05, 0, 0.05, -2.18557e-09, 0.228455, -0.46644, 0.0867153)
+modulate = Color(1, 1, 1, 0.537255)
+texture = ExtResource("16_dclhl")

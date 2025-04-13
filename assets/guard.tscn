@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://cb36gbar6tdv"]
+[gd_scene load_steps=37 format=4 uid="uid://cb36gbar6tdv"]
 
 [ext_resource type="PackedScene" uid="uid://dnj8dlx4y3qhe" path="res://assets/models/placeholderguard/figure.tscn" id="1_a4vwu"]
 [ext_resource type="Script" uid="uid://c16qi3cfubcaj" path="res://scripts/guardVisuals.gd" id="1_m4837"]
@@ -8,6 +8,7 @@
 [ext_resource type="Material" uid="uid://kehluajayyfs" path="res://assets/models/guardv2/guardmat.tres" id="4_lngpj"]
 [ext_resource type="AudioStream" uid="uid://bvgu3cf5w35nn" path="res://assets/sounds/spotted/spotted.ogg" id="6_lngpj"]
 [ext_resource type="Texture2D" uid="uid://c68y4ruoox0ya" path="res://assets/ui/post_its/guard_token.png" id="8_04nd2"]
+[ext_resource type="Texture2D" uid="uid://26qhodnsdo50" path="res://assets/models/flippage/Shadow.png" id="9_f4dfr"]
 
 [sub_resource type="Animation" id="Animation_k7l5m"]
 length = 0.001
@@ -925,3 +926,15 @@ bus = &"SFX"
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 0, 1.16209, 0)
 texture = ExtResource("8_04nd2")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(0.05, 0, 0, 0, -2.18557e-09, -0.05, 0, 0.05, -2.18557e-09, 0.253478, -0.464207, -0.00867909)
+modulate = Color(1, 1, 1, 0.607843)
+texture = ExtResource("9_f4dfr")
+
+[node name="Alert" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.238626, 1.35891, -0.32674)
+visible = false
+modulate = Color(0.791558, 0, 0.22557, 1)
+text = "!"
+font_size = 100
