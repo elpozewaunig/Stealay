@@ -24,12 +24,17 @@ var speed: int = 1
 @onready var prev_position = global_position
 
 @onready var prev := "up"
+@export var token:Sprite3D
 
 func _ready() -> void:
 	next_position = global_position
 	prev_position = global_position
 	#print("Instanciating guard somewhere ")
-	
+	print(get_tree().current_scene.name)
+	if get_tree().current_scene.name =="PlanningScene": 
+		token.show()
+	elif get_tree().current_scene.name =="Game":
+		token.hide()
 	if get_tree().current_scene.name != Globals.game_scene_name:
 		speed = 10
 

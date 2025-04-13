@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b44tvfhd3lcf1"]
+[gd_scene load_steps=22 format=3 uid="uid://b44tvfhd3lcf1"]
 
 [ext_resource type="Script" uid="uid://c16qi3cfubcaj" path="res://scripts/guardVisuals.gd" id="1_3mip4"]
 [ext_resource type="PackedScene" uid="uid://djrqqx1mo8ppp" path="res://assets/models/player2/PlayerGuy_Angemalen_Animation.gltf" id="2_3mip4"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://dlii43y3pkuwm" path="res://assets/sounds/step/step8.wav" id="12_67mtf"]
 [ext_resource type="AudioStream" uid="uid://cd12uejv21sf6" path="res://assets/sounds/step/step9.wav" id="13_m0ick"]
 [ext_resource type="AudioStream" uid="uid://cda7r78rqof6g" path="res://assets/sounds/step/step10.wav" id="14_1npgd"]
+[ext_resource type="Texture2D" uid="uid://cw2cxuyhuu2p2" path="res://assets/ui/post_its/player_token.png" id="15_lgdun"]
 
 [sub_resource type="Animation" id="Animation_k7l5m"]
 length = 0.001
@@ -180,12 +181,13 @@ stream_9/stream = ExtResource("14_1npgd")
 stream_10/stream = ExtResource("5_dclhl")
 stream_11/stream = ExtResource("6_cbn5g")
 
-[node name="Guard2" type="Node3D" node_paths=PackedStringArray("hop_sound", "AnimPlayer", "HopAnimator", "RotationAnimator")]
+[node name="Guard2" type="Node3D" node_paths=PackedStringArray("hop_sound", "AnimPlayer", "HopAnimator", "RotationAnimator", "token")]
 script = ExtResource("1_3mip4")
 hop_sound = NodePath("HopSound")
 AnimPlayer = NodePath("RotationAnimator/AnimationPlayer")
 HopAnimator = NodePath("RotationAnimator/HopAnimator")
 RotationAnimator = NodePath("RotationAnimator")
+token = NodePath("Sprite3D")
 
 [node name="RotationAnimator" type="Node3D" parent="."]
 
@@ -219,3 +221,7 @@ shape = SubResource("CapsuleShape3D_insbl")
 [node name="HopSound" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_2asft")
 bus = &"SFX"
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 0, 0.899369, 0)
+texture = ExtResource("15_lgdun")

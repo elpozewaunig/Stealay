@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://tfksyvs2qbdu"]
+[gd_scene load_steps=24 format=3 uid="uid://tfksyvs2qbdu"]
 
 [ext_resource type="Script" uid="uid://lntsseib6ktx" path="res://scripts/planning_scene.gd" id="1_i05ib"]
 [ext_resource type="PackedScene" uid="uid://csr8qdvijf7o8" path="res://assets/HeistPlanner.tscn" id="2_sfq2c"]
 [ext_resource type="Script" uid="uid://d0klmhrydubhb" path="res://scripts/game_manager.gd" id="3_pbho8"]
+[ext_resource type="Texture2D" uid="uid://ctg6jvq15i2l3" path="res://assets/ui/post_its/DiaPostits.png" id="5_a8q4l"]
 [ext_resource type="Theme" uid="uid://cb6idjbop8kw2" path="res://assets/sprites/CheckButtonBetter/BetterButton.tres" id="5_rly6o"]
 [ext_resource type="Script" uid="uid://dbq3ndy5purel" path="res://scripts/TuringBandUIManager.gd" id="7_1rttj"]
 [ext_resource type="Script" uid="uid://bxcsx3v1tofol" path="res://scripts/bandlController.gd" id="8_0acuf"]
@@ -106,6 +107,11 @@ player = NodePath("../Player")
 script = ExtResource("3_pbho8")
 player = NodePath("..")
 goal = NodePath("../GoalObject")
+
+[node name="DiaPostit" type="Sprite2D" parent="."]
+position = Vector2(45, 125)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("5_a8q4l")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3.64, 7.594, -11.905)

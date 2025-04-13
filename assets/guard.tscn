@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://cb36gbar6tdv"]
+[gd_scene load_steps=36 format=4 uid="uid://cb36gbar6tdv"]
 
 [ext_resource type="PackedScene" uid="uid://dnj8dlx4y3qhe" path="res://assets/models/placeholderguard/figure.tscn" id="1_a4vwu"]
 [ext_resource type="Script" uid="uid://c16qi3cfubcaj" path="res://scripts/guardVisuals.gd" id="1_m4837"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b5qyqtkb4hyi1" path="res://assets/models/guardv2/guardtext.png" id="4_kssj1"]
 [ext_resource type="Material" uid="uid://kehluajayyfs" path="res://assets/models/guardv2/guardmat.tres" id="4_lngpj"]
 [ext_resource type="AudioStream" uid="uid://bvgu3cf5w35nn" path="res://assets/sounds/spotted/spotted.ogg" id="6_lngpj"]
+[ext_resource type="Texture2D" uid="uid://c68y4ruoox0ya" path="res://assets/ui/post_its/guard_token.png" id="8_04nd2"]
 
 [sub_resource type="Animation" id="Animation_k7l5m"]
 length = 0.001
@@ -548,11 +549,12 @@ _data = {
 
 [sub_resource type="BoxMesh" id="BoxMesh_m4837"]
 
-[node name="Guard" type="Node3D" node_paths=PackedStringArray("AnimPlayer", "HopAnimator", "RotationAnimator")]
+[node name="Guard" type="Node3D" node_paths=PackedStringArray("AnimPlayer", "HopAnimator", "RotationAnimator", "token")]
 script = ExtResource("1_m4837")
 AnimPlayer = NodePath("RotationAnimator/AnimationPlayer")
 HopAnimator = NodePath("RotationAnimator/HopAnimator")
 RotationAnimator = NodePath("RotationAnimator")
+token = NodePath("Sprite3D")
 
 [node name="RotationAnimator" type="Node3D" parent="."]
 
@@ -917,3 +919,7 @@ mesh = SubResource("BoxMesh_m4837")
 [node name="SpottedSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_lngpj")
 bus = &"SFX"
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 0, 1.16209, 0)
+texture = ExtResource("8_04nd2")
