@@ -6,6 +6,8 @@ signal request_data()
 
 @export var player: Node3D
 @export var goal: Node3D
+@export var lose:Control
+@export var win:Control
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -26,17 +28,20 @@ func _process(_delta):
 func check_win():
 	if goal.transform.origin.distance_to(player.transform.origin) < 1.5:
 		print("You won.")
+		win.show()
 		emit_signal("won")
 
 func check_lose():
 	if Globals.player_spotted :
 		print("Game over")
-		post_lose_precedure()
+		lose.show()
 
 func _on_player_movement_controller_out_of_moves() -> void:
-	post_lose_precedure()
+	lose.show()
+	#post_lose_precedure()
 	
 func post_lose_precedure():
+	lose.hide()
 	emit_signal("lost")
 	emit_signal("request_data")
 
