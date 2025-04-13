@@ -86,3 +86,6 @@ func advance_dialogue() -> void:
 func finalize_bubble() -> void:
 	bubble_labels[current_msg_index].text = messages[current_msg_index]
 	text_finished = true
+
+func silence() -> void:
+	voiceline_player.stop()

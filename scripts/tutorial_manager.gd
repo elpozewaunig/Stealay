@@ -93,6 +93,8 @@ func _process(delta: float) -> void:
 	
 	else:
 		hide()
+		if current_chat != null:
+			current_chat.silence()
 		set_hint_visibility(true)
 		heist_planner.allow_move = true
 		heist_planner.allow_commit = true

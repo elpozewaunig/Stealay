@@ -95,6 +95,7 @@ func remove_last_action() -> void:
 func finalize_sequence() -> void:
 	if input_sequence.is_empty():
 		print("Cannot finalize an empty sequence.")
+		invalid_sound.play()
 		return
 
 	print("Sequence finalized: ", input_sequence)
