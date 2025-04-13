@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c68y4ruoox0ya"
 path.s3tc="res://.godot/imported/guard_token.png-094c75ab8f563304b693d4e283bd20f1.s3tc.ctex"
+path.etc2="res://.godot/imported/guard_token.png-094c75ab8f563304b693d4e283bd20f1.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/ui/post_its/guard_token.png"
-dest_files=["res://.godot/imported/guard_token.png-094c75ab8f563304b693d4e283bd20f1.s3tc.ctex"]
+dest_files=["res://.godot/imported/guard_token.png-094c75ab8f563304b693d4e283bd20f1.s3tc.ctex", "res://.godot/imported/guard_token.png-094c75ab8f563304b693d4e283bd20f1.etc2.ctex"]
 
 [params]
 

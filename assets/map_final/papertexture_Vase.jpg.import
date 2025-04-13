@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://eflg282v6x4k"
 path.s3tc="res://.godot/imported/papertexture_Vase.jpg-d9cac8c1c422f9bcfc70af3426db50cb.s3tc.ctex"
+path.etc2="res://.godot/imported/papertexture_Vase.jpg-d9cac8c1c422f9bcfc70af3426db50cb.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/map_final/papertexture_Vase.jpg"
-dest_files=["res://.godot/imported/papertexture_Vase.jpg-d9cac8c1c422f9bcfc70af3426db50cb.s3tc.ctex"]
+dest_files=["res://.godot/imported/papertexture_Vase.jpg-d9cac8c1c422f9bcfc70af3426db50cb.s3tc.ctex", "res://.godot/imported/papertexture_Vase.jpg-d9cac8c1c422f9bcfc70af3426db50cb.etc2.ctex"]
 
 [params]
 

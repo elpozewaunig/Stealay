@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dsxfyk0txjm5a"
 path.s3tc="res://.godot/imported/getdia.png-f995ecfad7125cdf43151a9fdb2f8e2c.s3tc.ctex"
+path.etc2="res://.godot/imported/getdia.png-f995ecfad7125cdf43151a9fdb2f8e2c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/ui/planningscreenmap/getdia.png"
-dest_files=["res://.godot/imported/getdia.png-f995ecfad7125cdf43151a9fdb2f8e2c.s3tc.ctex"]
+dest_files=["res://.godot/imported/getdia.png-f995ecfad7125cdf43151a9fdb2f8e2c.s3tc.ctex", "res://.godot/imported/getdia.png-f995ecfad7125cdf43151a9fdb2f8e2c.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cwu2sxpm5by5h"
 path.s3tc="res://.godot/imported/map_in_lineart_scaled.png-22a86e3c8a67c536cff3566af85abaed.s3tc.ctex"
+path.etc2="res://.godot/imported/map_in_lineart_scaled.png-22a86e3c8a67c536cff3566af85abaed.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/ui/planningscreenmap/map_in_lineart_scaled.png"
-dest_files=["res://.godot/imported/map_in_lineart_scaled.png-22a86e3c8a67c536cff3566af85abaed.s3tc.ctex"]
+dest_files=["res://.godot/imported/map_in_lineart_scaled.png-22a86e3c8a67c536cff3566af85abaed.s3tc.ctex", "res://.godot/imported/map_in_lineart_scaled.png-22a86e3c8a67c536cff3566af85abaed.etc2.ctex"]
 
 [params]
 

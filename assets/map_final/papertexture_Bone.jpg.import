@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bnc6n24uamblo"
 path.s3tc="res://.godot/imported/papertexture_Bone.jpg-195d4684d43475de7fd2ae63e48fcf9f.s3tc.ctex"
+path.etc2="res://.godot/imported/papertexture_Bone.jpg-195d4684d43475de7fd2ae63e48fcf9f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/map_final/papertexture_Bone.jpg"
-dest_files=["res://.godot/imported/papertexture_Bone.jpg-195d4684d43475de7fd2ae63e48fcf9f.s3tc.ctex"]
+dest_files=["res://.godot/imported/papertexture_Bone.jpg-195d4684d43475de7fd2ae63e48fcf9f.s3tc.ctex", "res://.godot/imported/papertexture_Bone.jpg-195d4684d43475de7fd2ae63e48fcf9f.etc2.ctex"]
 
 [params]
 

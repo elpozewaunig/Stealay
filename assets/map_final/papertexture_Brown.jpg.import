@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cguherialbuxl"
 path.s3tc="res://.godot/imported/papertexture_Brown.jpg-2dd34da3b3518f08054d25e4a79bf05c.s3tc.ctex"
+path.etc2="res://.godot/imported/papertexture_Brown.jpg-2dd34da3b3518f08054d25e4a79bf05c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/map_final/papertexture_Brown.jpg"
-dest_files=["res://.godot/imported/papertexture_Brown.jpg-2dd34da3b3518f08054d25e4a79bf05c.s3tc.ctex"]
+dest_files=["res://.godot/imported/papertexture_Brown.jpg-2dd34da3b3518f08054d25e4a79bf05c.s3tc.ctex", "res://.godot/imported/papertexture_Brown.jpg-2dd34da3b3518f08054d25e4a79bf05c.etc2.ctex"]
 
 [params]
 
