@@ -1,0 +1,356 @@
+[gd_scene load_steps=14 format=3 uid="uid://dj8ocoeajpxud"]
+
+[ext_resource type="Texture2D" uid="uid://cl4lwnow7hmmq" path="res://assets/ui/post_its/empty.png" id="1_aliht"]
+[ext_resource type="Texture2D" uid="uid://cqrrr7nyd22q" path="res://assets/ui/post_its/scribble.png" id="2_5x83p"]
+[ext_resource type="PackedScene" uid="uid://dptpc6b54d3bn" path="res://assets/ui/button_audio_player.tscn" id="3_ds8rb"]
+[ext_resource type="Script" uid="uid://dqkwefcstr5y7" path="res://scripts/fancy_button.gd" id="4_ejppj"]
+[ext_resource type="Texture2D" uid="uid://cduu48nagk7au" path="res://assets/newui/texticons_fillonly.png" id="5_ai8gn"]
+[ext_resource type="Texture2D" uid="uid://dk6q5fclpp8db" path="res://assets/newui/texticons_borderonly.png" id="6_8a2bs"]
+[ext_resource type="Theme" uid="uid://cb6idjbop8kw2" path="res://assets/sprites/CheckButtonBetter/BetterButton.tres" id="7_0cg5o"]
+
+[sub_resource type="GDScript" id="GDScript_b31oo"]
+resource_name = "pausetry"
+script/source = "extends Control
+func _ready():
+	set_process(true)
+	process_mode = Node.PROCESS_MODE_ALWAYS
+func resetUI():
+	$UI/DefaultView.visible = true
+	$UI/OptionsView.visible = false
+"
+
+[sub_resource type="GDScript" id="GDScript_06788"]
+resource_name = "buttonlogic"
+script/source = "extends Control
+
+
+func showMe() -> void:
+	show()
+
+
+func HideMe() -> void:
+	hide()
+"
+
+[sub_resource type="GDScript" id="GDScript_255cg"]
+resource_name = "quitButton"
+script/source = "extends Button
+
+func backMainMenu() -> void:
+	get_tree().paused = false;
+	get_tree().change_scene_to_file(\"res://scenes/MainMenu.tscn\")
+"
+
+[sub_resource type="GDScript" id="GDScript_7doss"]
+resource_name = "buttonlogic2"
+script/source = "extends Control
+
+
+func showMe() -> void:
+	show()
+
+
+func HideMe() -> void:
+	hide()
+"
+
+[sub_resource type="GDScript" id="GDScript_hypni"]
+resource_name = "sfxSetting"
+script/source = "extends CheckButton
+
+var soundBus = AudioServer.get_bus_index(\"SFX\")
+
+func _ready() -> void:
+	button_pressed = AudioServer.is_bus_mute(soundBus)
+
+func _on_pressed() -> void:
+	AudioServer.set_bus_mute(soundBus, not AudioServer.is_bus_mute(soundBus))
+"
+
+[sub_resource type="GDScript" id="GDScript_0hyt6"]
+resource_name = "musicsetting"
+script/source = "extends CheckButton
+
+var musicBus = AudioServer.get_bus_index(\"Music\")
+
+func _ready() -> void:
+	button_pressed = AudioServer.is_bus_mute(musicBus)
+
+func _on_pressed() -> void:
+	AudioServer.set_bus_mute(musicBus, not AudioServer.is_bus_mute(musicBus))
+"
+
+[node name="PauseMenu" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = SubResource("GDScript_b31oo")
+
+[node name="Empty" type="Sprite2D" parent="."]
+position = Vector2(946, 448)
+scale = Vector2(2.208, 2.208)
+texture = ExtResource("1_aliht")
+
+[node name="Scribble" type="Sprite2D" parent="."]
+position = Vector2(963.5, 450.5)
+scale = Vector2(1.558, 1.638)
+texture = ExtResource("2_5x83p")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.062
+anchor_right = 1.0
+anchor_bottom = 0.138
+offset_bottom = 157.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 115
+text = "Game paused"
+horizontal_alignment = 1
+
+[node name="DefaultView" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_06788")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/DefaultView"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.5
+offset_top = -177.0
+offset_right = 118.5
+offset_bottom = 177.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="OptionsButton" type="Button" parent="UI/DefaultView/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "
+"
+
+[node name="ButtonAudioPlayer" parent="UI/DefaultView/VBoxContainer/OptionsButton" instance=ExtResource("3_ds8rb")]
+
+[node name="FancyButton" type="Node2D" parent="UI/DefaultView/VBoxContainer/OptionsButton"]
+position = Vector2(159, 32)
+scale = Vector2(0.249995, 0.249995)
+script = ExtResource("4_ejppj")
+
+[node name="Fills" type="Sprite2D" parent="UI/DefaultView/VBoxContainer/OptionsButton/FancyButton"]
+visible = false
+position = Vector2(-212.01, 8.99738)
+texture = ExtResource("5_ai8gn")
+region_enabled = true
+region_rect = Rect2(922.893, 83.4774, 1094.75, 324.143)
+
+[node name="Lines" type="Sprite2D" parent="UI/DefaultView/VBoxContainer/OptionsButton/FancyButton"]
+position = Vector2(-212.01, 8.99738)
+texture = ExtResource("6_8a2bs")
+region_enabled = true
+region_rect = Rect2(922.893, 83.477, 1094.75, 324.143)
+
+[node name="MainMenu" type="Button" parent="UI/DefaultView/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "
+"
+script = SubResource("GDScript_255cg")
+
+[node name="FancyButton" type="Node2D" parent="UI/DefaultView/VBoxContainer/MainMenu"]
+position = Vector2(159, 32)
+scale = Vector2(0.249995, 0.249995)
+script = ExtResource("4_ejppj")
+
+[node name="Fills" type="Sprite2D" parent="UI/DefaultView/VBoxContainer/MainMenu/FancyButton"]
+visible = false
+position = Vector2(-212.01, 8.99738)
+texture = ExtResource("5_ai8gn")
+region_enabled = true
+region_rect = Rect2(872.059, 905.697, 666.635, 250.752)
+
+[node name="Lines" type="Sprite2D" parent="UI/DefaultView/VBoxContainer/MainMenu/FancyButton"]
+position = Vector2(-212.01, 8.99738)
+texture = ExtResource("6_8a2bs")
+region_enabled = true
+region_rect = Rect2(872.059, 905.697, 666.635, 250.752)
+
+[node name="ButtonAudioPlayer" parent="UI/DefaultView/VBoxContainer/MainMenu" instance=ExtResource("3_ds8rb")]
+
+[node name="OptionsView" type="Control" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_7doss")
+
+[node name="FancyButton" type="Node2D" parent="UI/OptionsView"]
+position = Vector2(1010, 279)
+scale = Vector2(0.249995, 0.249995)
+script = ExtResource("4_ejppj")
+
+[node name="Fills" type="Sprite2D" parent="UI/OptionsView/FancyButton"]
+visible = false
+position = Vector2(-212.01, 8.99738)
+texture = ExtResource("5_ai8gn")
+region_enabled = true
+region_rect = Rect2(922.893, 83.4774, 1094.75, 324.143)
+
+[node name="Lines" type="Sprite2D" parent="UI/OptionsView/FancyButton"]
+position = Vector2(-212.01, 8.99738)
+texture = ExtResource("6_8a2bs")
+region_enabled = true
+region_rect = Rect2(922.893, 83.477, 1094.75, 324.143)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/OptionsView"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.5
+offset_top = -177.0
+offset_right = 118.5
+offset_bottom = 177.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="MuteSoundCheckButton" type="CheckButton" parent="UI/OptionsView/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("7_0cg5o")
+theme_override_constants/icon_max_width = 60
+theme_override_font_sizes/font_size = 27
+text = "
+"
+vertical_icon_alignment = 0
+expand_icon = true
+script = SubResource("GDScript_hypni")
+
+[node name="FancyButton" type="Node2D" parent="UI/OptionsView/VBoxContainer/MuteSoundCheckButton"]
+position = Vector2(40.5, 31)
+scale = Vector2(0.249995, 0.249995)
+script = ExtResource("4_ejppj")
+
+[node name="Fills" type="Sprite2D" parent="UI/OptionsView/VBoxContainer/MuteSoundCheckButton/FancyButton"]
+visible = false
+position = Vector2(-212.01, 8.99738)
+texture = ExtResource("5_ai8gn")
+region_enabled = true
+region_rect = Rect2(125.917, 1541.75, 1504.51, 287.448)
+
+[node name="Lines" type="Sprite2D" parent="UI/OptionsView/VBoxContainer/MuteSoundCheckButton/FancyButton"]
+position = Vector2(-212.01, 8.99738)
+texture = ExtResource("6_8a2bs")
+region_enabled = true
+region_rect = Rect2(125.917, 1541.75, 1504.51, 287.448)
+
+[node name="ButtonAudioPlayer" parent="UI/OptionsView/VBoxContainer/MuteSoundCheckButton" instance=ExtResource("3_ds8rb")]
+
+[node name="MuteMusicAudioCheckButton" type="CheckButton" parent="UI/OptionsView/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("7_0cg5o")
+theme_override_constants/icon_max_width = 60
+theme_override_font_sizes/font_size = 27
+text = "
+"
+vertical_icon_alignment = 0
+expand_icon = true
+script = SubResource("GDScript_0hyt6")
+
+[node name="FancyButton" type="Node2D" parent="UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton"]
+position = Vector2(40.5, 31)
+scale = Vector2(0.249995, 0.249995)
+script = ExtResource("4_ejppj")
+
+[node name="Fills" type="Sprite2D" parent="UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton/FancyButton"]
+visible = false
+position = Vector2(-212.01, 8.99738)
+texture = ExtResource("5_ai8gn")
+region_enabled = true
+region_rect = Rect2(95.3379, 1823.08, 1498.4, 244.636)
+
+[node name="Lines" type="Sprite2D" parent="UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton/FancyButton"]
+position = Vector2(-212.01, 8.99738)
+texture = ExtResource("6_8a2bs")
+region_enabled = true
+region_rect = Rect2(95.3379, 1823.08, 1498.4, 244.636)
+
+[node name="ButtonAudioPlayer" parent="UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" instance=ExtResource("3_ds8rb")]
+
+[node name="BackButton" type="Button" parent="UI/OptionsView/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "
+"
+
+[node name="FancyButton" type="Node2D" parent="UI/OptionsView/VBoxContainer/BackButton"]
+position = Vector2(173.5, 25)
+scale = Vector2(0.249995, 0.249995)
+script = ExtResource("4_ejppj")
+
+[node name="Fills" type="Sprite2D" parent="UI/OptionsView/VBoxContainer/BackButton/FancyButton"]
+visible = false
+position = Vector2(-212.01, 8.99738)
+texture = ExtResource("5_ai8gn")
+region_enabled = true
+region_rect = Rect2(908.754, 887.349, 654.403, 281.332)
+
+[node name="Lines" type="Sprite2D" parent="UI/OptionsView/VBoxContainer/BackButton/FancyButton"]
+position = Vector2(-212.01, 8.99738)
+texture = ExtResource("6_8a2bs")
+region_enabled = true
+region_rect = Rect2(908.754, 887.349, 654.403, 281.332)
+
+[node name="ButtonAudioPlayer" parent="UI/OptionsView/VBoxContainer/BackButton" instance=ExtResource("3_ds8rb")]
+
+[connection signal="mouse_entered" from="UI/DefaultView/VBoxContainer/OptionsButton" to="UI/DefaultView/VBoxContainer/OptionsButton/ButtonAudioPlayer" method="_on_hover"]
+[connection signal="mouse_entered" from="UI/DefaultView/VBoxContainer/OptionsButton" to="UI/DefaultView/VBoxContainer/OptionsButton/FancyButton" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="UI/DefaultView/VBoxContainer/OptionsButton" to="UI/DefaultView/VBoxContainer/OptionsButton/FancyButton" method="_on_area_2d_mouse_exited"]
+[connection signal="pressed" from="UI/DefaultView/VBoxContainer/OptionsButton" to="UI/DefaultView" method="HideMe"]
+[connection signal="pressed" from="UI/DefaultView/VBoxContainer/OptionsButton" to="UI/DefaultView/VBoxContainer/OptionsButton/ButtonAudioPlayer" method="_on_click"]
+[connection signal="pressed" from="UI/DefaultView/VBoxContainer/OptionsButton" to="UI/OptionsView" method="showMe"]
+[connection signal="mouse_entered" from="UI/DefaultView/VBoxContainer/MainMenu" to="UI/DefaultView/VBoxContainer/MainMenu/FancyButton" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_entered" from="UI/DefaultView/VBoxContainer/MainMenu" to="UI/DefaultView/VBoxContainer/MainMenu/ButtonAudioPlayer" method="_on_hover"]
+[connection signal="mouse_exited" from="UI/DefaultView/VBoxContainer/MainMenu" to="UI/DefaultView/VBoxContainer/MainMenu/FancyButton" method="_on_area_2d_mouse_exited"]
+[connection signal="pressed" from="UI/DefaultView/VBoxContainer/MainMenu" to="UI/DefaultView/VBoxContainer/MainMenu" method="backMainMenu"]
+[connection signal="pressed" from="UI/DefaultView/VBoxContainer/MainMenu" to="UI/DefaultView/VBoxContainer/MainMenu/ButtonAudioPlayer" method="_on_click"]
+[connection signal="mouse_entered" from="UI/OptionsView/VBoxContainer/MuteSoundCheckButton" to="UI/OptionsView/VBoxContainer/MuteSoundCheckButton/ButtonAudioPlayer" method="_on_hover"]
+[connection signal="pressed" from="UI/OptionsView/VBoxContainer/MuteSoundCheckButton" to="UI/DefaultView/VBoxContainer/OptionsButton/ButtonAudioPlayer" method="_on_click"]
+[connection signal="pressed" from="UI/OptionsView/VBoxContainer/MuteSoundCheckButton" to="UI/OptionsView/VBoxContainer/MuteSoundCheckButton" method="_on_pressed"]
+[connection signal="mouse_entered" from="UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" to="UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton/ButtonAudioPlayer" method="_on_hover"]
+[connection signal="pressed" from="UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" to="UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" to="UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton/ButtonAudioPlayer" method="_on_click"]
+[connection signal="mouse_entered" from="UI/OptionsView/VBoxContainer/BackButton" to="UI/OptionsView/VBoxContainer/BackButton/FancyButton" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_entered" from="UI/OptionsView/VBoxContainer/BackButton" to="UI/OptionsView/VBoxContainer/BackButton/ButtonAudioPlayer" method="_on_hover"]
+[connection signal="mouse_exited" from="UI/OptionsView/VBoxContainer/BackButton" to="UI/OptionsView/VBoxContainer/BackButton/FancyButton" method="_on_area_2d_mouse_exited"]
+[connection signal="pressed" from="UI/OptionsView/VBoxContainer/BackButton" to="UI/DefaultView" method="showMe"]
+[connection signal="pressed" from="UI/OptionsView/VBoxContainer/BackButton" to="UI/OptionsView" method="HideMe"]
+[connection signal="pressed" from="UI/OptionsView/VBoxContainer/BackButton" to="UI/OptionsView/VBoxContainer/BackButton/ButtonAudioPlayer" method="_on_click"]

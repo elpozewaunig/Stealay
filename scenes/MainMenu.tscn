@@ -85,6 +85,10 @@ resource_name = "sfxSetting"
 script/source = "extends CheckButton
 
 var soundBus = AudioServer.get_bus_index(\"SFX\")
+
+func _ready() -> void:
+	button_pressed = AudioServer.is_bus_mute(soundBus)
+
 func _on_pressed() -> void:
 	AudioServer.set_bus_mute(soundBus, not AudioServer.is_bus_mute(soundBus))
 "
@@ -94,6 +98,10 @@ resource_name = "musicsetting"
 script/source = "extends CheckButton
 
 var musicBus = AudioServer.get_bus_index(\"Music\")
+
+func _ready() -> void:
+	button_pressed = AudioServer.is_bus_mute(musicBus)
+
 func _on_pressed() -> void:
 	AudioServer.set_bus_mute(musicBus, not AudioServer.is_bus_mute(musicBus))
 	print(AudioServer.is_bus_mute(musicBus))
