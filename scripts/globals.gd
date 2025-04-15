@@ -31,6 +31,9 @@ var max_sight:int = 4
 var previous_sequence: Array[movement] = []
 var previous_move_count:int = 0
 
+var max_speedup_turns: int = 0
+var allow_speedup: bool = false
+
 var hide_active: bool = false
 var guard:int = -1 
 

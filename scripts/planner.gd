@@ -17,7 +17,7 @@ var allow_commit: bool = false
 var valid_pos: Array[Vector2i] = Globals.valid_pos.duplicate(true)
 var current_pos: Vector2i #= starting_pos
 var move_history: Array[Vector2i]# = [starting_pos]
-
+var max_speedup_turns: int = Globals.previous_move_count
 
 var starting_pos: Vector2i # = calculate_pos_vector_from_global_pos()
 
@@ -87,6 +87,9 @@ func remove_last_action() -> void:
 	if not input_sequence.is_empty():
 		move_history.pop_back()
 		
+		if move_history.size() < max_speedup_turns:
+			max_speedup_turns -= 1
+		
 		current_pos = move_history.get(len(move_history)-1)
 		emit_signal("remove_last_movement", current_pos)
 		input_sequence.pop_back() 
@@ -99,6 +102,7 @@ func finalize_sequence() -> void:
 		return
 
 	print("Sequence finalized: ", input_sequence)
+	Globals.max_speedup_turns = max_speedup_turns
 	emit_signal("heist_planned", input_sequence)
 
 func clear_sequence() -> void:

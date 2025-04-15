@@ -16,6 +16,11 @@ func _ready() -> void:
 	input_sequence = Globals.player_sequence
 	Globals.hide_active = false
 	
+	if Globals.max_speedup_turns > 0:
+		Globals.allow_speedup = true
+	else:
+		Globals.allow_speedup = false
+	
 	if input_sequence.is_empty():
 		push_error("Michi")
 	
@@ -40,6 +45,11 @@ func change_position() -> void:
 		
 	
 	var current_move: Globals.movement = sequence[movecount]
+	
+	if movecount < Globals.max_speedup_turns:
+		Globals.allow_speedup = true
+	else:
+		Globals.allow_speedup = false
 		
 	if (current_move == Globals.movement.UP):
 		player.moveUp()

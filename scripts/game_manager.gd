@@ -36,14 +36,13 @@ func _process(_delta):
 func _input(event: InputEvent) -> void:
 	
 	if get_tree().current_scene.name == Globals.game_scene_name and not game_over:
-		if event.is_action("Speedup"):
-			if event is InputEventKey:
-				if event.pressed:
-					Globals.time_between_moves = 0.3
-					Globals.speed = 4.8
-				else:
-					Globals.time_between_moves = 1.2
-					Globals.speed = 1.2
+		if event.is_action("Speedup") and event is InputEventKey:
+			if event.pressed and Globals.allow_speedup:
+				Globals.time_between_moves = 0.3
+				Globals.speed = 4.8
+			else:
+				Globals.time_between_moves = 1.2
+				Globals.speed = 1.2
 
 func check_win():
 	if goal.transform.origin.distance_to(player.transform.origin) <= 3 and not game_over:
