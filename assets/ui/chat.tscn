@@ -31,14 +31,14 @@ animations = [{
 script = ExtResource("1_1vpf0")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = 721.0
+offset_left = 822.0
 offset_top = -5.0
 offset_right = 1920.0
 offset_bottom = 1075.0
 color = Color(1, 1, 1, 0.627451)
 
 [node name="SpeechBubble" type="Sprite2D" parent="."]
-position = Vector2(1198, 190)
+position = Vector2(1287.5, 207.6)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("2_bhmos")
 
@@ -53,7 +53,7 @@ label_settings = SubResource("LabelSettings_t1nil")
 autowrap_mode = 3
 
 [node name="SpeechRect" type="Sprite2D" parent="."]
-position = Vector2(1160, 480)
+position = Vector2(1249.5, 497.6)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("3_fnrej")
 
@@ -68,7 +68,7 @@ label_settings = SubResource("LabelSettings_t1nil")
 autowrap_mode = 3
 
 [node name="SpeechRect2" type="Sprite2D" parent="."]
-position = Vector2(1160, 790)
+position = Vector2(1249.5, 807.6)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("3_fnrej")
 
@@ -82,15 +82,15 @@ label_settings = SubResource("LabelSettings_t1nil")
 autowrap_mode = 3
 
 [node name="ContinueLabel" type="Label" parent="."]
-offset_left = 1061.0
-offset_top = 960.0
-offset_right = 1466.0
-offset_bottom = 1010.0
+offset_left = 1150.5
+offset_top = 977.6
+offset_right = 1555.5
+offset_bottom = 1027.6
 text = "Press enter to continue"
 label_settings = SubResource("LabelSettings_l2q88")
 
 [node name="ChatGuy" type="AnimatedSprite2D" parent="."]
-position = Vector2(1691, 313)
+position = Vector2(1780.5, 330.6)
 sprite_frames = SubResource("SpriteFrames_0uyyy")
 
 [node name="VoicelinePlayer" type="AudioStreamPlayer" parent="."]

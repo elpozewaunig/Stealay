@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://tfksyvs2qbdu"]
+[gd_scene load_steps=55 format=3 uid="uid://tfksyvs2qbdu"]
 
 [ext_resource type="Script" uid="uid://lntsseib6ktx" path="res://scripts/planning_scene.gd" id="1_i05ib"]
 [ext_resource type="PackedScene" uid="uid://csr8qdvijf7o8" path="res://assets/HeistPlanner.tscn" id="2_sfq2c"]
@@ -7,6 +7,7 @@
 [ext_resource type="Theme" uid="uid://cb6idjbop8kw2" path="res://assets/sprites/CheckButtonBetter/BetterButton.tres" id="5_rly6o"]
 [ext_resource type="Script" uid="uid://dbq3ndy5purel" path="res://scripts/TuringBandUIManager.gd" id="7_1rttj"]
 [ext_resource type="Script" uid="uid://bxcsx3v1tofol" path="res://scripts/bandlController.gd" id="8_0acuf"]
+[ext_resource type="Texture2D" uid="uid://ccllpjpc2upk8" path="res://assets/sprites/keys/shift.png" id="8_01txo"]
 [ext_resource type="PackedScene" uid="uid://blbae5xp247m5" path="res://assets/Map.tscn" id="8_rly6o"]
 [ext_resource type="PackedScene" uid="uid://cb36gbar6tdv" path="res://assets/guard.tscn" id="9_0acuf"]
 [ext_resource type="PackedScene" uid="uid://cxy4hikcjoxb7" path="res://assets/ui/turing_bandl_instruction_element_ui_scene.tscn" id="9_ec7cf"]
@@ -156,9 +157,9 @@ offset_bottom = 40.0
 
 [node name="Panel" type="Panel" parent="Hints"]
 layout_mode = 0
-offset_left = 1148.0
+offset_left = 1251.0
 offset_top = 636.0
-offset_right = 1547.0
+offset_right = 1551.0
 offset_bottom = 1080.0
 
 [node name="Move" type="Label" parent="Hints/Panel"]
@@ -209,15 +210,13 @@ offset_left = 148.0
 offset_top = 338.0
 offset_right = 825.0
 offset_bottom = 687.0
-text = "Hide (shift)"
+text = "Hide"
 label_settings = SubResource("LabelSettings_yefry")
 
 [node name="ArrowKeysSprite" type="Sprite2D" parent="Hints/Panel/Hide"]
 position = Vector2(-70, 35)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("35_jlbm7")
-region_enabled = true
-region_rect = Rect2(326.005, 164.348, 366.955, 261.316)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("8_01txo")
 
 [node name="TuringBandlUI" type="Control" parent="."]
 layout_mode = 3
