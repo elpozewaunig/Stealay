@@ -4,7 +4,8 @@ extends Node2D
 @onready var hover_sound = $HoverSound
 
 func _on_click() -> void:
-	click_sound.play()
+	if is_inside_tree():
+		click_sound.play()
 	
 func _on_hover() -> void:
 	hover_sound.play()

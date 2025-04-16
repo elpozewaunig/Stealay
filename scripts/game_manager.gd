@@ -6,8 +6,9 @@ signal request_data()
 
 @export var player: Node3D
 @export var goal: Node3D
-@export var lose:Control
-@export var win:Control
+@export var caught: Control
+@export var incomplete: Control
+@export var win: Control
 
 @export var win_jingle: AudioStreamPlayer
 @export var lose_jingle: AudioStreamPlayer
@@ -65,7 +66,7 @@ func check_lose():
 		print("Game over")
 		game_over = true
 		Globals.time_between_moves *= 100
-		lose.show()
+		caught.show()
 		music.stop()
 		lose_jingle.play()
 
@@ -73,13 +74,14 @@ func _on_player_movement_controller_out_of_moves() -> void:
 	if not game_over:
 		game_over = true
 		Globals.time_between_moves *= 100
-		lose.show()
+		incomplete.show()
 		music.stop()
 		lose_jingle.play()
 	#post_lose_precedure()
 	
 func post_lose_precedure():
-	lose.hide()
+	caught.hide()
+	incomplete.hide()
 	Globals.time_between_moves = 1.2
 	print("run again")
 	print(Globals.time_between_moves)
