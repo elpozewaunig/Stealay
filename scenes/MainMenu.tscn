@@ -48,11 +48,9 @@ script/source = "extends Button
 
 
 func startGame() -> void:
-	#get_tree().change_scene_to_file(\"res://scenes/GameScene.tscn\")
-	
 	await get_tree().create_timer(1).timeout
 	Globals.tutorial_enabled = true
-	get_tree().change_scene_to_file(\"res://scenes/PlanningScene.tscn\")
+	SceneManager.change_scene(SceneManager.planning_scene)
 "
 
 [sub_resource type="GDScript" id="GDScript_2wh52"]
@@ -342,7 +340,6 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 
 [node name="DefaultView" type="Control" parent="SubViewport/Node2D/UI"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

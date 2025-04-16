@@ -90,12 +90,12 @@ func post_lose_precedure():
 func _on_player_movement_controller_send_data(movecount: int, input_sequence: Array) -> void:
 	Globals.previous_move_count = movecount
 	Globals.previous_sequence = input_sequence
-	scene_loader("res://scenes/PlanningScene.tscn")
+	scene_loader(SceneManager.planning_scene)
 
 	
-func scene_loader(scene_location: String):
-	get_tree().change_scene_to_file(scene_location)
+func scene_loader(scene: PackedScene):
+	get_tree().change_scene_to_packed(scene)
 
 
-func _on_planning_scene_load_game_board(location: Variant) -> void:
-	scene_loader(location)
+func _on_planning_scene_load_game_board(scene: Variant) -> void:
+	scene_loader(scene)

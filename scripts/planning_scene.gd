@@ -24,6 +24,6 @@ func start_game():
 
 	print("Start game: ", Globals.player_sequence)
 	Globals.player_spotted = false
-	emit_signal("load_game_board", "res://scenes/GameScene.tscn")
+	emit_signal("load_game_board", SceneManager.game_scene)
 	
 	

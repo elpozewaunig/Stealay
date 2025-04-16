@@ -1,0 +1,14 @@
+[gd_scene load_steps=6 format=3 uid="uid://bj8kji30sico4"]
+
+[ext_resource type="Script" uid="uid://ckbb1eceq8etd" path="res://scripts/scene_manager.gd" id="1_vxpw0"]
+[ext_resource type="PackedScene" uid="uid://bg4w7m5cvf82n" path="res://scenes/MainMenu.tscn" id="2_h08b2"]
+[ext_resource type="PackedScene" uid="uid://tfksyvs2qbdu" path="res://scenes/PlanningScene.tscn" id="3_qi8ex"]
+[ext_resource type="PackedScene" uid="uid://bk3bgljl4ox8h" path="res://scenes/GameScene.tscn" id="4_yvpp5"]
+[ext_resource type="PackedScene" uid="uid://ce0fwwrmppq3y" path="res://scenes/LoadingScene.tscn" id="5_qi8ex"]
+
+[node name="SceneManager" type="Node"]
+script = ExtResource("1_vxpw0")
+menu_scene = ExtResource("2_h08b2")
+planning_scene = ExtResource("3_qi8ex")
+game_scene = ExtResource("4_yvpp5")
+loading_scene = ExtResource("5_qi8ex")

@@ -38,7 +38,7 @@ script/source = "extends Button
 
 func backMainMenu() -> void:
 	get_tree().paused = false;
-	get_tree().change_scene_to_file(\"res://scenes/MainMenu.tscn\")
+	get_tree().change_scene_to_packed(SceneManager.menu_scene)
 "
 
 [sub_resource type="GDScript" id="GDScript_7doss"]

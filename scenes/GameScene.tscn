@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://4vch2c573xoj" path="res://assets/ui/post_its/death.png" id="3_iaegw"]
 [ext_resource type="Texture2D" uid="uid://bp4ut1tshuu0t" path="res://assets/sprites/Tutorial/skip.png" id="4_1npfk"]
 [ext_resource type="Script" uid="uid://dqkwefcstr5y7" path="res://scripts/fancy_button.gd" id="4_2gh7q"]
-[ext_resource type="Script" uid="uid://cg2ylqvx868ee" path="res://scenes/speedup_indicator.gd" id="4_6nmf6"]
+[ext_resource type="Script" path="res://scenes/speedup_indicator.gd" id="4_6nmf6"]
 [ext_resource type="PackedScene" uid="uid://cb36gbar6tdv" path="res://assets/guard.tscn" id="4_18ig4"]
 [ext_resource type="PackedScene" uid="uid://b44tvfhd3lcf1" path="res://assets/player.tscn" id="5_7s5hy"]
 [ext_resource type="Texture2D" uid="uid://cduu48nagk7au" path="res://assets/newui/texticons_fillonly.png" id="5_a5tct"]
@@ -56,7 +56,7 @@ script/source = "extends Button
 
 func backMainMenu() -> void:
 	get_tree().paused = false;
-	get_tree().change_scene_to_file(\"res://scenes/MainMenu.tscn\")
+	get_tree().change_scene_to_packed(SceneManager.menu_scene)
 "
 
 [sub_resource type="Environment" id="Environment_18ig4"]
