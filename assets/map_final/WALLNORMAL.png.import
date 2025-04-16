@@ -3,19 +3,21 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bjk3tolv8pny"
-path="res://.godot/imported/WALLNORMAL.png-6683c753d7fadc7ccf48c4a2a0ca2a7e.ctex"
+path.s3tc="res://.godot/imported/WALLNORMAL.png-6683c753d7fadc7ccf48c4a2a0ca2a7e.s3tc.ctex"
+path.etc2="res://.godot/imported/WALLNORMAL.png-6683c753d7fadc7ccf48c4a2a0ca2a7e.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/map_final/WALLNORMAL.png"
-dest_files=["res://.godot/imported/WALLNORMAL.png-6683c753d7fadc7ccf48c4a2a0ca2a7e.ctex"]
+dest_files=["res://.godot/imported/WALLNORMAL.png-6683c753d7fadc7ccf48c4a2a0ca2a7e.s3tc.ctex", "res://.godot/imported/WALLNORMAL.png-6683c753d7fadc7ccf48c4a2a0ca2a7e.etc2.ctex"]
 
 [params]
 
-compress/mode=4
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.5
 compress/hdr_compression=1

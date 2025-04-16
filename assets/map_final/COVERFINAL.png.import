@@ -3,19 +3,21 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://delhnx23wk5ut"
-path="res://.godot/imported/COVERFINAL.png-afc230880acd0c7994d1fa07297559fa.ctex"
+path.s3tc="res://.godot/imported/COVERFINAL.png-afc230880acd0c7994d1fa07297559fa.s3tc.ctex"
+path.etc2="res://.godot/imported/COVERFINAL.png-afc230880acd0c7994d1fa07297559fa.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/map_final/COVERFINAL.png"
-dest_files=["res://.godot/imported/COVERFINAL.png-afc230880acd0c7994d1fa07297559fa.ctex"]
+dest_files=["res://.godot/imported/COVERFINAL.png-afc230880acd0c7994d1fa07297559fa.s3tc.ctex", "res://.godot/imported/COVERFINAL.png-afc230880acd0c7994d1fa07297559fa.etc2.ctex"]
 
 [params]
 
-compress/mode=4
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.5
 compress/hdr_compression=1

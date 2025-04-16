@@ -3,19 +3,21 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cgclh8fn2lxl2"
-path="res://.godot/imported/WALLBAKEOUTER.png-3aa1aab92a4a61920141960e450f92e8.ctex"
+path.s3tc="res://.godot/imported/WALLBAKEOUTER.png-3aa1aab92a4a61920141960e450f92e8.s3tc.ctex"
+path.etc2="res://.godot/imported/WALLBAKEOUTER.png-3aa1aab92a4a61920141960e450f92e8.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/map_final/WALLBAKEOUTER.png"
-dest_files=["res://.godot/imported/WALLBAKEOUTER.png-3aa1aab92a4a61920141960e450f92e8.ctex"]
+dest_files=["res://.godot/imported/WALLBAKEOUTER.png-3aa1aab92a4a61920141960e450f92e8.s3tc.ctex", "res://.godot/imported/WALLBAKEOUTER.png-3aa1aab92a4a61920141960e450f92e8.etc2.ctex"]
 
 [params]
 
-compress/mode=4
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.5
 compress/hdr_compression=1
