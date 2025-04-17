@@ -23,17 +23,19 @@ func _ready():
 		
 func _process(_delta):
 	if Input.is_action_just_pressed("Escape"):
-		$"../PauseMenu".visible = not $"../PauseMenu".visible
-		if get_tree().current_scene.name != Globals.game_scene_name:
-			$"../TuringBandlUI".visible = not $"../TuringBandlUI".visible
-		get_tree().paused = not get_tree().paused
-		$"../PauseMenu".resetUI()
+		toggle_pause()
 		
 	if get_tree().current_scene.name == Globals.game_scene_name:
 		if not check_win():
 			check_lose()
-		
-		
+
+func toggle_pause():
+	$"../PauseMenu".visible = not $"../PauseMenu".visible
+	if get_tree().current_scene.name != Globals.game_scene_name:
+		$"../TuringBandlUI".visible = not $"../TuringBandlUI".visible
+	get_tree().paused = not get_tree().paused
+	$"../PauseMenu".resetUI()
+
 func _input(event: InputEvent) -> void:
 	
 	if get_tree().current_scene.name == Globals.game_scene_name and not game_over:

@@ -11,12 +11,19 @@
 [sub_resource type="GDScript" id="GDScript_b31oo"]
 resource_name = "pausetry"
 script/source = "extends Control
+
+signal back_pressed
+
 func _ready():
 	set_process(true)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 func resetUI():
 	$UI/DefaultView.visible = true
 	$UI/OptionsView.visible = false
+
+
+func _on_back_pressed() -> void:
+	back_pressed.emit()
 "
 
 [sub_resource type="GDScript" id="GDScript_06788"]
@@ -189,15 +196,42 @@ visible = false
 position = Vector2(-212.01, 8.99738)
 texture = ExtResource("5_ai8gn")
 region_enabled = true
-region_rect = Rect2(872.059, 905.697, 666.635, 250.752)
+region_rect = Rect2(174.548, 424.49, 523.465, 259.374)
 
 [node name="Lines" type="Sprite2D" parent="UI/DefaultView/VBoxContainer/MainMenu/FancyButton"]
 position = Vector2(-212.01, 8.99738)
 texture = ExtResource("6_8a2bs")
 region_enabled = true
-region_rect = Rect2(872.059, 905.697, 666.635, 250.752)
+region_rect = Rect2(174.548, 424.49, 523.465, 259.374)
 
 [node name="ButtonAudioPlayer" parent="UI/DefaultView/VBoxContainer/MainMenu" instance=ExtResource("3_ds8rb")]
+
+[node name="Back" type="Button" parent="UI/DefaultView/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "
+"
+
+[node name="FancyButton" type="Node2D" parent="UI/DefaultView/VBoxContainer/Back"]
+position = Vector2(159, 32)
+scale = Vector2(0.249995, 0.249995)
+script = ExtResource("4_ejppj")
+
+[node name="Fills" type="Sprite2D" parent="UI/DefaultView/VBoxContainer/Back/FancyButton"]
+visible = false
+position = Vector2(-212.01, 8.99738)
+texture = ExtResource("5_ai8gn")
+region_enabled = true
+region_rect = Rect2(908.754, 887.349, 654.403, 281.332)
+
+[node name="Lines" type="Sprite2D" parent="UI/DefaultView/VBoxContainer/Back/FancyButton"]
+position = Vector2(-212.01, 8.99738)
+texture = ExtResource("6_8a2bs")
+region_enabled = true
+region_rect = Rect2(908.754, 887.349, 654.403, 281.332)
+
+[node name="ButtonAudioPlayer" parent="UI/DefaultView/VBoxContainer/Back" instance=ExtResource("3_ds8rb")]
 
 [node name="OptionsView" type="Control" parent="UI"]
 visible = false
@@ -342,6 +376,11 @@ region_rect = Rect2(908.754, 887.349, 654.403, 281.332)
 [connection signal="mouse_exited" from="UI/DefaultView/VBoxContainer/MainMenu" to="UI/DefaultView/VBoxContainer/MainMenu/FancyButton" method="_on_area_2d_mouse_exited"]
 [connection signal="pressed" from="UI/DefaultView/VBoxContainer/MainMenu" to="UI/DefaultView/VBoxContainer/MainMenu" method="backMainMenu"]
 [connection signal="pressed" from="UI/DefaultView/VBoxContainer/MainMenu" to="UI/DefaultView/VBoxContainer/MainMenu/ButtonAudioPlayer" method="_on_click"]
+[connection signal="mouse_entered" from="UI/DefaultView/VBoxContainer/Back" to="UI/DefaultView/VBoxContainer/Back/FancyButton" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_entered" from="UI/DefaultView/VBoxContainer/Back" to="UI/DefaultView/VBoxContainer/Back/ButtonAudioPlayer" method="_on_hover"]
+[connection signal="mouse_exited" from="UI/DefaultView/VBoxContainer/Back" to="UI/DefaultView/VBoxContainer/Back/FancyButton" method="_on_area_2d_mouse_exited"]
+[connection signal="pressed" from="UI/DefaultView/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="UI/DefaultView/VBoxContainer/Back" to="UI/DefaultView/VBoxContainer/Back/ButtonAudioPlayer" method="_on_click"]
 [connection signal="mouse_entered" from="UI/OptionsView/VBoxContainer/MuteSoundCheckButton" to="UI/OptionsView/VBoxContainer/MuteSoundCheckButton/ButtonAudioPlayer" method="_on_hover"]
 [connection signal="pressed" from="UI/OptionsView/VBoxContainer/MuteSoundCheckButton" to="UI/DefaultView/VBoxContainer/OptionsButton/ButtonAudioPlayer" method="_on_click"]
 [connection signal="pressed" from="UI/OptionsView/VBoxContainer/MuteSoundCheckButton" to="UI/OptionsView/VBoxContainer/MuteSoundCheckButton" method="_on_pressed"]

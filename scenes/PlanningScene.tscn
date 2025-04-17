@@ -334,3 +334,4 @@ id = 5
 [connection signal="place_skull" from="HeistPlanner" to="MovementManager/PlanningScenePlayerController" method="_on_heist_planner_place_skull"]
 [connection signal="remove_last_movement" from="HeistPlanner" to="TuringBandlUI" method="_on_heist_planner_remove_last_movement"]
 [connection signal="remove_last_movement" from="HeistPlanner" to="MovementManager/PlanningScenePlayerController" method="_on_heist_planner_remove_last_movement"]
+[connection signal="back_pressed" from="PauseMenu" to="GameManager" method="toggle_pause"]

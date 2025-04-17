@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://d0klmhrydubhb" path="res://scripts/game_manager.gd" id="1_xy3my"]
 [ext_resource type="PackedScene" uid="uid://blbae5xp247m5" path="res://assets/Map.tscn" id="3_cxv17"]
 [ext_resource type="Texture2D" uid="uid://bp4ut1tshuu0t" path="res://assets/sprites/Tutorial/skip.png" id="4_1npfk"]
-[ext_resource type="Script" uid="uid://cg2ylqvx868ee" path="res://scenes/speedup_indicator.gd" id="4_6nmf6"]
+[ext_resource type="Script" path="res://scenes/speedup_indicator.gd" id="4_6nmf6"]
 [ext_resource type="PackedScene" uid="uid://cb36gbar6tdv" path="res://assets/guard.tscn" id="4_18ig4"]
 [ext_resource type="PackedScene" uid="uid://b44tvfhd3lcf1" path="res://assets/player.tscn" id="5_7s5hy"]
 [ext_resource type="PackedScene" uid="uid://c60mal05vn06b" path="res://assets/EndScreen.tscn" id="6_6nmf6"]
@@ -194,6 +194,7 @@ bus = &"Music"
 [connection signal="button_pressed" from="CaughtScreen" to="GameManager" method="post_lose_precedure"]
 [connection signal="button_pressed" from="IncompleteScreen" to="GameManager" method="post_lose_precedure"]
 [connection signal="button_pressed" from="WinScreen" to="GameManager" method="_on_main_menu_button_pressed"]
+[connection signal="back_pressed" from="PauseMenu" to="GameManager" method="toggle_pause"]
 [connection signal="out_of_moves" from="MovementManager/PlayerMovementController" to="GameManager" method="_on_player_movement_controller_out_of_moves"]
 [connection signal="send_data" from="MovementManager/PlayerMovementController" to="GameManager" method="_on_player_movement_controller_send_data"]
 
