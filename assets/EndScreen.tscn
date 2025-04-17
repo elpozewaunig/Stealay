@@ -1,0 +1,107 @@
+[gd_scene load_steps=8 format=3 uid="uid://c60mal05vn06b"]
+
+[ext_resource type="Texture2D" uid="uid://cl4lwnow7hmmq" path="res://assets/ui/post_its/empty.png" id="1_4km7q"]
+[ext_resource type="Script" uid="uid://dec3topr56m3y" path="res://scripts/end_screen.gd" id="1_d221y"]
+[ext_resource type="Texture2D" uid="uid://4vch2c573xoj" path="res://assets/ui/post_its/death.png" id="2_d221y"]
+[ext_resource type="Script" uid="uid://dqkwefcstr5y7" path="res://scripts/fancy_button.gd" id="3_lpr8p"]
+[ext_resource type="Texture2D" uid="uid://cduu48nagk7au" path="res://assets/newui/texticons_fillonly.png" id="4_pc0bh"]
+[ext_resource type="Texture2D" uid="uid://dk6q5fclpp8db" path="res://assets/newui/texticons_borderonly.png" id="5_5vroo"]
+[ext_resource type="PackedScene" uid="uid://dptpc6b54d3bn" path="res://assets/ui/button_audio_player.tscn" id="6_8knio"]
+
+[node name="EndScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_d221y")
+
+[node name="Empty" type="Sprite2D" parent="."]
+position = Vector2(946, 459)
+scale = Vector2(2.416, 1.836)
+texture = ExtResource("1_4km7q")
+
+[node name="Check" type="Sprite2D" parent="."]
+position = Vector2(978, 468)
+scale = Vector2(0.532, 0.532)
+texture = ExtResource("2_d221y")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.062
+anchor_right = 1.0
+anchor_bottom = 0.138
+offset_left = 3.0
+offset_top = 73.04
+offset_right = 3.0
+offset_bottom = 230.04
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 115
+text = "Got Caught"
+horizontal_alignment = 1
+
+[node name="DefaultView" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/DefaultView"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.0
+offset_top = 175.0
+offset_right = 153.0
+offset_bottom = 529.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="Continue" type="Button" parent="UI/DefaultView/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "
+"
+
+[node name="FancyButton" type="Node2D" parent="UI/DefaultView/VBoxContainer/Continue"]
+position = Vector2(159, 32)
+scale = Vector2(0.249995, 0.249995)
+script = ExtResource("3_lpr8p")
+
+[node name="Fills" type="Sprite2D" parent="UI/DefaultView/VBoxContainer/Continue/FancyButton"]
+visible = false
+position = Vector2(-212.01, 8.99738)
+texture = ExtResource("4_pc0bh")
+region_enabled = true
+region_rect = Rect2(150.381, 92.281, 574.896, 336.375)
+
+[node name="Lines" type="Sprite2D" parent="UI/DefaultView/VBoxContainer/Continue/FancyButton"]
+position = Vector2(-212.01, 8.99738)
+texture = ExtResource("5_5vroo")
+region_enabled = true
+region_rect = Rect2(150.381, 92.2806, 574.896, 336.375)
+
+[node name="ButtonAudioPlayer" parent="UI/DefaultView/VBoxContainer/Continue" instance=ExtResource("6_8knio")]
+
+[connection signal="mouse_entered" from="UI/DefaultView/VBoxContainer/Continue" to="UI/DefaultView/VBoxContainer/Continue/FancyButton" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_entered" from="UI/DefaultView/VBoxContainer/Continue" to="UI/DefaultView/VBoxContainer/Continue/ButtonAudioPlayer" method="_on_hover"]
+[connection signal="mouse_exited" from="UI/DefaultView/VBoxContainer/Continue" to="UI/DefaultView/VBoxContainer/Continue/FancyButton" method="_on_area_2d_mouse_exited"]
+[connection signal="pressed" from="UI/DefaultView/VBoxContainer/Continue" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="UI/DefaultView/VBoxContainer/Continue" to="UI/DefaultView/VBoxContainer/Continue/ButtonAudioPlayer" method="_on_click"]
