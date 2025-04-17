@@ -3,5 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://cgclh8fn2lxl2" path="res://assets/map_final/WALLBAKEOUTER.png" id="1_luhu3"]
 
 [resource]
+shading_mode = 0
 albedo_texture = ExtResource("1_luhu3")
-metallic_specular = 0.2

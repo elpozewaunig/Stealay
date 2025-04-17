@@ -1,9 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://bk3bgljl4ox8h"]
+[gd_scene load_steps=22 format=3 uid="uid://bk3bgljl4ox8h"]
 
 [ext_resource type="Script" uid="uid://d0klmhrydubhb" path="res://scripts/game_manager.gd" id="1_xy3my"]
 [ext_resource type="PackedScene" uid="uid://blbae5xp247m5" path="res://assets/Map.tscn" id="3_cxv17"]
 [ext_resource type="Texture2D" uid="uid://bp4ut1tshuu0t" path="res://assets/sprites/Tutorial/skip.png" id="4_1npfk"]
-[ext_resource type="Script" path="res://scenes/speedup_indicator.gd" id="4_6nmf6"]
+[ext_resource type="Script" uid="uid://cg2ylqvx868ee" path="res://scenes/speedup_indicator.gd" id="4_6nmf6"]
 [ext_resource type="PackedScene" uid="uid://cb36gbar6tdv" path="res://assets/guard.tscn" id="4_18ig4"]
 [ext_resource type="PackedScene" uid="uid://b44tvfhd3lcf1" path="res://assets/player.tscn" id="5_7s5hy"]
 [ext_resource type="PackedScene" uid="uid://c60mal05vn06b" path="res://assets/EndScreen.tscn" id="6_6nmf6"]
@@ -14,9 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://dsn1mnxuhm7jh" path="res://assets/GoalObject.tscn" id="8_vijgj"]
 [ext_resource type="Script" uid="uid://cjqf4q1mwbr5e" path="res://scripts/place_walls.gd" id="9_pynjx"]
 [ext_resource type="AudioStream" uid="uid://csb3t8vt3lf7x" path="res://assets/sounds/victory_jingle/victory.ogg" id="10_a5tct"]
+[ext_resource type="Texture2D" uid="uid://cnjhuew5ssw74" path="res://assets/models/flippage/papertexture.jpg" id="11_21xg8"]
 [ext_resource type="AudioStream" uid="uid://cb88ggjx4kabs" path="res://assets/music/main_theme.ogg" id="11_j40tv"]
 [ext_resource type="PackedScene" uid="uid://dj8ocoeajpxud" path="res://assets/pause_menu.tscn" id="13_1npfk"]
-[ext_resource type="PackedScene" uid="uid://bpmfmcswsqh3g" path="res://assets/models/Attractions/Ground.fbx" id="19_iaegw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6nmf6"]
 
@@ -24,11 +24,19 @@
 font_size = 90
 
 [sub_resource type="Environment" id="Environment_18ig4"]
-background_mode = 1
-background_energy_multiplier = 0.0
+background_color = Color(0.323074, 0.389237, 0.503971, 1)
 ambient_light_source = 3
 ambient_light_color = Color(0.759369, 0.831966, 0.865193, 1)
 reflected_light_source = 1
+
+[sub_resource type="GDScript" id="GDScript_21xg8"]
+resource_name = "moveabitaround"
+script/source = "extends Sprite3D
+
+
+func _process(delta: float) -> void:
+	self.rotate_z(0.01*delta)
+"
 
 [node name="Game" type="Node3D"]
 
@@ -113,18 +121,6 @@ texture = ExtResource("8_6nmf6")
 [node name="Map" parent="." instance=ExtResource("3_cxv17")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -16.5, 1.5, -19.5)
 
-[node name="Ground" parent="." instance=ExtResource("19_iaegw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.921528, -0.571855, 3.06246)
-
-[node name="Ground2" parent="." instance=ExtResource("19_iaegw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.30381, -0.571855, 3.06246)
-
-[node name="Ground3" parent="." instance=ExtResource("19_iaegw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.45592, -0.571855, 2.95199)
-
-[node name="Ground4" parent="." instance=ExtResource("19_iaegw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.45592, -0.571855, 3.06246)
-
 [node name="Player" parent="." instance=ExtResource("5_7s5hy")]
 play_hop_sound = true
 id = 10
@@ -133,10 +129,16 @@ id = 10
 transform = Transform3D(0.707107, -0.612373, 0.353553, 0, 0.5, 0.866026, -0.707107, -0.612373, 0.353553, 2.915, 7.2, 3)
 environment = SubResource("Environment_18ig4")
 projection = 1
-size = 5.987
+size = 7.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Player/Camera3D"]
 transform = Transform3D(0.67718, -0.391692, -0.6229, 0.670888, -0.0190249, 0.741314, -0.302217, -0.9199, 0.249898, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Player/Camera3D"]
+transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 7.15256e-07, 1.19209e-07, -49.74)
+modulate = Color(0.554693, 0.617583, 0.660369, 1)
+texture = ExtResource("11_21xg8")
+script = SubResource("GDScript_21xg8")
 
 [node name="MovementManager" type="Node" parent="."]
 

@@ -3,4 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://dcpxk5hahgjsm" path="res://assets/map_final/paintings/painting6.jpg" id="1_uttjg"]
 
 [resource]
+shading_mode = 0
 albedo_texture = ExtResource("1_uttjg")
