@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://bg4w7m5cvf82n"]
+[gd_scene load_steps=45 format=4 uid="uid://bg4w7m5cvf82n"]
 
 [ext_resource type="Script" uid="uid://dqkwefcstr5y7" path="res://scripts/fancy_button.gd" id="1_2nypq"]
 [ext_resource type="Texture2D" uid="uid://cduu48nagk7au" path="res://assets/newui/texticons_fillonly.png" id="1_7la6k"]
@@ -103,6 +103,25 @@ func _ready() -> void:
 func _on_pressed() -> void:
 	AudioServer.set_bus_mute(musicBus, not AudioServer.is_bus_mute(musicBus))
 	print(AudioServer.is_bus_mute(musicBus))
+"
+
+[sub_resource type="GDScript" id="GDScript_2axsc"]
+resource_name = "fader"
+script/source = "extends Sprite2D
+
+
+func _ready() -> void:
+	self.self_modulate.a = 1
+
+
+var fademe = false
+
+func _on_play_button_pressed() -> void:
+	fademe = true
+
+func _process(delta: float) -> void:
+	if fademe:
+		self.self_modulate.a -= 1*delta
 "
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ow34m"]
@@ -730,6 +749,7 @@ position = Vector2(960, 540)
 rotation = 1.57079
 scale = Vector2(0.554761, 0.554761)
 texture = ExtResource("1_bky6r")
+script = SubResource("GDScript_2axsc")
 
 [node name="Camera2D" type="Camera2D" parent="SubViewport/Node2D"]
 position = Vector2(960, 540)
@@ -803,6 +823,7 @@ bus = &"Music"
 [connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/PlayButton" to="SubViewport/Node2D/UI/DefaultView/PlayButton" method="startGame"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/PlayButton" to="SubViewport/Node2D/UI/DefaultView/PlayButton/ButtonAudioPlayer" method="_on_click"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/PlayButton" to="SubViewport/Node2D/UI/DefaultView/PlayButton/PageAudioPlayer" method="_on_page_turn"]
+[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/PlayButton" to="SubViewport/Node2D/UI/Paper" method="_on_play_button_pressed"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/PlayButton" to="SubViewport/Node2D/PageFlip" method="_on_page_flip" binds= [3]]
 [connection signal="mouse_entered" from="SubViewport/Node2D/UI/DefaultView/OptionsButton" to="SubViewport/Node2D/UI/DefaultView/OptionsButton/FancyButton" method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_entered" from="SubViewport/Node2D/UI/DefaultView/OptionsButton" to="SubViewport/Node2D/UI/DefaultView/OptionsButton/ButtonAudioPlayer" method="_on_hover"]
