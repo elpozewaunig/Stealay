@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c2wn5l7pkj5qk" path="res://assets/sprites/Tutorial/chat_guy_angry.png" id="5_7tx8e"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_t1nil"]
-font_size = 64
+font_size = 58
 
 [sub_resource type="LabelSettings" id="LabelSettings_l2q88"]
 font_size = 36
