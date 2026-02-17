@@ -188,39 +188,39 @@ visible = false
 [node name="IncompleteScreen" parent="." unique_id=1413190964 instance=ExtResource("6_6nmf6")]
 visible = false
 
-[node name="Label" parent="IncompleteScreen/UI" index="0"]
+[node name="Label" parent="IncompleteScreen/UI" parent_id_path=PackedInt32Array(1413190964, 1502161170) index="0" unique_id=576909468]
 offset_top = 113.04
 offset_bottom = 154.96
 text = "Plan incomplete"
 label_settings = SubResource("LabelSettings_1npfk")
 
-[node name="GOTCAUGHT" parent="IncompleteScreen/UI" index="1"]
+[node name="GOTCAUGHT" parent="IncompleteScreen/UI" parent_id_path=PackedInt32Array(1413190964, 1502161170) index="1" unique_id=957167404]
 visible = false
 
-[node name="INCOMPLETE" parent="IncompleteScreen/UI" index="2"]
+[node name="INCOMPLETE" parent="IncompleteScreen/UI" parent_id_path=PackedInt32Array(1413190964, 1502161170) index="2" unique_id=447375369]
 visible = true
 
 [node name="WinScreen" parent="." unique_id=1227982894 instance=ExtResource("6_6nmf6")]
 visible = false
 
-[node name="Check" parent="WinScreen" index="1"]
+[node name="Check" parent="WinScreen" index="1" unique_id=1954424875]
 texture = ExtResource("8_6nmf6")
 
-[node name="Label" parent="WinScreen/UI" index="0"]
+[node name="Label" parent="WinScreen/UI" parent_id_path=PackedInt32Array(1227982894, 1502161170) index="0" unique_id=576909468]
 text = "You Win"
 
-[node name="GOTCAUGHT" parent="WinScreen/UI" index="1"]
+[node name="GOTCAUGHT" parent="WinScreen/UI" parent_id_path=PackedInt32Array(1227982894, 1502161170) index="1" unique_id=957167404]
 visible = false
 
-[node name="YOUWIN" parent="WinScreen/UI" index="3"]
+[node name="YOUWIN" parent="WinScreen/UI" parent_id_path=PackedInt32Array(1227982894, 1502161170) index="3" unique_id=614444324]
 visible = true
 position = Vector2(964, 301)
 scale = Vector2(0.8, 0.8)
 
-[node name="Fills" parent="WinScreen/UI/DefaultView/VBoxContainer/Continue/FancyButton" index="0"]
+[node name="Fills" parent="WinScreen/UI/DefaultView/VBoxContainer/Continue/FancyButton" parent_id_path=PackedInt32Array(1227982894, 87851002) index="0" unique_id=24115799]
 region_rect = Rect2(918.539, 921.904, 618.93, 242.19)
 
-[node name="Lines" parent="WinScreen/UI/DefaultView/VBoxContainer/Continue/FancyButton" index="1"]
+[node name="Lines" parent="WinScreen/UI/DefaultView/VBoxContainer/Continue/FancyButton" parent_id_path=PackedInt32Array(1227982894, 87851002) index="1" unique_id=317469170]
 region_rect = Rect2(918.539, 921.904, 618.93, 242.19)
 
 [node name="Score Component" type="Node2D" parent="WinScreen" unique_id=1549184702]
