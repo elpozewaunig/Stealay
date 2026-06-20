@@ -8,5 +8,5 @@ albedo_texture = ExtResource("2_nu4eq")
 
 [node name="seal" unique_id=1691678146 instance=ExtResource("1_fkfob")]
 
-[node name="seal_lowpoly" parent="." index="0" unique_id=417244655]
+[node name="seal_lowpoly" parent="." index="0" unique_id=322176189]
 material_override = SubResource("StandardMaterial3D_83idt")

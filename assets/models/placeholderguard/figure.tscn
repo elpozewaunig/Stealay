@@ -4,14 +4,14 @@
 
 [node name="figur" unique_id=1101140707 instance=ExtResource("1_aeb7c")]
 
-[node name="Empty" parent="Empty_003" parent_id_path=PackedInt32Array(725948462) index="0" unique_id=2009358176]
+[node name="Empty" parent="Empty_003" parent_id_path=PackedInt32Array(715118073) index="0" unique_id=736790863]
 transform = Transform3D(1.73069, 0, 0, 0, -0.938839, 1.45391, 0, -1.45391, -0.938839, 1.41715, 0, 6.76258)
 
-[node name="Empty_001" parent="Empty_003" parent_id_path=PackedInt32Array(725948462) index="1" unique_id=607825035]
+[node name="Empty_001" parent="Empty_003" parent_id_path=PackedInt32Array(715118073) index="1" unique_id=2079635312]
 transform = Transform3D(1.73069, 0, 0, 0, 0.718393, 1.57454, 0, -1.57454, 0.718393, -1.55697, 0, 6.76258)
 
-[node name="Empty_002" parent="Empty_003" parent_id_path=PackedInt32Array(725948462) index="2" unique_id=654012292]
+[node name="Empty_002" parent="Empty_003" parent_id_path=PackedInt32Array(715118073) index="2" unique_id=272783998]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 6.41053)
 
-[node name="AnimationPlayer" parent="." index="1" unique_id=19382403]
+[node name="AnimationPlayer" parent="." index="1" unique_id=946655273]
 autoplay = &"EmptyAction"
